@@ -1,0 +1,47 @@
+---
+title: "Test Data Overview"
+description: "Test Data is where you store the structured inputs your tests depend on — login credentials, form values, search terms, product details, user profiles, or any other data your app needs during a tes..."
+---
+
+Test Data is where you store the structured inputs your tests depend on — login credentials, form values, search terms, product details, user profiles, or any other data your app needs during a test run. Define a dataset once as a named table, then reference it in any task or recipe prompt using a `/slug`.
+
+**To access Test Data:** Click **Test Data** in the left navigation panel.
+
+![](/images/image (8).png)
+
+### The problem Test Data solves
+
+Without Test Data, running the same test with different inputs means writing separate tasks or test cases for each combination. Testing login with five different user accounts means five separate tasks. Testing search with ten different queries means ten prompts. This does not scale.
+
+Test Data solves it by separating the test logic from the test inputs. You write one task. You store the inputs in a dataset. Quash runs the task once for every row in the dataset — automatically, in sequence, without you writing anything extra.
+
+One prompt. Ten rows. Ten complete test runs.
+
+### How it works
+
+A dataset is a structured table — columns are input types, rows are input values. Every row is one complete set of inputs for a single run.
+
+**Example — login credentials dataset:**
+
+| email                     | password    | expected\_result          |
+| ------------------------- | ----------- | ------------------------- |
+| valid@example.com         | Correct123! | Login succeeds            |
+| valid@example.com         | wrongpass   | Error: Incorrect password |
+| notregistered@example.com | anypass     | Error: Account not found  |
+| valid@example.com         |             | Error: Password required  |
+
+Reference this dataset in a task prompt with `/login-credentials`. Quash runs the full task four times — once per row — using the values in each row as the inputs for that run.
+
+### Where Test Data lives
+
+Test Data has two access points in Quash:
+
+**The main Test Data section** (left navigation) — where you create, edit, manage, and organise all datasets across your workspace.
+
+**The Test Data tab inside Apps** — shows datasets linked to a specific app. Does not manage datasets directly — it is a shortcut to the datasets relevant to that app. All creation and editing happens in the main Test Data section.
+
+### Next steps
+
+* [Creating datasets](https://claude.ai/chat/creating-datasets.md) — build a dataset manually or import from a file
+* [Using /slug in prompts](https://claude.ai/chat/using-slug-in-prompts.md) — how to reference datasets in tasks and recipes
+* [Importing from file](https://claude.ai/chat/importing-from-file.md) — bring in existing data from CSV or JSON

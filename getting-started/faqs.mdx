@@ -1,0 +1,83 @@
+---
+title: "FAQs"
+description: "Quash is an AI-powered mobile testing platform. Describe what you want to test in plain English — Quash generates the test cases, runs them on real or virtual devices, and returns detailed reports ..."
+icon: "circle-question"
+---
+
+#### **What is Quash?**
+
+Quash is an AI-powered mobile testing platform. Describe what you want to test in plain English — Quash generates the test cases, runs them on real or virtual devices, and returns detailed reports with screen recordings and AI-written summaries. No test scripts, no selectors, no automation framework to configure.
+
+[→ Platform Overview](platform-overview)
+
+#### **Do I need coding skills to use Quash?**
+
+Not at all. Quash is built to be no-code and beginner-friendly. You can create, edit, and run tests using a simple UI with no programming knowledge required.
+
+#### **Does Quash support testing apps written in any programming language?**
+
+Yes. Quash is language-agnostic. You can test mobile apps regardless of the programming language they are built in — React Native, Flutter, Kotlin, Swift, or others. Quash interacts with your app through the UI and accessibility layer, not the code.
+
+#### **Can I test my app before it's launched?**
+
+Yes. Upload your app's staging build (APK) in the Builds tab inside Apps, or link your dev environment to test before the app goes live. Quash lets you switch between build versions so you can test exactly what you intend.
+
+[→ Builds](/broken/pages/yam3tMsYgsIZ4OsfFpQk)
+
+#### **Is Quash suitable for small teams or startups?**
+
+Yes. Quash is designed to be lightweight, fast to set up, and accessible without a dedicated automation engineer. Small teams get high-quality test coverage without the infrastructure overhead of traditional automation frameworks.
+
+#### **What are Megumi and Mahoraga?**
+
+Quash has two AI agents. Megumi is the test generation agent — it lives in Test Studio and converts your prompts, PRDs, Figma designs, and GitHub branches into executable test cases. Mahoraga is the execution agent — it runs on your Android device or emulator and carries out the test instructions by interacting directly with your app.
+
+Megumi thinks and plans. Mahoraga acts.
+
+→ [Megumi & Mahoraga](core-concepts/megumi-and-mahoraga)
+
+#### **How does Quash know about my app?**
+
+Quash builds understanding of your app from several sources: your app listing (pulled from the store), your GitHub repository (API contracts and business logic), Figma designs (screen layouts and interaction states), PRDs and documents you attach in recipes, and Guidance — the knowledge the Recipe agent accumulates automatically through repeated testing.
+
+The more context you provide, the more specific and accurate the generated tests.
+
+[→ Memory](core-concepts/memory)
+
+#### **What kind of reports does Quash provide?**
+
+Every test run generates an Execution Report with an AI-written Executive Summary, an Observations section with specific findings and recommendations, a step-by-step breakdown with screenshots for every action, and a full Device View screen recording you can replay. Reports can be shared via a public link or exported as a PDF.
+
+[→ Execution Reports](/broken/pages/DZuLpK4Xtm4EqYnVfLlE)
+
+#### **How accurate are the generated test cases?**
+
+Very accurate when given sufficient context. Recipe analyses your UI, user flows, and business logic to generate realistic and reliable tests. Attaching a PRD, a Figma design, and a connected GitHub branch before prompting produces tests that are usually ready to run with minimal adjustment. You can always review and refine them before saving.
+
+#### **What is the difference between a Task, a Test Case, and a Suite?**
+
+A **Task** is a single ad-hoc instruction you run immediately — no library, no setup. A **Test Case** is a saved, reusable instruction in your library. A **Suite** is a collection of test cases that run together as a unit. Use tasks for quick checks, test cases for repeatable coverage, and suites for systematic execution.
+
+→ [Tasks ](../running-tests/task-overview/)· [Test Cases ](../test-management/test-case/)· [Suites](../running-tests/suites-overview/)
+
+#### **What data does Quash use and how is it kept secure?**
+
+Quash uses the product data you provide — Figma files, PRDs, app builds, and GitHub repositories — to understand your app and generate accurate tests. GitHub access is read-only; Quash cannot push, merge, or modify your code. Your data stays within your workspace and is never shared externally.
+
+#### **Can multiple team members use the same workspace?**
+
+Yes. Quash workspaces are shared. All team members with appropriate access can see and contribute to the same test cases, suites, recipes, reports, and apps. Teams can collaborate on test generation across roles — PM, designer, developer, and QA all working in the same recipe.
+
+[→ Collaborating as a team](../test-studio/collaboration-as-a-team)
+
+#### **Is iOS testing supported in Quash?**&#x20;
+
+Yes. Quash supports physical iPhone devices connected locally via USB on Mac. iOS simulators and Quash cloud devices are not currently available for iOS. Windows users cannot connect iOS devices.
+
+#### **Do I need a paid Apple Developer account to test on an iPhone with Quash?**&#x20;
+
+Yes. An Apple Developer Program membership ($99/year) is required to register your device and generate the provisioning profile that allows Quash to install and run your app. A free Apple ID does not have the permissions needed to do this.
+
+#### What should I do if I get an error connecting my iPhone to Quash?
+
+Check that the iOS component is installed in Xcode, your Apple Developer account is signed in with the correct team access, and Developer Mode is enabled on the device. If errors persist, delete the device in Quash, disconnect, and scan again. For WDA install errors and certificate errors, see the Troubleshooting section on the Physical iOS Devices page.

@@ -1,0 +1,51 @@
+---
+title: "Backend Validations"
+description: "Backend Validations let you verify what happens in your backend while Mahoraga interacts with the UI. When a user action triggers an API call, changes data in a database, or updates server state, y..."
+---
+
+Backend Validations let you verify what happens in your backend while Mahoraga interacts with the UI. When a user action triggers an API call, changes data in a database, or updates server state, you can verify that the backend response is exactly what you expect — not just that the right screen appeared on the device.
+
+**To access Backend Validations:** Click **Validations** in the left navigation panel.
+
+https://www.youtube.com/watch?v=qsvUiM8KU74
+
+### Why backend validations matter
+
+UI testing alone has a blind spot. Mahoraga can verify that the success screen appeared after a purchase — but it cannot verify that the order was actually created in your backend, that the inventory count decreased, or that the payment was processed correctly. These are backend facts, and they are invisible to a screen-level agent.
+
+Backend Validations close that gap. They run API calls against your backend during a test and assert that the response matches what you expect. Combine them with Mahoraga's UI execution and you get true end-to-end verification — the UI behaved correctly _and_ the backend reflected the correct state.
+
+### Two ways to use validations
+
+**Saved Validation** Create a validation once and reuse it across any number of tasks and suites. Saved validations live in the Validations section and can be attached to tasks from task settings — set to run before execution, after execution, or both.
+
+**Prompt Action (`@slug`)** Reference a validation inline inside any task prompt by typing `@`. The validation runs at exactly the point in the sequence where you place it. Order matters — a validation placed after a "tap checkout" instruction runs after that tap, not before.
+
+Most teams use both: saved validations for systematic checks attached to suites, and `@slug` prompt actions for precise moment-specific checks inside complex task flows.
+
+### The structure of a validation
+
+Every backend validation has two parts:
+
+**A Connection** — defines where your backend lives and how to authenticate with it. The base URL, the authentication type, and any headers needed to make a valid request. One connection can power many validations.
+
+**A Validation** — the specific API call, what you expect back, and how to handle failures. Defined on top of a connection.
+
+[→ Setting up a connection ](connections) [→ Creating a validation](creating-a-validation)
+
+### What you can assert
+
+Validations support four assertion types, and you can combine them in a single validation:
+
+| Assertion type       | What it checks                                                               |
+| -------------------- | ---------------------------------------------------------------------------- |
+| **Status code**      | The HTTP response code matches the expected value (200, 201, 400, 404, etc.) |
+| **JSON Path**        | A specific field inside the response body has the expected value             |
+| **Regex**            | The response body matches a text pattern                                     |
+| **Extract variable** | Captures a value from the response to use in subsequent steps                |
+
+### Next steps
+
+* [Connections ](connections)— set up your backend connection
+* [Creating a validation ](creating-a-validation)— define the API call and assertions
+* [Using @slug in prompts ](using-slug-in-prompts)— run validations inline during task execution

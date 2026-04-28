@@ -1,0 +1,41 @@
+---
+title: "Slack"
+description: "Once connected, the Quash bot posts a welcome message in the selected channel confirming the integration is live."
+---
+
+<mark style="background-color:orange;">Connecting Slack sends Quash notifications directly to your team's channels — test failures, suite completions, device status changes — without anyone having to check the Quash dashboard manually. (Coming Soon)</mark>
+
+### Connecting Slack
+
+1. Go to your profile → **Integrations**.
+2. Click **Connect** next to Slack.
+3. Log in to your Slack account if prompted.
+4. Authorise the Quash bot to access your workspace and click **Allow**.
+5. Select the Slack channel where you want to receive notifications.
+6. Click **Complete**.
+
+Once connected, the Quash bot posts a welcome message in the selected channel confirming the integration is live.
+
+### What the Quash bot sends
+
+| Event                     | What gets posted                                |
+| ------------------------- | ----------------------------------------------- |
+| Suite run completes       | Pass rate, number of failures, link to report   |
+| Suite run fails           | Which tests failed, device used, link to report |
+| Task run fails            | Task name, failure reason, link to report       |
+| Cloud device disconnected | Device name and reason                          |
+| Cloud device available    | Notification when a queued device becomes free  |
+
+### Changing the channel
+
+1. Go to **Integrations**.
+2. Click **Settings** next to Slack.
+3. Select a different channel from the dropdown and save.
+
+### Disconnecting
+
+1. Go to **Integrations**.
+2. Click **Settings** next to Slack.
+3. Click the **✕** button.
+
+The Quash bot is removed from your workspace and all notifications stop immediately.

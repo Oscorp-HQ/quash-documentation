@@ -1,0 +1,118 @@
+---
+title: "Importing from File"
+description: "If your test data already exists in a spreadsheet, a CSV export, or a JSON file, you can import it directly into Quash instead of entering values by hand."
+---
+
+If your test data already exists in a spreadsheet, a CSV export, or a JSON file, you can import it directly into Quash instead of entering values by hand.
+
+![](/images/image (11).png)
+
+### Supported formats
+
+Quash supports two file formats for import:
+
+**CSV** A plain text file with a header row followed by data rows. The header row becomes the column names. Each subsequent row becomes one dataset row.
+
+```csv
+email,password,role
+valid@example.com,Correct123!,standard
+admin@example.com,Admin456!,admin
+guest@example.com,Guest789!,guest
+```
+
+**JSON** An array of flat objects. Each object becomes one row. The keys of the objects become the column names. All objects should have the same keys.
+
+```json
+[
+  { "email": "valid@example.com", "password": "Correct123!", "role": "standard" },
+  { "email": "admin@example.com", "password": "Admin456!", "role": "admin" },
+  { "email": "guest@example.com", "password": "Guest789!", "role": "guest" }
+]
+```
+
+### How to import
+
+1. Click **Test Data** in the left navigation panel.
+2. Click **Upload** in the top right of the library view (next to **+ New**).
+3. Drag and drop your file into the upload modal, or click to browse and select it.
+4. Quash reads the file structure and creates the dataset automatically.
+5. The dataset opens in the editor. Check that column names and values are correct before saving.
+6. Edit the **title** and **slug** — the import uses the filename as the default title, which is usually not descriptive enough.
+
+### Before you import
+
+A few things to check in your source file before importing:
+
+**Header row is present and correct.** CSV files must have a header row as the first line. JSON files must use consistent keys across all objects. Missing or inconsistent headers cause import errors or misaligned columns.
+
+**No empty columns.** Empty columns import as unnamed columns and clutter the dataset. Remove any blank columns from your source file before importing.
+
+**Values are plain text.** Quash stores text only. Formulas, rich formatting, merged cells, and special characters in Excel or Google Sheets do not transfer. Export to plain CSV first — not `.xlsx`.
+
+**File size is reasonable.** Files with more than 200 rows will be truncated at import. Split large files into multiple datasets with descriptive slugs before importing.
+
+### Updating an existing dataset from a file
+
+Importing always creates a **new** dataset — it does not update an existing one. If your source data changes and you need to refresh a dataset:
+
+1. Import the updated file as a new dataset.
+2. Update the slug of the new dataset to match the old one (after deleting or renaming the old dataset).
+3. Or: open the existing dataset and manually update the changed values.
+
+For frequently-changing data — test accounts refreshed weekly, product inventories updated daily — consider keeping a canonical source file and re-importing on a cadence rather than manually maintaining the dataset in Quash.Importing from File
+
+If your test data already exists in a spreadsheet, a CSV export, or a JSON file, you can import it directly into Quash instead of entering values by hand.
+
+### Supported formats
+
+Quash supports two file formats for import:
+
+**CSV** A plain text file with a header row followed by data rows. The header row becomes the column names. Each subsequent row becomes one dataset row.
+
+```csv
+email,password,role
+valid@example.com,Correct123!,standard
+admin@example.com,Admin456!,admin
+guest@example.com,Guest789!,guest
+```
+
+**JSON** An array of flat objects. Each object becomes one row. The keys of the objects become the column names. All objects should have the same keys.
+
+```json
+[
+  { "email": "valid@example.com", "password": "Correct123!", "role": "standard" },
+  { "email": "admin@example.com", "password": "Admin456!", "role": "admin" },
+  { "email": "guest@example.com", "password": "Guest789!", "role": "guest" }
+]
+```
+
+### How to import
+
+1. Click **Test Data** in the left navigation panel.
+2. Click **Upload** in the top right of the library view (next to **+ New**).
+3. Drag and drop your file into the upload modal, or click to browse and select it.
+4. Quash reads the file structure and creates the dataset automatically.
+5. The dataset opens in the editor. Check that column names and values are correct before saving.
+6. Edit the **title** and **slug** — the import uses the filename as the default title, which is usually not descriptive enough.
+
+### Before you import
+
+A few things to check in your source file before importing:
+
+**Header row is present and correct.** CSV files must have a header row as the first line. JSON files must use consistent keys across all objects. Missing or inconsistent headers cause import errors or misaligned columns.
+
+**No empty columns.** Empty columns import as unnamed columns and clutter the dataset. Remove any blank columns from your source file before importing.
+
+**Values are plain text.** Quash stores text only. Formulas, rich formatting, merged cells, and special characters in Excel or Google Sheets do not transfer. Export to plain CSV first — not `.xlsx`.
+
+**File size is reasonable.** Files with more than 200 rows will be truncated at import. Split large files into multiple datasets with descriptive slugs before importing.
+
+### Updating an existing dataset from a file
+
+Importing always creates a **new** dataset — it does not update an existing one. If your source data changes and you need to refresh a dataset:
+
+1. Import the updated file as a new dataset.
+2. Update the slug of the new dataset to match the old one (after deleting or renaming the old dataset).
+3. Or: open the existing dataset and manually update the changed values.
+
+For frequently-changing data — test accounts refreshed weekly, product inventories updated daily — consider keeping a canonical source file and re-importing on a cadence rather than manually maintaining the dataset in Quash.

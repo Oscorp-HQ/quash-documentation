@@ -1,0 +1,107 @@
+---
+title: "Memory"
+description: "Memory is how Quash builds and maintains context. It determines how well the Abgumi agent understands your app, your requirements, and your intent before generating a single test case — and how tha..."
+---
+
+Memory is how Quash builds and maintains context. It determines how well the Abgumi agent understands your app, your requirements, and your intent before generating a single test case — and how that understanding compounds over time.
+
+Getting this right is the difference between tests that are generic and tests that are specific to your exact product.
+
+### The analogy
+
+A new QA engineer joins your company.
+
+On day one, they do not open a ticket and start writing test cases. They spend their first week gathering context. They read the PRD. They go through the Figma designs. They talk to developers about how the backend works. They open the app and explore it themselves. They build a mental model — which screens exist, how flows connect, what is expected to happen, what can go wrong.
+
+A month later, that same engineer is writing significantly better tests than they did on day one. Not because the product changed. Because they have accumulated knowledge that is not written in any document — which flows are fragile, which edge cases have surfaced before, which states are tricky to reproduce.
+
+Memory is how Quash gives the Abgumi agent that same accumulating understanding. So that each session starts more informed than the last. So that the agent is not starting from zero every time.
+
+### Three layers
+
+Memory in Quash is not a single thing. It operates across three layers, each with a different scope, a different creator, and a different purpose.
+
+#### Layer 1 — Apps context
+
+**What it is:** The foundational context you configure in the Apps section before any testing begins.
+
+**Scope:** Per app. Set once, available in every recipe, every session.
+
+**Created by:** You.
+
+This layer covers the structural knowledge the agent needs to understand your app — what it is, how its codebase is organised, what credentials to use for authentication, which build version is being tested.
+
+**What lives here:**
+
+* Your app — name, platform, category, store description
+* Your GitHub repository — API endpoints, data models, business logic
+* Your credentials — login details so the agent authenticates automatically during runs
+* Your builds — the APK version currently being tested
+
+Apps context never resets. Once configured, it is available in every recipe you create for that app. The more complete it is, the more specific Recipe's output is from the very first prompt.
+
+[→ Set up your app](/broken/pages/EKHjBgfBhEorhZSgR7zZ)
+
+#### Layer 2 — Recipe Memory
+
+**What it is:** The working memory of a single recipe session — everything discussed and generated in that conversation.
+
+**Scope:** Per recipe. Persists indefinitely. Loads automatically when you reopen a recipe.
+
+**Created by:** The conversation itself.
+
+Every prompt you send, every response Recipe generates, and every test case produced in a session is stored in Recipe Memory. This is what makes Test Studio feel like a conversation rather than a form. Follow-up prompts are cumulative — the agent knows what was discussed five exchanges ago and builds on it.
+
+**What it tracks:**
+
+* Every prompt sent in this recipe
+* Every response the agent generated
+* All test cases produced, including names, priorities, and descriptions
+* Refinements and changes made through follow-up prompts
+* References to specific tests — _"change test 3 to Critical"_ works because the agent knows which one you mean
+
+**When you reopen a recipe:** Memory loads automatically. The agent confirms what it remembers at the start of the conversation. You always know whether you are continuing or starting fresh.
+
+**The boundary that matters:** Recipe Memory is specific to its recipe. It does not carry across to other recipes. Open a new recipe and the agent starts with only your Apps context and Guidance — it has no memory of what happened in a different session.
+
+#### Layer 3 — Guidance
+
+**What it is:** The knowledge the agent builds for itself through repeated testing. Not configured by you — accumulated automatically.
+
+**Scope:** Per app. Grows with every test session.
+
+**Created by:** The agent.
+
+Guidance is what makes Quash progressively smarter the more you use it. Every time Mahoraga runs tests on your app, the agent updates its Guidance profile — mapping screens it navigated, reinforcing patterns it observed, recording edge cases it encountered, learning the difference between real data states and temporary cached ones.
+
+Guidance starts empty. The first session on a new app draws only from Apps context and whatever you attach in the recipe. By the tenth session, the agent has a detailed map of your app's actual behaviour — knowledge earned through direct interaction, not documentation.
+
+**Guidance is editable.** The agent can make mistakes, and your app changes. You can review and correct any Guidance entry in Apps → Knowledge. After a significant release, check Guidance for flows that changed — it will not automatically unlearn outdated information.
+
+[→ Full Guidance documentation](guidance)
+
+### How the layers stack
+
+The three layers are not alternatives — they all operate simultaneously. When you open a recipe and send a prompt, Recipe draws on all three at once:
+
+| Layer         | Who creates it   | Scope      | Resets?                    |
+| ------------- | ---------------- | ---------- | -------------------------- |
+| Apps context  | You              | Per app    | Never                      |
+| Recipe Memory | The conversation | Per recipe | Never — persists on reopen |
+| Guidance      | The agent        | Per app    | Never — grows each session |
+
+In practice:
+
+* **Apps context** tells the agent what your app is and how its codebase works
+* **Recipe Memory** tells the agent what this specific conversation has covered
+* **Guidance** tells the agent what your app actually does in practice, based on real runs
+
+A session with all three layers populated produces tests that are orders of magnitude more specific than a session with none. This is why setting up Apps thoroughly before your first Test Studio session makes such a visible difference.
+
+### Tokens and context limits
+
+Memory is not unlimited. Each recipe session operates within a token budget — a measure of how much context the agent is actively holding at once. Quash is designed to be efficient. It retains what is actively needed and prunes what is not.
+
+In long sessions — many prompts, many generated tests, large attached documents — the token budget can run low. When it does, use the `/compact` command. It compresses the full conversation history into a condensed form, preserving the essential context while freeing up space for the session to continue.
+
+[→ Tokens & /compact](tokens-and-compact)

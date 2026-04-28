@@ -1,0 +1,23 @@
+---
+title: "Rerun"
+description: "When you run a task for the first time, Mahoraga operates in full reasoning mode - reading each screen, identifying elements, handling interruptions, and making decisions at every step. When the ru..."
+---
+
+When you run a task for the first time, Mahoraga operates in full reasoning mode - reading each screen, identifying elements, handling interruptions, and making decisions at every step. When the run completes successfully, Mahoraga stores the full path it took.
+
+From the second run onwards, Mahoraga follows that stored path directly. For each step, it checks the current screen against what it expects. If the screen matches, it executes immediately — no inference, no reasoning pause. A test that took around 5 minutes on the first run typically completes in around 1 minute on reruns.
+
+**No configuration is needed.** If you have already run a task successfully, the next run will automatically use the stored path.
+
+### **How Mahoraga handles UI changes**
+
+Mahoraga does not fail when it encounters something unexpected during a rerun. Instead, it switches back into reasoning mode for that specific step:
+
+* A button has been renamed — Mahoraga identifies it by role and context, not just its label.
+* A permission dialog appears mid-flow — Mahoraga handles it and returns to the main flow.
+* A promotional modal blocks the screen — Mahoraga dismisses it and continues.
+* The layout has shifted on a different device — Mahoraga finds the correct element and continues.
+
+Once it resolves the change, Mahoraga updates the stored path. The next rerun already knows what to expect.
+
+> ⚠️ **Note:** Rerun speed gains apply after the first _successful_ run. If the first run did not complete, no path is stored and the next run starts fresh.

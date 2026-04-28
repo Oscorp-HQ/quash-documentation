@@ -1,0 +1,30 @@
+---
+title: "Builds"
+description: "The Builds tab is where you upload the application binaries that Quash installs and runs tests against."
+---
+
+The Builds tab is where you upload the application binaries that Quash installs and runs tests against.
+
+**Uploading a Build**
+
+1. Click **Upload Build** in the Builds tab.
+2. A file picker opens. Select your `.apk` (Android) or `.ipa` (iOS) file from your machine.
+3. The Upload Build modal appears. Enter a **version number** to identify this build, for example, `2.3.1` or `28.0.593`.
+4. Select an **environment tag** to specify what environment this build belongs to. Choose from:
+   * **dev** - a development build for active feature work
+   * **stage** - a staging build for pre-release validation
+   * **prod** - a production build for smoke testing or regression
+   * **custom** - enter your own environment label if none of the above apply
+5. Click **Upload**.
+
+> The environment tag is just a label used for record keeping. It helps you and your team immediately understand what context a test report was generated in. Selecting a specific environment tag will not affect the behaviour of your uploaded build in any way.
+
+**Installing a Build on a Device**
+
+Once uploaded, click **Install** next to a build to install it on your currently connected device. This is the same action available as a dropdown in the task prompt area when you are setting up a new task. You can select and install a build directly from the task creation screen without navigating back to the Builds tab.
+
+Only one build can be active on a device at a time. If you install a new build, it overrides the previous one on that device.
+
+**Build history**
+
+Every uploaded build is stored in the build history list with its version number, environment tag, upload date, and uploader. You can reinstall any previous build at any time. Before running a test session, confirm the correct build is installed on your device. Running tests against the wrong build version is one of the most common causes of unexpected failures.
