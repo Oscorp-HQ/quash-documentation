@@ -1,0 +1,20 @@
+---
+hidden: true
+---
+
+# Test Data(in app)
+
+### Test Data
+
+The Test Data tab inside an app does not manage test data directly — it shows the datasets linked to this app and provides a direct link to the main **Test Data** section where you can create and edit them.
+
+**What you see here:**
+
+* A list of datasets associated with this app
+* Dataset name, slug, size, and last updated timestamp
+* A shortcut to open any dataset in the full Test Data editor
+
+This tab exists so you can quickly check which datasets are available for this app without leaving the app detail page. All creation, editing, and management of datasets happens in the main Test Data section.
+
+[→ See Test Data for full documentation on creating and using datasets.](../test-management/test-data-overview/)
+

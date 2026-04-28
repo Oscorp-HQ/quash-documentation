@@ -1,0 +1,28 @@
+# Overview
+
+## Integrations
+
+Integrations connect Quash to the tools your team already works in. Once set up, Quash can notify your Slack channels when tests fail, automatically create Jira issues from failures, sync with Notion, and read your Figma designs directly during test generation.
+
+**To access Integrations:** Click the profile icon in the top right → select **Integrations** from the left panel.
+
+### Available integrations
+
+<figure><img src="../.gitbook/assets/image (24).png" alt=""><figcaption></figcaption></figure>
+
+| Integration | What it does                                                                                             |
+| ----------- | -------------------------------------------------------------------------------------------------------- |
+| **Slack**   | Real-time notifications about test failures, suite completions, and device status in your Slack channels |
+| **Jira**    | Automatically create issues for test failures and attach Jira tickets as context in Test Studio recipes  |
+| **Notion**  | Connect your Notion workspace for documentation and reporting workflows                                  |
+
+### How connecting works
+
+Each integration on the Integrations page has a **Connect** button. Clicking it starts the connection flow for that tool — usually an OAuth redirect or a URL-based setup. Once connected, the button changes to **Settings**, and a green checkmark appears next to the integration name along with the connected account.
+
+To disconnect any integration, click **Settings** and then the **✕** button.
+
+* [Slack](slack.md)
+* [Jira](jira.md)
+* [Notion](notion.md)
+

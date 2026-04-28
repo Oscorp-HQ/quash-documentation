@@ -1,0 +1,128 @@
+# Collaboration as a team
+
+Test Studio is built for teams, not individuals. A recipe can bring together inputs from across your team — product, design, engineering, and QA — in a single session. Megumi reads all of it simultaneously and generates tests that reflect the full picture.
+
+This page covers how teams work together in Test Studio and how to structure collaborative recipes effectively.
+
+### The core idea
+
+Traditionally, writing test cases is a QA-only activity. The QA engineer reads a spec, looks at some designs, maybe talks to the developer, and then writes tests alone. This creates a bottleneck — and it means tests are only as good as one person's understanding of the feature.
+
+Test Studio breaks this pattern. Because Recipe can ingest multiple sources simultaneously — a PRD from product, a Figma file from design, a GitHub branch from engineering, and a Jira ticket from the backlog — the entire team can contribute their knowledge to test generation without anyone needing to write a single test case manually.
+
+The result is test coverage that reflects what the product manager intended, what the designer specified, and what the developer implemented — all at once.
+
+### What each role contributes
+
+| Role            | Contribution                                                       | How it is attached                       |
+| --------------- | ------------------------------------------------------------------ | ---------------------------------------- |
+| Product Manager | PRD, user stories, acceptance criteria, Jira tickets               | Paperclip (document) or Jira integration |
+| Designer        | Figma screens, interaction states, error states, component names   | Figma integration via + button           |
+| Developer       | Codebase, API contracts, business logic, feature branch            | GitHub integration via + button          |
+| QA Lead         | Prompt direction, scope decisions, priority judgements, refinement | Written prompt                           |
+| QA Engineer     | Edge case knowledge, historical failure patterns, test structure   | Written prompt and follow-ups            |
+
+No single person needs to know everything. Each contributor adds what they know, and Recipe synthesises it into coherent, executable test cases.
+
+### Roles and access in recipes
+
+Anyone in the workspace with Tester access or above can create and contribute to recipes. Viewers can see recipes but cannot prompt or save tests.
+
+Recipes are shared within the workspace — a recipe created by one team member can be opened and continued by another. When a teammate opens your recipe, they see the full conversation history. They can add prompts, attach new context, and save or adjust tests.
+
+There is no conflict resolution for simultaneous editing — treat a recipe like a shared document and communicate with your team if multiple people are working in it at the same time.
+
+### How to run a collaborative session
+
+#### Before the session
+
+Decide the scope of the recipe together. What feature? What depth? What is the priority — smoke, regression, comprehensive? Agree on this before anyone starts prompting to avoid generating tests that need to be discarded.
+
+Assign who attaches what:
+
+* Product attaches the PRD or links the relevant Jira tickets
+* Design attaches the Figma file or frame
+* Engineering selects the correct GitHub branch
+* QA drives the prompt and configuration
+
+#### Setting up the recipe
+
+1. One person creates the recipe and names it clearly — e.g., `"Checkout v2 — Full Coverage — Sprint 24"`
+2. Set the CONFIG before prompting: coverage depth, scope, platform, priority levels
+3. Attach all context sources via the **+** button: app, branch, Figma, Jira
+4. Attach any documents via the paperclip: PRD, spec, feature brief
+5. Write the first prompt — or divide the prompt writing between contributors
+
+#### The prompt
+
+When multiple people have contributed context, the first prompt should reflect that. Tell Recipe explicitly to use all of it:
+
+```
+Read the attached PRD, the Figma designs for the checkout redesign, and
+the feature branch code carefully. Generate comprehensive test cases for
+the new checkout flow — address entry, payment selection, promo codes,
+order summary, and confirmation. Include edge cases from the designs,
+validate against the acceptance criteria in the PRD, and reference
+the API contracts in the codebase for backend state assertions.
+```
+
+This is more effective than a short prompt. The agent has rich context — the prompt's job is to direct how it uses that context.
+
+#### Reviewing and refining
+
+After the first generation, review the Tests panel together. Team members can add follow-up prompts to:
+
+* Add missing scenarios (`"Add test cases for the loyalty points redemption flow"`)
+* Adjust priorities based on release risk (`"Change the payment failure tests to Critical"`)
+* Request more specificity (`"Rewrite the address validation tests to use the exact field names from the Figma file"`)
+* Fill gaps identified by different team members (`"The PRD mentions an out-of-stock edge case — add that"`)
+
+### Example: team session for a new feature
+
+**Feature:** In-app notifications centre
+
+**Team:** 1 PM, 1 designer, 1 backend developer, 1 QA lead
+
+**Setup:**
+
+* PM attaches `Notifications Centre PRD v3.pdf` via paperclip
+* PM links Jira epic `NOTIF-88`
+* Designer adds Figma link: `Notifications Centre — Final`
+* Developer selects branch `feature/notifications-centre` in GitHub
+* QA lead sets CONFIG: Full coverage, Flow scope, Both platforms, Critical + High + Medium
+
+**First prompt (written by QA lead):**
+
+```
+Read the PRD, Figma designs, Jira epic, and the feature branch carefully.
+Generate test cases for the notifications centre covering:
+- Receiving a new notification and verifying it appears correctly
+- Tapping a notification and navigating to the correct destination
+- Marking individual notifications as read
+- Marking all as read
+- Deleting a notification
+- Empty state when there are no notifications
+- Notification badge count on the app icon
+- Behaviour when notifications arrive while the centre is open
+Include edge cases from the Figma designs, especially the empty state and error states.
+```
+
+**Follow-ups from other team members:**
+
+* Designer: `"Add a test for the swipe-to-dismiss gesture on the notification card — it's in the Figma"`
+* Developer: `"Add a test that the read/unread state persists after app restart — it should be stored server-side"`
+* PM: `"Add a test for the 'allow notifications' permission prompt on first open — it's in the acceptance criteria"`
+
+**Result:** 22 test cases across happy paths, error states, edge cases, persistence, and permission handling — generated in under 15 minutes with input from the whole team.
+
+### Best practices for collaborative recipes
+
+**One recipe per feature per sprint.** Shared recipes get complicated when they cover too much ground. Keep the scope tight so everyone knows what the recipe is for.
+
+**Communicate before prompting.** If two people prompt simultaneously in the same recipe, the agent sees two instructions and may produce inconsistent output. One person should own the prompt sequence; others contribute context and follow-ups.
+
+**Save progressively.** Do not wait until the session is finished to save tests. Save good tests to the library as they are generated so the work is preserved regardless of what happens later in the session.
+
+**Name tests clearly before saving.** Before saving a batch of tests, scan the names in the Tests panel. If any are vague, use a follow-up prompt to rename them. Clear names matter when other team members are using the same library.
+
+**Document scope decisions in the first prompt.** Write the first prompt as if you are documenting the scope of the recipe for a future reader — because you are. When someone reopens this recipe in three weeks, the first prompt tells them exactly what was intended.

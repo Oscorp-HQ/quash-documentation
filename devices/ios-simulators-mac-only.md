@@ -1,0 +1,17 @@
+# iOS Simulators (Mac only)
+
+To run tests on an iOS simulator through Quash:
+
+1. Open **Xcode** on your Mac
+2. Launch an iOS simulator from **Xcode → Open Developer Tool → Simulator**
+3. In the Devices section on the Quash app, click **"Scan for devices"** — your simulator should&#x20;
+4.  Click **"Connect"** next to the simulator
+
+    Your iOS simulator will now appear as an option in the prompt box when you click **Devices.**
+
+    > ⚠️ **iOS limitations:**
+    >
+    > * iOS simulators are **only available on Mac**
+    > * **Physical iOS devices** are not supported
+    > * **Quash Cloud Device** is not available for iOS
+    > * If you are on Windows, iOS testing is not possible

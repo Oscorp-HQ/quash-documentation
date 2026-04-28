@@ -1,0 +1,50 @@
+# Knowledge
+
+The Knowledge tab is where you connect your app's codebase and where the agent's Guidance profile lives. Together these two things give Recipe the deepest possible understanding of how your app actually works.
+
+The Knowledge tab contains two sections: **Guidance** and **Integrations**.
+
+#### **Guidance**
+
+Guidance is the agent's global memory for your app. It is built on the package name registered in the Overview tab. This is why the package name must be correct before Guidance can function.
+
+Unlike the path memory used in Reruns (which is task-specific), Guidance is app-wide. It accumulates across every task run and applies to all future sessions with this app. Think of it as the agent's growing understanding of how your specific app behaves.
+
+Guidance starts empty. On first use, the agent relies entirely on the app summary, any attached context, and your prompt. This is expected - the first session is the agent's starting point.
+
+Over time, Guidance grows automatically as the agent runs tasks on your app. It maps screens it has navigated, records successful action patterns, and learns to distinguish between stable UI states and temporary ones.
+
+**You can also write Guidance manually.**&#x20;
+
+Click **Write Guidance** (or **Edit** if entries already exist) to add information directly. This is especially useful for:
+
+* Unusual navigation patterns that are not obvious from the UI
+* Login flows that require specific sequences
+* Features that behave differently from standard UI conventions
+* Known interruptions - modals, permission prompts, onboarding screens, and how to handle them
+
+The more accurately Guidance describes your app's uncommon behaviours, the faster and more reliably the agent executes. Well-written Guidance reduces the need for corrective prompting and improves test generation accuracy across all sessions.
+
+> ⚠️ **Review Guidance after major releases.** The agent does not automatically unlearn outdated information. If a flow changes significantly in a new version, review the relevant Guidance entries and update them. Stale Guidance is the most common reason a well-trained agent starts producing inaccurate results after an app update.
+
+#### **Integrations**
+
+\
+Connecting a GitHub repository gives Recipe access to your codebase: API endpoints, data models, business logic, and component structure. This means tests reference real field names, real endpoints, and real validation logic rather than inferring them from the UI alone.\
+The repository is used to help the agent gain better context and generate test cases. It does not effect the results or process of test execution.
+
+**To connect a repository:**
+
+1. Click **Connect GitHub** in the Knowledge tab.
+2. Click **Install GitHub App**. You will be redirected to GitHub.
+3. Choose **All repositories** or **Only select repositories**. Quash requires read-only access, it will not modify anything.
+4. Click **Install**.
+5. Back in Quash, select the repository from the dropdown and click **Connect Repository**.
+
+Quash begins connecting your codebase. The connection takes a couple seconds while the entire indexing can take a few minutes depending on how big the codebase is. Do not navigate away while indexing is in progress, wait for the confirmation before moving on.
+
+Once indexed, the repository is available in every recipe. When you open the **+** button in a recipe's prompt area, you will see this repository with its branches. Always select the branch that matches what you are currently testing.
+
+**Why branch matters:** If you are testing a feature in active development, select the feature branch, not `main`. Recipe generates tests based on the actual state of the code in the branch you pick. A test generated from `feature/checkout-v2` will reflect that branch's endpoints and logic, which may differ significantly from production.
+
+**Advanced settings** is collapsed by default at the bottom of the Knowledge tab. Leave these settings at their defaults unless you have a specific reason to change them.

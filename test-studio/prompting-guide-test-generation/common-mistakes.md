@@ -1,0 +1,184 @@
+# Common mistakes
+
+These are the prompting errors that most frequently lead to generic, incomplete, or unusable test output from Megumi. Each one has a specific fix.
+
+### Too vague
+
+**The prompt:**
+
+```
+Test login
+```
+
+**The problem:** Megumi generates a single generic happy-path test — open the app, enter email and password, tap login, verify success. No edge cases, no error scenarios, no specific UI elements named.
+
+**The fix:** describe the scenarios, the expected outcomes, and the edge cases.
+
+```
+Generate tests for the login feature including:
+- Valid email and password → verify home dashboard loads
+- Invalid password → verify error message "Incorrect password" appears
+- Unregistered email → verify error message "No account found" appears
+- Empty email field → verify inline validation error appears
+- Empty password field → verify inline validation error appears
+- Account locked after 5 failed attempts → verify lockout message
+
+Use the exact field names "Email Address" and "Password" and the
+button label "Sign In".
+```
+
+### Too broad in a single prompt
+
+**The prompt:**
+
+```
+Test the entire app
+```
+
+**The problem:** Megumi tries to cover everything and produces shallow, generic tests that skim the surface of every feature without covering any of them thoroughly.
+
+**The fix:** break it into focused prompts per feature or flow. One recipe per feature area is the right default.
+
+```
+Generate tests for the checkout flow from cart to order confirmation.
+```
+
+Then in a follow-up or new recipe:
+
+```
+Generate tests for the user profile and settings screens.
+```
+
+Megumi produces better output when the scope is clear. If you need full app coverage, create separate recipes for each major feature and run them independently.
+
+### No expected outcomes
+
+**The prompt:**
+
+```
+Test the payment flow
+```
+
+**The problem:** Megumi generates steps that navigate through the payment flow but does not include assertions about what should happen. The test confirms that steps ran — not that payment actually worked.
+
+**The fix:** always say what should be true at the end.
+
+```
+Test the payment flow with a valid credit card and verify:
+- The payment processes successfully
+- The order confirmation screen appears with the correct total
+- The order number is displayed
+- A confirmation email is sent to the user's email address
+```
+
+This applies to negative scenarios too:
+
+```
+Test the payment flow with an expired credit card and verify:
+- The error message "Card expired. Please use a different card." appears
+- No charge is created
+- The user remains on the payment screen with the form still filled
+```
+
+### Relying on assumed knowledge
+
+**The prompt:**
+
+```
+Test the usual checkout
+```
+
+**The problem:** Megumi does not know what "usual" means for your app. It does not know whether your checkout has a guest option, how many steps it involves, or which payment methods are supported — even if you have context attached.
+
+**The fix:** be explicit about the flow. Attached documents provide background knowledge, but your prompt should still describe the key scenarios.
+
+```
+Test the standard checkout flow for a logged-in user with items in cart:
+1. Review cart contents
+2. Enter delivery address
+3. Select credit card payment
+4. Apply promo code SAVE20
+5. Confirm order
+6. Verify order confirmation screen with correct total after discount
+```
+
+Do not assume the PRD or Figma file is self-explanatory. Megumi reads them, but your prompt directs how it uses that information.
+
+### Not specifying error messages
+
+**The prompt:**
+
+```
+Test validation on the signup form
+```
+
+**The problem:** Megumi generates tests that check for "an error message" without specifying which one. During execution, Mahoraga cannot verify a vague assertion — it does not know what text to look for.
+
+**The fix:** include the exact error message text when you know it.
+
+```
+Test validation on the signup form:
+- Empty name → verify "Name is required" appears below the field
+- Invalid email → verify "Please enter a valid email address" appears
+- Short password → verify "Password must be at least 8 characters" appears
+```
+
+If you do not know the exact messages, say so and ask Megumi to infer from context:
+
+```
+Test validation on the signup form. Use the error messages shown in the
+attached Figma designs. If a message is not specified in the designs,
+use a reasonable placeholder and flag it for review.
+```
+
+### Mixing generation and execution concerns
+
+**The prompt:**
+
+```
+Generate tests for checkout and run them on my Pixel 6
+```
+
+**The problem:** Megumi generates tests. It does not run them. Running happens when you add tests to a suite and trigger execution, or when you write a task prompt. Mixing both in one prompt confuses the intent.
+
+**The fix:** use Test Studio for generation, then save and run separately.
+
+```
+Generate comprehensive tests for the checkout flow including happy path,
+payment failures, and promo code edge cases.
+```
+
+After generation, save the tests to your library, add them to a suite, and run the suite on your Pixel 6.
+
+### Not using follow-up prompts
+
+**The problem:** a user generates tests, finds them too generic, discards everything, and starts a new recipe with a more detailed prompt.
+
+**The fix:** stay in the session and refine. Megumi remembers the full conversation — you do not need to start over.
+
+```
+Make test 3 more specific — name the UI elements and include the exact
+error message text.
+```
+
+```
+Add edge cases for network timeout and session expiry to the existing tests.
+```
+
+```
+Change all tests to Critical priority and add setup steps that assume
+the user is already logged in.
+```
+
+Iterating in the same session is faster and produces better results than starting over, because Megumi has the full conversation context to build on.
+
+### Checklist before prompting
+
+Before sending your first prompt in a recipe, verify:
+
+* \[ ] Context sources are attached (app, GitHub branch, Figma, Jira, PRD)
+* \[ ] CONFIG is set (coverage depth, scope, platform, priority levels)
+* \[ ] Your prompt names the specific feature or flow
+* \[ ] Your prompt lists the key scenarios to cover
+* \[ ] Your prompt includes expected outcomes for success and failure states
+* \[ ] UI element names are included where you know them

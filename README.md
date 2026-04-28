@@ -1,1 +1,15 @@
-# quash-documentation
+# Introduction
+
+### What is Quash
+
+Quash is an AI-powered mobile testing platform that helps you create, run, and maintain automated tests without writing code. Simply describe what you want to test in plain English, and Quash generates the test cases for you.
+
+**Key capabilities:**
+
+* **AI test generation** — Write prompts instead of code to create tests
+* **Multi-device testing** — Run tests on physical devices, emulators, or cloud devices
+* **Team collaboration** — Share workspaces, tests, and results with your team
+* **Automated reporting** — Get detailed execution reports and insights
+
+**Perfect for:** QA teams, mobile developers, and product teams who want faster, more reliable testing without the complexity of traditional automation frameworks.
+

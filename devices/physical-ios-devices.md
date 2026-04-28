@@ -1,0 +1,39 @@
+# Physical iOS Devices
+
+> ⚠️ **Apple Developer Program membership required.** Before you begin, make sure you have an active Apple Developer Program subscription ($99/year) at [developer.apple.com](https://developer.apple.com/). A free Apple ID is not sufficient — you need a paid membership to register your device for testing.
+
+> ⚠️ **Mac only.** Connecting a physical iPhone to Quash requires a Mac. Windows is not supported for iOS device testing.
+
+Connecting a physical iPhone to Quash involves two stages: registering your device with Apple, and connecting it in Quash. Before you begin, make sure the following prerequisites are in place.\
+**Prerequisites**
+
+1. **Install the iOS component in Xcode.** Open Xcode, go to **Settings → Platforms** and make sure the iOS platform is downloaded and installed. If it is not listed as installed, click the **+** button to add it and wait for the download to complete before proceeding.
+2.  **Sign in to your Apple Developer account in Xcode.** Go to **Xcode → Settings → Accounts**. Click the **+** button, select **Apple ID**, and sign in with the Apple ID associated with your Apple Developer Program membership. Your team should appear under the account once signed in.
+
+    > **Team access note:** If your Apple Developer account is shared across your team, make sure each member has been granted full development access, or has been made an Admin. Members with full access will be able to see **Certificates, Identifiers & Profiles** inside their Xcode account, as shown in the image below.
+    >
+    > <img src="../.gitbook/assets/image-3.png" alt="" data-size="original">
+3. **Enable Developer Mode on your iPhone.** On your device, go to **Settings → Privacy & Security → Developer Mode** and toggle it on. Your device will restart to apply the change.
+4. **Use a working USB cable.** Make sure the cable you are using fully supports data transfer — not just charging — and that it connects your iPhone to your Mac securely. A faulty or charge-only cable is one of the most common reasons a device does not appear after scanning.
+
+{% file src="../.gitbook/assets/Quash_iPhone_Guide.mp4" %}
+
+**Stage 1 — Find your device UDID and register it with Apple**
+
+1. Connect your iPhone to your Mac via USB.
+2. Open Xcode on your Mac. Go to **Window → Devices and Simulators**.
+3. Select your iPhone from the list. Copy the value shown in the **Identifier** field — this is your UDID.
+4. Go to [developer.apple.com](https://developer.apple.com/), sign in, and navigate to **Certificates, Identifiers & Profiles → Devices**.
+5. Click the **+** button. Enter a device name and paste your UDID. Do not change any of the default settings.
+6. Click **Continue**, review the details, then click **Register**.
+
+**Stage 2 — Connect the device in Quash**
+
+1. Keep your iPhone connected to your Mac via USB.
+2. On your iPhone, tap **Trust** when prompted to trust this computer.
+3. In the Quash app, go to **Devices** and click **Scan for Devices**. Your iPhone should appear in the list.
+4. Click **Connect** next to the device. It will appear under Connected Devices with status Available.
+
+> **No Mahoraga installation is required for iOS.** Unlike Android, Quash does not install an agent app on the iPhone. The connection works through Apple's native frameworks directly.
+
+***

@@ -1,0 +1,147 @@
+# How Quash Pricing Works
+
+Quash uses a **pay-as-you-go, usage-based** pricing model.
+
+Every task you run in Quash consumes LLM API calls. The cost of a task depends on:
+
+* The complexity of the task (how much reasoning, validation and recovery is required)
+* The model used (for example, Claude or GPT)
+* The tools and reasoning capabilities enabled during execution
+
+More complex tasks naturally require deeper reasoning, more decision-making and additional tooling, which in turn increases underlying API usage. Pricing scales with this complexity rather than with fixed or predefined steps.
+
+Quash does not charge based on:
+
+* Seats or users
+* Test cases or test suites
+* Projects or environments
+* Number of devices connected / parallel executions
+
+Instead, pricing reflects the actual compute and API usage required to execute your task.
+
+#### Free plan <a href="#free-plan" id="free-plan"></a>
+
+When you sign up, you receive $10 in free usage credits.
+
+These credits let you:
+
+* Run real tasks
+* See how Quash breaks tasks down internally
+* Understand how pricing compounds with task complexity
+
+There are no feature restrictions on the Free plan. Once your credits are exhausted, you can add funds and continue using Quash on a pay-as-you-go basis.
+
+#### Pay-as-you-go pricing <a href="#pay-as-you-go-pricing" id="pay-as-you-go-pricing"></a>
+
+Quash follows a task-based pay-as-you-go model. There are no subscriptions or fixed monthly fees. You are charged only when you run tasks.
+
+**What you pay for**
+
+Each task execution incurs:
+
+* LLM API usage cost (passed through from the model provider)
+* A \~20% platform markup to cover:
+* Agent orchestration
+* Execution reliability
+* Infrastructure and maintenance
+* Tooling, monitoring, and reporting
+
+The platform markup is applied on top of the underlying API cost.
+
+#### Why pricing varies between tasks <a href="#why-pricing-varies-between-tasks" id="why-pricing-varies-between-tasks"></a>
+
+Tasks in Quash are not flat-priced.
+
+A task may:
+
+* Require multiple reasoning steps
+* Retry actions if the UI changes
+* Validate UI state or backend responses
+* Run longer depending on app behavior
+
+As a result, more complex tasks consume more API calls, which increases cost.
+
+This is expected and intentional, so pricing scales with actual work done.
+
+#### Example: how a task is priced <a href="#example-how-a-task-is-priced" id="example-how-a-task-is-priced"></a>
+
+Consider the following task:
+
+“Open the app, log in with valid credentials, navigate to the profile screen and verify the username is displayed correctly.”
+
+To execute this, Quash may:
+
+* Interpret the task intent
+* Break it into multiple steps
+* Make several LLM API calls to plan and execute actions
+* Validate UI state and generate a report
+
+Each of these steps consumes API calls.
+
+The total task cost is calculated by:
+
+1. Summing all LLM API usage during execution
+2. Applying the platform markup
+3. Deducting the final amount from your balance
+
+A short, simple task may cost only a few cents. A longer or more complex task may cost more, depending on how many API calls are required.
+
+#### Cloud device usage <a href="#cloud-device-usage" id="cloud-device-usage"></a>
+
+Tasks can be executed on:
+
+* Local devices or emulators
+* Cloud-hosted devices
+
+**Free usage**
+
+* Each account includes 60 minutes (1 hour) of cloud device usage at no cost, intended for evaluation and light testing.
+
+**Usage-based cloud devices**
+
+* Cloud device usage beyond the free allowance is billed based on Cloud Device Minutes.
+* Usage is metered per minute, per device and clearly reflected in billing.
+
+**Dedicated cloud devices**
+
+* You can request dedicated cloud devices assigned exclusively to your organization.
+* Dedicated devices are not usage-based and are billed separately.
+* Pricing is quoted based on:
+  * Number of devices
+  * Device models
+  * Duration of reservation
+* Once provisioned, devices are reserved for your use for the agreed time period.
+
+All cloud device costs are transparently tracked and documented.
+
+#### Billing transparency <a href="#billing-transparency" id="billing-transparency"></a>
+
+Quash provides detailed billing information for every task, including:
+
+* Task name
+* Execution status
+* Model used
+* Number of API calls
+* Total cost deducted
+
+You can view this breakdown at any time in the Billing section under Profile.
+
+#### Enterprise plans <a href="#enterprise-plans" id="enterprise-plans"></a>
+
+Enterprise plans are designed for teams with advanced scale, security and infrastructure requirements.
+
+Enterprise plans include:
+
+* Unlimited usage across Agent Actions and test execution
+* Dedicated cloud devices assigned exclusively to your organization
+* Support for bringing your own LLM API keys (for example, via Azure OpenAI or Amazon Bedrock) to run Quash using your preferred models and accounts
+
+Enterprise pricing is customized based on:
+
+* Device requirements (quantity and models)
+* Infrastructure and deployment preferences
+* Support, compliance and security needs
+
+If you’re evaluating Quash for a larger organization, contact us to design a plan that fits your workflow.
+
+<br>

@@ -1,0 +1,68 @@
+# Token Management
+
+Every Test Studio session operates within a token budget. Tokens are a measure of how much context the Megumi agent is actively processing — your prompts, the agent's responses, attached documents, connected app data, and all the test cases generated so far. The more that has been discussed in a session, the more tokens are in use.
+
+Understanding tokens helps you run longer, more complex sessions efficiently — and know what to do when a session grows large.
+
+### What tokens are
+
+Think of tokens as the agent's working memory capacity for a session. The agent can only hold so much in its active context at once. Every message you send, every response it generates, and every document you attach consumes some of that capacity.
+
+Quash is designed to be efficient. The agent does not store everything — it retains what is actively needed for the current session and prunes what is no longer relevant. This keeps costs down and performance stable. But in long or complex sessions, the budget can still run low.
+
+The token counter in the recipe session shows your current usage — how much of the session budget has been consumed and how much remains.
+
+### When sessions get long
+
+As a recipe grows — more prompts, more generated tests, more attached context, more refinement cycles — the token usage increases. At a certain point, the agent may start to lose context from earlier in the conversation, or the session may slow down.
+
+There are two approaches when this happens:
+
+**Start a new recipe.** If you have moved on to a substantially different area or the current recipe has reached a natural stopping point, save your tests and open a new recipe with a fresh token budget.
+
+**Use `/compact` to compress the session.** If you want to continue the current recipe without losing context, use the compact command.
+
+### The /compact command
+
+`/compact` is a command you type directly into the prompt input. When you send it, Recipe summarises the entire conversation into a compressed context — preserving the essential information while dramatically reducing token usage.
+
+**What /compact does:**
+
+* Summarises the full conversation history into a condensed form
+* Retains the key context: what feature you are testing, what tests have been generated, what decisions have been made, what is still to do
+* Frees up a significant amount of token budget for the session to continue
+* Works similarly to how Claude handles long conversation compression
+
+**What /compact does not do:**
+
+* It does not delete your generated tests — those are already in the Tests panel and will be saved to your library regardless
+* It does not reset the session — you are continuing the same recipe, just with a lighter context representation
+* It does not lose the core facts of what was discussed — it compresses, not erases
+
+**How to use it:**
+
+Type `/compact` in the prompt input and press Enter. Megumi will confirm when the compression is complete and summarise what it has retained in the recipe. You can then continue prompting as normal.
+
+### When to use /compact
+
+Use `/compact` proactively — before the token budget runs out, not after. A good rule:
+
+* If the session has gone through more than 15–20 exchanges and you still have significant work to do, compact it
+* If the token indicator shows you are approaching the limit, compact it
+* If the agent starts giving responses that seem to have forgotten earlier context, compact it
+
+You can use `/compact` more than once in a session if the work continues after compression.
+
+### Practical advice for long sessions
+
+**Save tests as you go, not all at once.** Do not wait until the end of a long session to save. Save good tests to the library progressively as they are generated. This means your work is preserved regardless of token state.
+
+**Attach documents efficiently.** Large documents consume tokens. Attach only what is directly relevant to the current prompt, not everything at once. If you are working through a large PRD in stages, attach it once at the start and let Recipe reference it — do not re-attach it repeatedly.
+
+**Keep recipes focused.** A recipe covering one feature will stay within budget far longer than one trying to cover an entire product. One recipe per feature area is a good default.
+
+**Use /compact before switching focus.** If you are about to start working on a substantially different part of the same feature, compact first. This gives you a clean slate with preserved context for the next phase.
+
+### Cost and efficiency
+
+Quash is designed to use context efficiently because every token processed has a cost. The agent's selective memory — keeping what is needed, not storing everything — is intentional. `/compact` is an extension of this: it is how you actively manage that efficiency in long sessions, keeping the work moving without bloating the context window unnecessarily.

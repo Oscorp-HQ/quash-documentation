@@ -1,0 +1,75 @@
+# Test Studio Issues
+
+This page covers issues with the Megumi agent, recipe sessions, generated test quality, and memory behaviour.
+
+### Megumi generating generic tests with no app-specific detail
+
+The most common Test Studio complaint. It is always a context problem — Megumi generates specific tests when it has specific context, and generic tests when it does not.
+
+**1. Select your app before prompting.** Click the **+** button at the bottom of the prompt area and select your connected app from the dropdown. Without an app selected, Megumi has no knowledge of your screen names, navigation structure, or UI element names. This single step has the biggest impact on output specificity.
+
+**2. Attach context before your first prompt.** Do not prompt first and attach documents after. Megumi uses the context available at the time of the prompt. Attach your PRD, Figma file, GitHub branch, or Jira issue before sending anything.
+
+**3. Connect your GitHub repository.** Go to Apps → Knowledge and connect your codebase. With a repository connected, Megumi can reference real API endpoints, real field names, and real validation logic — instead of guessing from the UI.
+
+**4. Be explicit in your prompt.** Generic prompts produce generic tests. _"Test login"_ produces a generic login test. _"Test the login flow including valid credentials, invalid password (should show error below the password field), empty email (should show 'Email is required'), and account locked after 5 failed attempts"_ produces something useful. →[ Writing Prompts](../../test-studio/prompting-guide-test-generation/)
+
+**5. Check Guidance.** If you have run several sessions and the agent still seems unfamiliar with your app, open Apps → Knowledge → Guidance and check what is there. If Guidance is sparse or empty, the agent is starting each session without accumulated knowledge of your app. Run a few exploratory tasks first to let Mahoraga build Guidance before generating tests in Test Studio.
+
+### Recipe not remembering previous session context
+
+**If you opened a NEW recipe:** This is expected behaviour. Recipe Memory is scoped to its recipe. A new recipe starts fresh — it only has your Apps context and Guidance. It does not remember other recipe sessions.
+
+**If you are in the SAME recipe and context seems lost:**
+
+* Check the token indicator. If the session is large, the token budget may be running low and the agent is losing early context. Use `/compact` to compress the conversation and restore context budget.
+* Scroll up in the conversation. Confirm you are in the correct recipe — it is easy to accidentally open a different one with a similar name.
+* Check that Memory is toggled ON (yellow toggle in the top right of the recipe). If it was toggled off, the session was not storing context.
+
+### /compact not working as expected
+
+**The agent seems to have forgotten key context after compacting:** `/compact` preserves the essential context — what feature you are testing, what tests exist, what decisions were made — but it summarises rather than retains verbatim history. If you need specific wording from an earlier exchange, copy it before compacting and paste it back in as a follow-up prompt.
+
+**Token indicator still high after compacting:** Large attached documents contribute to the token count even after compacting. If you attached a very large PRD or connected a large repository, those still consume tokens. Try removing and re-attaching only the specific pages or sections you need for the current phase of work.
+
+### Generated tests have the wrong priority levels
+
+Recipe defaults to Critical and High. If you are seeing too many High tests and not enough Critical, or the distribution does not match your expectations:
+
+1. Open the **CONFIG panel** (click CONFIG on the right edge of the screen).
+2. Adjust the **Priority Levels** settings — enable or disable tiers as needed.
+3. Re-prompt or ask Megumi to adjust: _"Change all the payment-related tests to Critical priority."_
+
+Recipe responds to follow-up priority adjustments without regenerating everything. You can bulk-adjust in a single prompt: _"Change tests 1, 3, and 5 to High. Change tests 2 and 4 to Medium."_
+
+### Tests panel not updating after a prompt
+
+If you send a prompt and the Tests panel does not update with new test cases:
+
+1. Check the conversation area — Recipe may have asked a clarifying question before generating. Answer it and the tests will appear.
+2. Check if Recipe responded with analysis or questions rather than test cases — this happens when the prompt is ambiguous. Be more specific and follow up.
+3. Scroll down in the Tests panel — new tests are added below existing ones, not at the top.
+4. Refresh the page. The session persists server-side — reloading will restore the current state of the recipe.
+
+### Can't find a previously created recipe
+
+1. Open Test Studio. The recipe list shows all recipes in the workspace as a grid of cards.
+2. Check if you are in the correct workspace — recipe lists are workspace-scoped. If you have access to multiple workspaces, confirm you are in the right one.
+3. Use the search bar at the top of the recipe list to search by name.
+4. If a teammate archived the recipe, it will not appear in the default view. Check if there is an **Archived** filter and look there.
+
+### Figma attachment not providing context
+
+If attaching a Figma link does not seem to improve test specificity:
+
+1. Confirm the Figma URL is a specific frame or page, not a root file URL. Recipe reads specific frames better than entire files — link directly to the screen or component you are testing.
+2. Ensure the Figma file has a **Published** or shared link — Recipe needs read access to the file content. Private files that require login will not load.
+3. In your prompt, explicitly tell Recipe to use the designs: _"Read the attached Figma designs carefully and use the component names and interaction states shown when generating test cases."_
+
+### Megumi producing duplicate test cases
+
+If Megumi generates tests that are very similar to tests already in your session:
+
+1. Tell Recipe explicitly: _"Review the existing tests and do not generate anything that duplicates what is already there."_
+2. Use `/compact` if the session is long — Megumi may have lost track of what it already generated.
+3. Check if you have run similar prompts back to back. Each prompt generates new tests without automatically removing duplicates from previous prompts. Use: _"Remove any tests that are duplicates of tests 1 through 8."_

@@ -1,0 +1,97 @@
+# Sequential vs. Isolated
+
+Every suite runs in one of two execution modes. Choosing the right one is the most important configuration decision you make when building a suite — it determines whether tests share state, run in order, or execute in parallel across multiple devices.
+
+### Sequential
+
+In Sequential mode, test cases run one after another in the order they appear in the suite. Each case starts from the exact state the previous case left the app in. They share a single execution context on a single device.
+
+#### When to use it
+
+Use Sequential when your test cases form a connected flow — when the success of one case depends on what happened in the previous one.
+
+**Classic example:**
+
+```
+1. Create account with email and password
+2. Verify email confirmation is sent
+3. Log in with the new credentials
+4. Complete profile setup
+5. Make a first purchase
+6. Verify order confirmation
+```
+
+None of these steps make sense in isolation. Step 3 needs the account created in Step 1. Step 5 needs the profile from Step 4. The whole flow is one continuous user journey — Sequential is the only mode that makes sense here.
+
+#### What happens on failure
+
+By default, a Sequential suite continues to the next case even if one fails. This gives you the full picture of what passed and what failed across the entire flow in one run.
+
+If a failure in one case makes all subsequent cases meaningless — for example, if a login failure makes every post-login test impossible — you can configure the suite to **Stop on first failure**. This prevents wasted execution time and avoids misleading failure cascades in the report.
+
+#### Limitations
+
+* Runs on one device at a time — cases cannot be parallelised
+* Slower overall than Isolated for the same number of cases
+* A flaky early case can destabilise everything that comes after it
+
+### Isolated
+
+In Isolated mode, every test case runs completely independently. Each case starts from a clean state with no knowledge of what other cases did. Because cases have no dependencies on each other, Quash can run them simultaneously across multiple connected devices.
+
+#### When to use it
+
+Use Isolated when your test cases are self-contained — when any single case would make sense running on its own without the others.
+
+**Good candidates for Isolated:**
+
+* Search functionality tests
+* Notification behaviour tests
+* Profile editing tests
+* Settings screen tests
+* Individual form validation tests
+
+Each of these tests a discrete feature that does not depend on the state left by another test.
+
+#### Parallel execution
+
+Isolated suites unlock parallel execution. If you have 20 test cases and 4 connected devices, Quash distributes the cases across the 4 devices — roughly 5 cases per device running simultaneously. A suite that would take 40 minutes sequentially completes in around 10 minutes.
+
+You do not assign cases to devices manually. Quash handles the distribution automatically based on how many devices are selected when you trigger the run.
+
+#### Limitations
+
+* Each case must be fully self-contained — it cannot rely on state from another case
+* If cases share a dependency (like needing a specific account to exist), that dependency must be handled inside each individual case, not by a preceding case
+
+### Choosing between them
+
+| Signal                                        | Use Sequential | Use Isolated |
+| --------------------------------------------- | -------------- | ------------ |
+| Cases build on each other                     | ✓              |              |
+| Order of cases matters                        | ✓              |              |
+| Cases are a connected user journey            | ✓              |              |
+| Cases test independent features               |                | ✓            |
+| You want parallel execution                   |                | ✓            |
+| Any case could run alone and still make sense |                | ✓            |
+| Removing one case would break others          | ✓              |              |
+
+**When in doubt, use Isolated.** It is the safer default — parallel execution is free, and self-contained test cases are easier to maintain and debug.
+
+### Switching modes
+
+You can switch a suite between Sequential and Isolated at any time using the toggle in the top right of the suite view. Switching does not affect the test cases — only how they are executed.
+
+If you switch a suite that was Sequential to Isolated, review the test cases first to confirm none of them depend on state from a preceding case. State dependencies that worked in Sequential will silently fail in Isolated because each case starts fresh.
+
+### Mixed coverage strategy
+
+Sequential and Isolated are not mutually exclusive across your testing strategy — use both.
+
+A common pattern:
+
+* **Smoke suite** — Isolated, Critical priority only, runs on every PR, fast parallel execution
+* **Regression suite** — Isolated, all priorities, runs nightly, full parallel execution
+* **E2E flow suites** — Sequential, one suite per major user journey, runs before releases
+
+This gives you fast coverage on every PR, comprehensive coverage overnight, and deep journey validation before anything ships.

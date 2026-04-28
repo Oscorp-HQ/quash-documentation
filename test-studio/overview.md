@@ -1,0 +1,70 @@
+# Overview
+
+
+
+<figure><img src="../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+
+Test Studio is where you generate test cases from plain English. No scripting. No selectors. No test frameworks to configure. Describe a feature or a flow, and Quash builds a ready-to-run set of test cases from that description — covering what to test, what edge cases to include, and how to structure each scenario.
+
+Every test case generated can be reviewed, refined, saved to your library, or pushed straight into a suite. If the first output isn't exactly right, keep prompting in the same session. Quash builds on what's already there.
+
+**To open Test Studio:** Click **Test Studio** in the left navigation panel.
+
+### How it works
+
+Test Studio is powered by two agents. Understanding what each one does is the foundation for using the platform effectively.
+
+{% embed url="https://www.youtube.com/watch?v=nuUuKJLiI8Q" %}
+
+#### Megumi— the test generation agent
+
+Megumi is the AI agent that lives inside Test Studio. You give it context — your app, your designs, your requirements — and it generates structured, executable test cases. It works like a senior QA engineer who has read everything about your product before writing a single test.
+
+Megumi is not just a code generator. It understands intent. You can describe a user journey, paste a PRD, attach a Figma screen, or simply type what you want to validate — and Megumi figures out the scenarios, the edge cases, and the assertions that belong in the test.
+
+[Learn more about Megumi](../getting-started/core-concepts/megumi-and-mahoraga.md)
+
+#### Mahoraga — the execution agent
+
+Mahoraga is the agent that acts. It runs on your Android device or emulator, interacts with the UI, executes API calls, detects elements, and captures results. While Megumi thinks and plans, Mahoraga executes.
+
+When you run a test case, it is Mahoraga doing the work on-device.
+
+### The mental model
+
+Think of Quash like a new QA engineer joining your company.
+
+On their first day, they don't start writing test cases immediately. They gather information first. They read the PRD. They look at the designs. They understand how the app is structured, what flows exist, and what the expected behaviour is. Only once they have that context do they start testing effectively.
+
+Test Studio is built around this same idea. The more context you give Quash before generating tests — your app, your codebase, your designs, your requirements — the more accurate and specific the output. A test built from your actual spec needs far fewer corrections than one built from a two-line description.
+
+Context in Quash works in three layers: **Knowledge** (what you set up before testing), **Recipe Memory** (what happens inside a session), and **Guidance** (what the agent learns over time). Each layer is documented separately.
+
+### What Test Studio replaces
+
+| Traditional approach                   | Test Studio                                     |
+| -------------------------------------- | ----------------------------------------------- |
+| Write test scripts in code             | Describe what to test in plain English          |
+| Define element selectors manually      | Recipe identifies elements from context         |
+| Code assertions and validations        | Assertions generated from expected outcomes     |
+| Maintain scripts every time UI changes | Refine through conversation in the same session |
+| One engineer writes all tests          | Entire team contributes — PM, designer, dev, QA |
+| Requires automation expertise          | Works for anyone who can write a clear sentence |
+
+### When to use Test Studio
+
+Use Test Studio when you need to generate multiple test cases quickly, when you want comprehensive coverage including edge cases you might miss manually, when you have a spec or PRD you want to translate into tests, or when requirements are evolving and you need to iterate fast.
+
+Use manual test case creation when you need a single very specific test, or when you want to edit an existing test case — do that in the Test Cases library directly, not here.
+
+### Next steps
+
+* [Recipes — What a recipe is and how to create your first one](recipe/)
+* [Memory — How Quash builds and uses context](../getting-started/core-concepts/memory.md)
+* [Guidance — How the agent learns your app over time](../getting-started/core-concepts/guidance.md)
+* [Knowledge & Context — Setting up your app, GitHub, Figma, and Jira](/broken/pages/lwIhutjx60iZesnLnEto)
+* [Writing Prompts — How to write prompts that produce great tests](prompting-guide-test-generation/)
+* [Configuration — Coverage depth, scope, platform, and validation settings](configuration-in-test-studio.md)
+* [Saving Tests — Library vs. suite — what goes where](saving-generated-tests.md)
+* [Token Management — Sessions, context limits, and /compact](token-management.md)
+* [Collaboration — How teams work together in a single recipe](collaboration-as-a-team.md)
