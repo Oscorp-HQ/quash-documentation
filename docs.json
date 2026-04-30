@@ -1,11 +1,11 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "willow",
   "name": "Quash Documentation",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#55D799",
-    "dark": "#0D9373"
+    "primary": "#FFD233",
+    "light": "#FFF6D4",
+    "dark": "#403715"
   },
   "favicon": "/images/favicon.svg",
   "navigation": {
@@ -214,5 +214,15 @@
     "socials": {
       "github": "https://github.com/Oscorp-HQ"
     }
+  },
+  "logo": "/images/frontlogo.svg",
+  "background": {
+    "color": {
+      "dark": "#0B1316"
+    }
+  },
+  "appearance": {
+    "default": "dark",
+    "strict": true
   }
 }
