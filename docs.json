@@ -7,7 +7,7 @@
     "light": "#FFF6D4",
     "dark": "#403715"
   },
-  "favicon": "/images/favicon.svg",
+  "favicon": "/images/logo(2).png",
   "navigation": {
     "tabs": [
       {
@@ -225,5 +225,8 @@
   },
   "fonts": {
     "family": "Inter"
+  },
+  "seo": {
+    "indexing": "all"
   }
 }
