@@ -13,24 +13,24 @@ An AI-powered automation module that performs a specific role in the testing wor
 
 The Android application package file format. In Quash, you upload an APK to the Builds tab of your App to define which version of your application Mahoraga runs tests against.
 
-[→ Builds](/broken/pages/yam3tMsYgsIZ4OsfFpQk)
+[→ Builds](/apps/apps-manager/builds)
 
 #### **Apps Manager**&#x20;
 
 The dashboard in Quash that displays all registered apps as cards. Used to switch between apps and access each app's Overview, Builds, and Knowledge configuration.\
-[Apps Manager](../apps/apps-manager/)
+[Apps Manager](/apps/apps-manager)
 
 #### Backend Validation
 
 A configured API call that runs during a test to verify that backend state matches what you expect — not just what is visible on screen. Defined once in the Validations section, then referenced in task prompts using `@slug` syntax. Can be set to run before execution, after execution, or both.
 
-[ Backend Validation](../running-tests/backend-validations/)
+[ Backend Validation](/running-tests/backend-validations)
 
 #### Builds
 
 The tab inside an App where you upload APK versions of your application. Only one build is active at a time — the active build is what Mahoraga installs and tests against. Every uploaded build is stored in the history so you can switch between versions or compare test results across releases.
 
-[→ Builds](/broken/pages/yam3tMsYgsIZ4OsfFpQk)
+[→ Builds](/apps/apps-manager/builds)
 
 #### **Bundle ID**&#x20;
 
@@ -50,7 +50,7 @@ The knowledge the Recipe agent builds for itself through repeated testing. Not c
 
 The tab inside an App that houses two things: the connected GitHub repository and the Guidance profile. Together these give Recipe the deepest possible understanding of how the app actually works — the codebase from GitHub, and the observed behaviour from Guidance.
 
-[→ Knowledge](/broken/pages/lwIhutjx60iZesnLnEto)
+[→ Knowledge](/apps/apps-manager/knowledge)
 
 #### Mahoraga
 
@@ -92,11 +92,11 @@ A subsequent execution of a task that has already completed successfully at leas
 
 A short reference identifier used to call a Dataset or Backend Validation inside a task prompt. Dataset slugs start with `/` (e.g., `/login-credentials`). Validation slugs start with `@` (e.g., `@get_products`). Typing `/` or `@` in a prompt input opens a dropdown of available items.
 
-→ [Test Data](../test-management/test-data-overview/) · [Backend Validations](../running-tests/backend-validations/)
+→ [Test Data](/test-management/test-data-overview) · [Backend Validations](/running-tests/backend-validations)
 
 #### Suite
 
-[See Test Suite.](../running-tests/suites-overview/)
+[See Test Suite.](/running-tests/suites-overview)
 
 #### **Stored path**&#x20;
 
@@ -110,25 +110,25 @@ A structured record of a completed task run — the screens navigated, decisions
 
 The syntax for referencing a Backend Validation inside a task or recipe prompt. Typing `@` in the prompt input opens a dropdown of available validations. The validation runs at exactly the point in the prompt sequence where you place it.
 
-[→ Backend Validations](../running-tests/backend-validations/)
+[→ Backend Validations](/running-tests/backend-validations)
 
 #### /slug
 
 The syntax for referencing a Test Data dataset inside a task or recipe prompt. Typing `/` in the prompt input opens a dropdown of available datasets with their slugs and sizes. The agent fetches the dataset and runs the task once per row.
 
-[→ Test Data](../test-management/test-data-overview/)
+[→ Test Data](/test-management/test-data-overview)
 
 #### Task
 
 A single plain English instruction you give to Mahoraga for ad-hoc execution. The fastest way to test something without setting up a full suite. Run immediately on any connected device. Every task run generates an Execution Report.
 
-[→ Tasks](../running-tests/task-overview/)
+[→ Tasks](/running-tests/task-overview)
 
 #### Test Case
 
 The fundamental building block of testing in Quash. Defines a single test scenario with three core fields: a **Name** (what it tests), an **Instruction** (what Mahoraga should do), and an **Expected Result** (the pass condition). Stored in the Test Cases library and added to Suites for execution. Can be created manually, generated via Test Studio, or imported.
 
-[→ Test Cases](../test-management/test-case/)
+[→ Test Cases](/test-management/test-case)
 
 #### Test Cases Library
 
@@ -140,7 +140,7 @@ The central repository where all test cases in a workspace are stored. Every tes
 
 A section in Quash (and a tab within each App) where structured datasets are stored and managed. Datasets are tables of input values — credentials, form data, product details — referenced in task prompts via `/slug`. When a task references a dataset with multiple rows, Quash runs the task once per row automatically.
 
-[Test Data Overview](../test-management/test-data-overview/)
+[Test Data Overview](/test-management/test-data-overview)
 
 #### Test Scope
 
@@ -158,13 +158,13 @@ The AI-powered test generation section in Quash. Where you work with the Recipe 
 
 A named collection of test cases grouped to run as a unit. Two execution modes: Sequential (cases share state, run in order) and Isolated (cases are independent, can run in parallel). Every suite run generates an Execution Report.
 
-[→ Suites](../running-tests/suites-overview/)
+[→ Suites](/running-tests/suites-overview)
 
 #### Tests Panel
 
 The right-side panel in Test Studio, opened by clicking **TESTS** on the screen edge. Shows all test cases generated in the current session as cards with priority indicators, names, and descriptions. From here you select tests and either save them to the Test Cases library or add them directly to a Suite.
 
-[→ Recipes](../test-studio/recipe/)
+[→ Recipes](/test-studio/recipe)
 
 #### Tokens
 
@@ -176,7 +176,7 @@ The unit of measurement for how much context the Recipe agent is actively proces
 
 A classification field on every Test Case describing what kind of test it is. Options: **Functional** (a specific feature works as intended), **Smoke** (core app is working), **Regression** (nothing previously working has broken), **E2E** (full user journey across multiple screens), **Custom** (anything that doesn't fit the above).
 
-[→ Test Cases](../test-management/test-case/)
+[→ Test Cases](/test-management/test-case)
 
 #### **UDID**
 
@@ -188,7 +188,7 @@ In Test Studio: a CONFIG panel setting that adds assertion steps to generated te
 
 In Backend Validations: a separately configured API call that verifies backend state during a test run.
 
-→ [Configuration](../test-studio/configuration-in-test-studio) · [Backend Validations](../running-tests/backend-validations/)
+→ [Configuration](../test-studio/configuration-in-test-studio) · [Backend Validations](/running-tests/backend-validations)
 
 #### Workspace
 

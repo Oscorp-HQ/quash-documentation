@@ -13,9 +13,9 @@ A task is the most direct interaction you can have with Quash. Write a plain Eng
 
 ### What a task actually is
 
-A task is a single instruction session between you and [Mahoraga ](../../getting-started/core-concepts/megumi-and-mahoraga)— Quash's execution agent. You describe what you want tested in plain English. Mahoraga reads your instruction, opens your app on the connected device, and carries it out step by step — tapping, typing, scrolling, and navigating exactly as a human tester would.
+A task is a single instruction session between you and [Mahoraga ](/getting-started/core-concepts/megumi-and-mahoraga)— Quash's execution agent. You describe what you want tested in plain English. Mahoraga reads your instruction, opens your app on the connected device, and carries it out step by step — tapping, typing, scrolling, and navigating exactly as a human tester would.
 
-Every task run captures a full screen recording, a step-by-step screenshot log, and an AI-written summary of what happened. The result appears in [Reports](../../execution-reports/report-dashboard) immediately after the run finishes.
+Every task run captures a full screen recording, a step-by-step screenshot log, and an AI-written summary of what happened. The result appears in [Reports](/execution-reports/report-dashboard) immediately after the run finishes.
 
 ### What tasks are for
 
@@ -31,9 +31,9 @@ Tasks are built for speed and flexibility. They are the right tool when you need
 
 **Do not use a task when:**
 
-* You need the test to run repeatedly on a schedule or in CI/CD — use a [Suite](../suites-overview/)
-* You want to build organised, reusable test coverage — use [Test Cases](../../test-management/test-case/)
-* You need to generate tests from a spec or PRD — use [Test Studio](../../test-studio/recipe/)
+* You need the test to run repeatedly on a schedule or in CI/CD — use a [Suite](/running-tests/suites-overview)
+* You want to build organised, reusable test coverage — use [Test Cases](/test-management/test-case)
+* You need to generate tests from a spec or PRD — use [Test Studio](/test-studio/recipe)
 
 ### How tasks fit into the bigger picture
 
@@ -59,11 +59,11 @@ A task often becomes a test case. You write a task to explore a flow, the run go
 
 When you open Tasks, you see two things: the task input area on the left and the device view on the right.
 
-**Task input area** This is where you write your prompt. There is no character limit. The input also accepts context attachments — you can reference a [Test Data ](../../test-management/test-data-overview/)dataset using `/slug` syntax, and [Backend Validations ](../backend-validations/)using `@slug` syntax, directly inside the prompt.
+**Task input area** This is where you write your prompt. There is no character limit. The input also accepts context attachments — you can reference a [Test Data ](/test-management/test-data-overview)dataset using `/slug` syntax, and [Backend Validations ](/running-tests/backend-validations)using `@slug` syntax, directly inside the prompt.
 
-**Device picker** Above the prompt, you select which connected device Mahoraga runs the task on. Any device showing as **Available** in your [Devices ](/broken/pages/MwTC55dV1ZoHsa3DjrhK)section can be selected. If the list is empty, connect a device first.
+**Device picker** Above the prompt, you select which connected device Mahoraga runs the task on. Any device showing as **Available** in your [Devices ](/devices/overview)section can be selected. If the list is empty, connect a device first.
 
-**App picker** Select which app Mahoraga should test. The list shows apps you have added in [Apps](../../apps/adding-an-app). If [Credentials ](../../apps/credentials)are configured for the selected app, Mahoraga uses them automatically whenever authentication is needed during the run.
+**App picker** Select which app Mahoraga should test. The list shows apps you have added in [Apps](/apps/adding-an-app). If [Credentials ](/apps/credentials)are configured for the selected app, Mahoraga uses them automatically whenever authentication is needed during the run.
 
 **Device view** The right panel shows a live stream of the device screen during execution. Watch every tap and swipe in real time. After the run, the device view shows the session recording — you can replay, pause, and scrub through the full run.
 
@@ -94,8 +94,8 @@ Task history is workspace-scoped — all team members with appropriate access ca
 
 ### Next steps
 
-* [Creating a task](./) — prompt structure, examples, running, and outcomes
-* [Test Cases ](../../test-management/test-case/)— formalise a task into reusable coverage
-* [Suites](../suites-overview/) — run multiple test cases together
-* [Test Data](../../test-management/test-data-overview/)[ ](../../apps/test-data-in-app)— run the same task with multiple input sets using `/slug`
-* [Backend Validations ](../backend-validations/)— verify API state during a task run using `@slug`
+* [Creating a task](/running-tests/task-overview/creating-and-running-a-task) — prompt structure, examples, running, and outcomes
+* [Test Cases ](/test-management/test-case)— formalise a task into reusable coverage
+* [Suites](/running-tests/suites-overview) — run multiple test cases together
+* [Test Data](/test-management/test-data-overview)[ ](/apps/test-data-in-app)— run the same task with multiple input sets using `/slug`
+* [Backend Validations ](/running-tests/backend-validations)— verify API state during a task run using `@slug`
