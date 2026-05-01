@@ -45,6 +45,23 @@
             ]
           },
           {
+            "group": "Apps",
+            "pages": [
+              "apps/adding-an-app",
+              {
+                "group": "Apps manager",
+                "pages": [
+                  "apps/apps-manager/index",
+                  "apps/apps-manager/overview",
+                  "apps/apps-manager/builds",
+                  "apps/apps-manager/knowledge"
+                ]
+              },
+              "apps/credentials",
+              "apps/test-data-in-app"
+            ]
+          },
+          {
             "group": "Test Studio",
             "pages": [
               "test-studio/overview",
@@ -71,51 +88,29 @@
             ]
           },
           {
-            "group": "Test management",
+            "group": "Test Cases",
             "pages": [
-              {
-                "group": "Test case",
-                "pages": [
-                  "test-management/test-case/index",
-                  "test-management/test-case/about-the-test-cases-library",
-                  "test-management/test-case/creating-a-test-case",
-                  "test-management/test-case/managing-test-cases",
-                  "test-management/test-case/best-practices"
-                ]
-              },
-              {
-                "group": "Test data overview",
-                "pages": [
-                  "test-management/test-data-overview/index",
-                  "test-management/test-data-overview/creating-datasets",
-                  "test-management/test-data-overview/using-slug-in-prompts",
-                  "test-management/test-data-overview/importing-from-file"
-                ]
-              }
+              "test-management/test-case/index",
+              "test-management/test-case/about-the-test-cases-library",
+              "test-management/test-case/creating-a-test-case",
+              "test-management/test-case/managing-test-cases",
+              "test-management/test-case/best-practices"
             ]
           },
           {
-            "group": "Apps",
+            "group": "Test Data",
             "pages": [
-              "apps/adding-an-app",
-              {
-                "group": "Apps manager",
-                "pages": [
-                  "apps/apps-manager/index",
-                  "apps/apps-manager/overview",
-                  "apps/apps-manager/builds",
-                  "apps/apps-manager/knowledge"
-                ]
-              },
-              "apps/credentials",
-              "apps/test-data-in-app"
+              "test-management/test-data-overview/index",
+              "test-management/test-data-overview/creating-datasets",
+              "test-management/test-data-overview/using-slug-in-prompts",
+              "test-management/test-data-overview/importing-from-file"
             ]
           },
           {
-            "group": "Running tests",
+            "group": "Running Tests",
             "pages": [
               {
-                "group": "Task overview",
+                "group": "Tasks",
                 "pages": [
                   "running-tests/task-overview/index",
                   "running-tests/task-overview/creating-and-running-a-task",
@@ -124,26 +119,26 @@
                 ]
               },
               {
-                "group": "Suites overview",
+                "group": "Suites",
                 "pages": [
                   "running-tests/suites-overview/index",
                   "running-tests/suites-overview/creating-a-suite",
                   "running-tests/suites-overview/sequential-vs.-isolated"
                 ]
-              },
-              {
-                "group": "Backend validations",
-                "pages": [
-                  "running-tests/backend-validations/index",
-                  "running-tests/backend-validations/connections",
-                  "running-tests/backend-validations/creating-a-validation",
-                  "running-tests/backend-validations/using-slug-in-prompts"
-                ]
               }
             ]
           },
           {
-            "group": "Execution reports",
+            "group": "Backend Validations",
+            "pages": [
+              "running-tests/backend-validations/index",
+              "running-tests/backend-validations/connections",
+              "running-tests/backend-validations/creating-a-validation",
+              "running-tests/backend-validations/using-slug-in-prompts"
+            ]
+          },
+          {
+            "group": "Execution Reports",
             "pages": [
               "execution-reports/report-dashboard",
               "execution-reports/reading-an-execution-report",
@@ -160,6 +155,13 @@
             ]
           },
           {
+            "group": "Account & Organization",
+            "pages": [
+              "reference/organization-and-members",
+              "administration/how-quash-pricing-works"
+            ]
+          },
+          {
             "group": "Reference",
             "pages": [
               {
@@ -172,14 +174,7 @@
                 ]
               },
               "reference/glossary",
-              "reference/organization-and-members",
               "reference/help-and-support"
-            ]
-          },
-          {
-            "group": "Administration",
-            "pages": [
-              "administration/how-quash-pricing-works"
             ]
           }
         ]
