@@ -5,7 +5,7 @@ description: "A task is a single plain English instruction you give to Mahoraga.
 
 A task is a single plain English instruction you give to Mahoraga. It is the most direct way to test something in Quash — no suite setup, no library, no configuration required. Describe what you want the agent to do, select a device, and run it.
 
-Tasks are best for ad-hoc testing — a quick sanity check before a release, a one-off exploration of a new flow, or verifying a specific bug fix. For repeatable, organised test coverage, use [Test Cases ](../../test-management/test-case/)and [Suites.](../suites-overview/)
+Tasks are best for ad-hoc testing — a quick sanity check before a release, a one-off exploration of a new flow, or verifying a specific bug fix. For repeatable, organised test coverage, use [Test Cases ](/test-management/test-case)and [Suites.](/running-tests/suites-overview)
 
 **To access Tasks:** Click **Tasks** in the left navigation panel.
 
@@ -45,7 +45,7 @@ checkout, and verify the discount is reflected in the order summary.
 
 **Handle interruptions explicitly.** If your app shows permission dialogs, onboarding tooltips, or cookie banners, instruct Mahoraga to handle them: _"If a notification permission dialog appears, tap Allow."_
 
-**Reference test data with `/slug`.** If your task requires multiple input combinations, attach a [Test Data ](../../test-management/test-data-overview/)dataset using `/slug` syntax. Mahoraga runs the full task once per row.
+**Reference test data with `/slug`.** If your task requires multiple input combinations, attach a [Test Data ](/test-management/test-data-overview)dataset using `/slug` syntax. Mahoraga runs the full task once per row.
 
 ### Running a task
 
@@ -109,7 +109,7 @@ The report includes:
 
 ### Using test data in tasks
 
-If the same task needs to run with different inputs — different users, different products, different search terms — use [Test Data ](../../test-management/test-data-overview/)instead of writing separate tasks.
+If the same task needs to run with different inputs — different users, different products, different search terms — use [Test Data ](/test-management/test-data-overview)instead of writing separate tasks.
 
 Type `/` in the task prompt to open a dropdown of available datasets. Select one and the slug is inserted at the cursor. When the task runs, Mahoraga executes it once per row in the dataset automatically.
 
