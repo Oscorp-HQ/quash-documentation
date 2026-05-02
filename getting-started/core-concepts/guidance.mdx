@@ -7,7 +7,7 @@ Guidance is the knowledge the Abgumi agent builds for itself as it tests your ap
 
 It is the closest thing Quash has to institutional memory.
 
-### What Guidance actually is
+## What Guidance actually is
 
 Every time tests run on your app, the agent is observing. It sees which screens exist. It watches how navigation flows between them. It notices which actions are common, which inputs produce which outcomes, and which states behave differently from what was expected.
 
@@ -17,7 +17,7 @@ A QA engineer who has been testing your app for a year knows things that are not
 
 Guidance is Quash's equivalent of that earned knowledge. It grows with experience, it informs future sessions, and it makes the agent progressively more effective over time.
 
-### What Guidance stores
+## What Guidance stores
 
 Guidance organises what the agent learns into several categories:
 
@@ -31,7 +31,7 @@ Guidance organises what the agent learns into several categories:
 
 **Edge cases and failure patterns** Scenarios that produced unexpected results in previous sessions. Flows that behaved differently from what the test expected. Errors the agent encountered and recovered from. These get recorded so the agent can factor them into future test generation — surfacing them as suggested scenarios or flagging them in reports.
 
-### The lifecycle of Guidance
+## The lifecycle of Guidance
 
 **Session 1 — empty**
 
@@ -47,7 +47,7 @@ After a few sessions, Guidance starts to have shape. The agent has mapped the sc
 
 A well-exercised Guidance profile produces tests that feel like they were written by someone who has spent months testing your app. The agent knows the fragile flows. It knows the tricky edge cases. It generates tests for scenarios that would not appear in any documentation because they only reveal themselves through direct interaction.
 
-### Guidance is editable
+## Guidance is editable
 
 The agent makes mistakes. Your app changes. Neither of these is a problem as long as you keep Guidance accurate.
 
@@ -61,7 +61,7 @@ If the agent is repeatedly making the same incorrect assumption across sessions,
 
 When you onboard a new QA engineer onto the team, walking them through the Guidance profile is one of the fastest ways to transfer institutional knowledge about how the app actually behaves in testing — as distinct from how it is documented to behave.
 
-### Guidance vs. Apps context
+## Guidance vs. Apps context
 
 These two are easy to conflate because they both live in the Apps section. The distinction matters.
 
@@ -78,7 +78,7 @@ Apps context is what you teach the agent before it starts. Guidance is what the 
 
 Both matter. Apps context gives the agent a strong foundation on day one. Guidance makes the agent more effective with every session that follows. The combination — a well-configured app plus a mature Guidance profile — is what produces the most specific, accurate test generation.
 
-### A note on the first session
+## A note on the first session
 
 Because Guidance starts empty, your first session on any new app will produce more generic output than later sessions. This is not a flaw — it is just the starting point.
 

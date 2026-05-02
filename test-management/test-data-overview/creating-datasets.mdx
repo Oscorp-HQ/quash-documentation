@@ -5,9 +5,9 @@ description: "A dataset is a named table of input values. Each column is a type 
 
 A dataset is a named table of input values. Each column is a type of input. Each row is one complete set of inputs for a single test run. You can create datasets manually by building the table directly in Quash, or import them from an existing file.
 
-### Creating a dataset manually
+## Creating a dataset manually
 
-![](/images/image (9).png)
+![](/images/image-9.png)
 
 
 
@@ -22,7 +22,7 @@ A dataset is a named table of input values. Each column is a type of input. Each
 
 > The size indicator at the bottom left of the editor shows current dimensions — for example **3×5** for a three-column, five-row table.
 
-### Naming columns well
+## Naming columns well
 
 Column names matter. They appear in your prompt context and help Mahoraga understand what each value represents.
 
@@ -35,7 +35,7 @@ Column names matter. They appear in your prompt context and help Mahoraga unders
 
 Use underscores instead of spaces. Keep names lowercase. Make them self-explanatory — when you write a prompt referencing `/login-credentials`, both you and Recipe should immediately know what `email` and `password` mean.
 
-### Editing an existing dataset
+## Editing an existing dataset
 
 1. Click **Test Data** in the left navigation.
 2. Click the dataset you want to update.
@@ -44,13 +44,13 @@ Use underscores instead of spaces. Keep names lowercase. Make them self-explanat
 
 The updated data takes effect the next time any task or recipe referencing that slug runs. Existing reports are not retroactively updated — they reflect the data that was used at the time of the run.
 
-### Deleting a dataset
+## Deleting a dataset
 
 Open the dataset and click the **⋯** menu in the top right. Select **Delete**. Confirm.
 
 Deleting a dataset does not affect tasks or recipes that reference its slug — they will simply fail to find the dataset on the next run. Before deleting, search for the slug in your tasks and recipes and update or remove the reference.
 
-### Dataset size limits
+## Dataset size limits
 
 * Values are text only — no file uploads, no binary data
 * Each cell supports up to 5,000 characters

@@ -5,16 +5,22 @@ description: "This page walks through creating a suite from scratch, adding test
 
 This page walks through creating a suite from scratch, adding test cases, configuring execution mode, and running it for the first time.
 
-https://www.youtube.com/watch?v=b1jU5EefytY
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/b1jU5EefytY"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
 
-### Step 1 — Create the suite
+## Step 1 — Create the suite
 
-### SCREENSHOT
+## SCREENSHOT
 
 1. Click **Suites** in the left navigation panel.
 2. Click **+ New Suite** in the top right.
 
-![](/images/image (26).png)
+![](/images/image-26.png)
 
 1. Click the name field at the top of the new suite and give it a descriptive name.
 
@@ -27,13 +33,13 @@ Good suite names make the purpose obvious without opening it:
 | "Onboarding — Sprint 24 full coverage" | "Onboarding tests new" |
 | "Payment — Edge Cases"                 | "Payment"              |
 
-### Step 2 — Add test cases
+## Step 2 — Add test cases
 
 Click **Import Test Cases** in the center of the screen. The Add Test Cases modal opens with two tabs.
 
-#### From your library (recommended)
+## From your library (recommended)
 
-![](/images/image (27).png)
+![](/images/image-27.png)
 
 1. Click the **Test Cases** tab.
 2. Search by name, or filter by priority, type, or tag.
@@ -42,17 +48,17 @@ Click **Import Test Cases** in the center of the screen. The Add Test Cases moda
 
 The selected cases are added immediately. Repeat the search and selection process as many times as needed — the modal stays open until you close it.
 
-#### Write a new one on the spot
+## Write a new one on the spot
 
-![](/images/image (20).png)
+![](/images/image-20.png)
 
 1. Click the **Manual** tab.
 2. Fill in the name, instruction, expected result, priority, and type.
 3. Click **+ Create & Add**.
 
-The case is created, added to this suite, and saved to your[ Test Cases library](../../test-management/test-case/about-the-test-cases-library) simultaneously — you do not need to create it separately first.
+The case is created, added to this suite, and saved to your[ Test Cases library](/test-management/test-case/about-the-test-cases-library) simultaneously — you do not need to create it separately first.
 
-### Step 3 — Organise into groups (optional)
+## Step 3 — Organise into groups (optional)
 
 If your suite has more than six or seven cases, groups help with readability and navigation.
 
@@ -60,9 +66,9 @@ Click **+ Add Group** and give it a name. Drag test cases into the group, or ass
 
 Groups are visual only — they do not affect execution order or mode.
 
-### Step 4 — Set execution mode
+## Step 4 — Set execution mode
 
-![](/images/image (28).png)
+![](/images/image-28.png)
 
 Use the **Sequential / Isolated** toggle in the top right of the suite view.
 
@@ -72,7 +78,7 @@ If you are not sure, choose Isolated. You can switch at any time without affecti
 
 [→ Full explanation: Sequential vs. Isolated](sequential-vs.-isolated)
 
-### Step 5 — Run the suite
+## Step 5 — Run the suite
 
 
 
@@ -84,7 +90,7 @@ If you are not sure, choose Isolated. You can switch at any time without affecti
 
 The run starts immediately. Go to **Reports** to watch results come in, or stay on the suite page — the pass rate updates in real time.
 
-### Adding cases to an existing suite
+## Adding cases to an existing suite
 
 You can add test cases to a suite at any time — not just at creation.
 
@@ -94,7 +100,7 @@ You can add test cases to a suite at any time — not just at creation.
 
 **From Test Studio:** After generating tests in a recipe, select them in the Tests panel and click **+ Add to Suite**. Choose this suite from the dropdown.
 
-### Deleting a suite
+## Deleting a suite
 
 Open the suite, click the **⋯** menu in the top right, and select **Delete Suite**. Confirm the deletion.
 

@@ -5,7 +5,7 @@ description: "These are five proven prompt patterns that produce consistently go
 
 These are five proven prompt patterns that produce consistently good output from Megumi. Each one works best for a specific type of testing need. Use them as starting templates and adapt to your feature.
 
-### Pattern 1 — Feature + scenarios
+## Pattern 1 — Feature + scenarios
 
 Best for: covering one feature comprehensively.
 
@@ -25,7 +25,7 @@ reset token, and attempting to reuse a token that has already been used.
 
 Why it works: listing scenarios explicitly tells Megumi exactly what to cover. It will still add edge cases you did not list, but your scenarios are guaranteed to be included.
 
-### Pattern 2 — User journey
+## Pattern 2 — User journey
 
 Best for: end-to-end flows that span multiple screens.
 
@@ -47,7 +47,7 @@ sends a confirmation to the user's email address.
 
 Why it works: user journey prompts produce tests with a natural flow across screens, catching integration issues that feature-level tests miss. Megumi generates setup steps, intermediate verifications, and a final pass condition automatically.
 
-### Pattern 3 — Edge cases and validation
+## Pattern 3 — Edge cases and validation
 
 Best for: error handling, boundary conditions, and security scenarios.
 
@@ -75,7 +75,7 @@ Verify the correct error message appears for each case and the form does not sub
 
 Why it works: explicitly listing edge cases forces Megumi to generate specific negative tests rather than generic "invalid input" scenarios. The error message specification in the verify step makes the test directly executable.
 
-### Pattern 4 — Spec-driven generation
+## Pattern 4 — Spec-driven generation
 
 Best for: when you have a PRD or design doc attached and want Recipe to base tests on it.
 
@@ -115,7 +115,7 @@ the ticket.
 
 Why it works: telling Megumi to "read the attached \[source] carefully" primes it to extract structured information from the document rather than relying on your prompt alone. The instruction to include both happy path and failure scenarios prevents it from only generating the success cases the spec describes.
 
-### Pattern 5 — Multi-source generation
+## Pattern 5 — Multi-source generation
 
 Best for: when you have multiple context sources attached and want Megumi to synthesise all of them.
 
@@ -152,7 +152,7 @@ the new notifications centre. Generate tests that:
 
 Why it works: without explicit direction, Megumi may lean on one source more than others. Telling it specifically what to extract from each source produces tests that reflect the full picture — requirements, design, and implementation aligned.
 
-### Combining patterns in a session
+## Combining patterns in a session
 
 Patterns are not mutually exclusive. A single recipe session often uses several in sequence:
 

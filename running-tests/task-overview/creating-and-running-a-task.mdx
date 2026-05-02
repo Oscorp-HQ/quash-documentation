@@ -9,7 +9,7 @@ Tasks are best for ad-hoc testing — a quick sanity check before a release, a o
 
 **To access Tasks:** Click **Tasks** in the left navigation panel.
 
-### Writing a task prompt
+## Writing a task prompt
 
 A task prompt is a plain English description of what Mahoraga should do. It is not a test script — you do not define selectors, write assertions in code, or specify element IDs. You describe the interaction the way you would describe it to a person.
 
@@ -37,9 +37,9 @@ Add three items to the cart, apply the promo code SAVE20, proceed to
 checkout, and verify the discount is reflected in the order summary.
 ```
 
-#### What makes a good prompt
+## What makes a good prompt
 
-**Be specific about UI elements.** Name buttons, fields, and screens as they appear in the app. "Tap the Sign In button" is better than "tap the button." If credentials are configured in [Apps → Credentials,](../../apps/credentials) you can reference them directly: _"Log in using the Standard User credentials."_
+**Be specific about UI elements.** Name buttons, fields, and screens as they appear in the app. "Tap the Sign In button" is better than "tap the button." If credentials are configured in [Apps → Credentials,](/apps/credentials) you can reference them directly: _"Log in using the Standard User credentials."_
 
 **Include the expected outcome.** Without a verification step, Mahoraga executes the actions but cannot determine if they succeeded. Always end with what should be true at the end of a successful run.
 
@@ -47,7 +47,7 @@ checkout, and verify the discount is reflected in the order summary.
 
 **Reference test data with `/slug`.** If your task requires multiple input combinations, attach a [Test Data ](/test-management/test-data-overview)dataset using `/slug` syntax. Mahoraga runs the full task once per row.
 
-### Running a task
+## Running a task
 
 1. Click **+ New Task** in the Tasks section.
 2. Type your prompt in the task input field. The placeholder reads _"Describe what you'd like to automate on your device..."_
@@ -78,7 +78,7 @@ Mahoraga launches immediately. The device view panel on the right streams the ru
 \
 💡 **First run or rerun?** The first time you run a task, Mahoraga reasons through the entire flow. From the second run onwards, it uses a stored path and executes significantly faster. See[ **Rerun** ](rerun)for how this works.
 
-### During a run
+## During a run
 
 While a task is running you can:
 
@@ -88,7 +88,7 @@ While a task is running you can:
 
 Do not close the browser tab while a run is in progress. The run itself continues server-side, but you will lose the live stream and need to find the report in Reports afterwards.
 
-### After a run
+## After a run
 
 Every completed task generates an [Execution Report ](/execution-reports/report-dashboard)automatically. The report is available immediately in the **Reports** section.
 
@@ -99,7 +99,7 @@ The report includes:
 * **Step-by-step breakdown** — every action with screenshots
 * **Device recording** — full video replay of the run
 
-#### Understanding the outcome
+## Understanding the outcome
 
 | Outcome             | Meaning                                                                                                                      |
 | ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
@@ -107,7 +107,7 @@ The report includes:
 | **Failed**          | The task did not complete — check Observations and the step where it stopped                                                 |
 | **Partial Success** | Some steps completed but the agent was blocked — usually a CAPTCHA, unexpected dialog, or timeout. Check Observations first. |
 
-### Using test data in tasks
+## Using test data in tasks
 
 If the same task needs to run with different inputs — different users, different products, different search terms — use [Test Data ](/test-management/test-data-overview)instead of writing separate tasks.
 
@@ -119,7 +119,7 @@ Navigate to the checkout flow and complete a purchase.
 Verify the confirmation screen shows the correct order details.
 ```
 
-### Tasks vs. Test Cases vs. Suites
+## Tasks vs. Test Cases vs. Suites
 
 |                      | Task                    | Test Case                    | Suite                           |
 | -------------------- | ----------------------- | ---------------------------- | ------------------------------- |

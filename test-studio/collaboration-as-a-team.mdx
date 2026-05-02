@@ -7,7 +7,7 @@ Test Studio is built for teams, not individuals. A recipe can bring together inp
 
 This page covers how teams work together in Test Studio and how to structure collaborative recipes effectively.
 
-### The core idea
+## The core idea
 
 Traditionally, writing test cases is a QA-only activity. The QA engineer reads a spec, looks at some designs, maybe talks to the developer, and then writes tests alone. This creates a bottleneck — and it means tests are only as good as one person's understanding of the feature.
 
@@ -15,7 +15,7 @@ Test Studio breaks this pattern. Because Recipe can ingest multiple sources simu
 
 The result is test coverage that reflects what the product manager intended, what the designer specified, and what the developer implemented — all at once.
 
-### What each role contributes
+## What each role contributes
 
 | Role            | Contribution                                                       | How it is attached                       |
 | --------------- | ------------------------------------------------------------------ | ---------------------------------------- |
@@ -27,7 +27,7 @@ The result is test coverage that reflects what the product manager intended, wha
 
 No single person needs to know everything. Each contributor adds what they know, and Recipe synthesises it into coherent, executable test cases.
 
-### Roles and access in recipes
+## Roles and access in recipes
 
 Anyone in the workspace with Tester access or above can create and contribute to recipes. Viewers can see recipes but cannot prompt or save tests.
 
@@ -35,9 +35,9 @@ Recipes are shared within the workspace — a recipe created by one team member 
 
 There is no conflict resolution for simultaneous editing — treat a recipe like a shared document and communicate with your team if multiple people are working in it at the same time.
 
-### How to run a collaborative session
+## How to run a collaborative session
 
-#### Before the session
+## Before the session
 
 Decide the scope of the recipe together. What feature? What depth? What is the priority — smoke, regression, comprehensive? Agree on this before anyone starts prompting to avoid generating tests that need to be discarded.
 
@@ -48,7 +48,7 @@ Assign who attaches what:
 * Engineering selects the correct GitHub branch
 * QA drives the prompt and configuration
 
-#### Setting up the recipe
+## Setting up the recipe
 
 1. One person creates the recipe and names it clearly — e.g., `"Checkout v2 — Full Coverage — Sprint 24"`
 2. Set the CONFIG before prompting: coverage depth, scope, platform, priority levels
@@ -56,7 +56,7 @@ Assign who attaches what:
 4. Attach any documents via the paperclip: PRD, spec, feature brief
 5. Write the first prompt — or divide the prompt writing between contributors
 
-#### The prompt
+## The prompt
 
 When multiple people have contributed context, the first prompt should reflect that. Tell Recipe explicitly to use all of it:
 
@@ -71,7 +71,7 @@ the API contracts in the codebase for backend state assertions.
 
 This is more effective than a short prompt. The agent has rich context — the prompt's job is to direct how it uses that context.
 
-#### Reviewing and refining
+## Reviewing and refining
 
 After the first generation, review the Tests panel together. Team members can add follow-up prompts to:
 
@@ -80,7 +80,7 @@ After the first generation, review the Tests panel together. Team members can ad
 * Request more specificity (`"Rewrite the address validation tests to use the exact field names from the Figma file"`)
 * Fill gaps identified by different team members (`"The PRD mentions an out-of-stock edge case — add that"`)
 
-### Example: team session for a new feature
+## Example: team session for a new feature
 
 **Feature:** In-app notifications centre
 
@@ -118,7 +118,7 @@ Include edge cases from the Figma designs, especially the empty state and error 
 
 **Result:** 22 test cases across happy paths, error states, edge cases, persistence, and permission handling — generated in under 15 minutes with input from the whole team.
 
-### Best practices for collaborative recipes
+## Best practices for collaborative recipes
 
 **One recipe per feature per sprint.** Shared recipes get complicated when they cover too much ground. Keep the scope tight so everyone knows what the recipe is for.
 

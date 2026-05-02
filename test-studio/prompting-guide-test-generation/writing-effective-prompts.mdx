@@ -5,7 +5,7 @@ description: "This page covers how to get the most out of every prompt you send 
 
 This page covers how to get the most out of every prompt you send to Megumi — how expected outcomes turn into assertions, how to leverage multiple context sources, how to ask Megumi questions beyond test generation, how to refine output without starting over, and how to structure long or complex prompts.
 
-### Including expected outcomes
+## Including expected outcomes
 
 This is the most commonly missed element in prompts. Without expected outcomes, tests confirm that steps ran — not that anything worked correctly.
 
@@ -21,7 +21,7 @@ The pattern: always end each scenario with what should be true when it completes
 
 Include negative outcomes too. For error scenarios, say exactly what the error should look like: the message text, where it appears, and what should remain unchanged (e.g., "the user remains on the login screen" — confirming no navigation occurred).
 
-### Using multiple context sources together
+## Using multiple context sources together
 
 Each source you attach before prompting fills a gap the others cannot:
 
@@ -48,9 +48,9 @@ the API contracts in the codebase for backend state assertions.
 
 Without explicit direction, Recipe may lean on one source more than others.
 
-[→ Attaching context](../recipe/attaching-context)
+[→ Attaching context](/test-studio/recipe/attaching-context)
 
-### Asking Megumi questions
+## Asking Megumi questions
 
 Megumi is not only a test generator. You can ask it questions about your app and your testing strategy in plain English, and it will respond using the context it has available.
 
@@ -78,7 +78,7 @@ Given the Figma designs attached, are there any states I haven't tested yet?
 
 Megumi uses your attached context — the PRD, the Figma file, the existing test cases — to give answers specific to your situation, not generic advice. This is especially useful mid-session when you have already generated a batch of tests and want to assess completeness before saving.
 
-### Refining after generation
+## Refining after generation
 
 If the first output is not what you wanted, stay in the session and follow up. The agent remembers everything — you do not need to restate context.
 
@@ -97,7 +97,7 @@ The Tests panel updates as Megumi makes changes. Session memory means it always 
 
 Do not discard a session and start over when the output is not right. Iterating in the same session is faster and produces better results because Megumi has the full conversation context to build on.
 
-### Structuring long prompts
+## Structuring long prompts
 
 For complex features, organise your prompt the way you would organise a brief. Megumi reads structure well.
 

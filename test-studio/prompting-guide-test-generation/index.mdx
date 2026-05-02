@@ -9,7 +9,7 @@ Megumi generates tests by inferring intent from what you write. The more clearly
 
 You do not need to write code. You do not need to know test frameworks. You need to write clearly.
 
-### What to include in every prompt
+## What to include in every prompt
 
 Every prompt in Recipe should include four things:
 
@@ -21,17 +21,17 @@ Every prompt in Recipe should include four things:
 
 **UI element names, if you know them.** If you know the button is called "Sign In" (not "Login"), say so. If the field is labelled "Mobile Number" (not "Phone"), use that. Specificity here makes tests directly executable rather than requiring interpretation.
 
-### Prompt length
+## Prompt length
 
 There is no character limit on prompts. Write as much detail as you need. A longer, well-structured prompt almost always produces better output than a short vague one. If you have a lot of scenarios to cover, write them all out — numbered lists, bullet points, and plain paragraphs all work.
 
-### Prompts and CONFIG work together
+## Prompts and CONFIG work together
 
 Your prompt tells Megumi _what_ to test. The CONFIG panel tells it _how_ thoroughly, what type, and on which platform. A prompt saying "generate tests for the checkout flow" produces significantly different output depending on whether CONFIG is set to Minimal + Feature or Full + Integration. Set CONFIG before your first prompt to shape everything that follows.
 
 [→ Configuration in Test Studio](/test-studio/configuration-in-test-studio)
 
-### In this section
+## In this section
 
 **Writing effective prompts** — how expected outcomes become assertions, how to use multiple context sources together, how to ask Megumi questions beyond test generation, how to refine tests after the first pass, and how to structure long prompts.
 

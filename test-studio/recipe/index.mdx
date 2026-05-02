@@ -5,7 +5,7 @@ description: "A recipe is a Test Studio session. Each recipe holds a complete co
 
 A recipe is a Test Studio session. Each recipe holds a complete conversation with the Megumi agent — your prompts, the agent's responses, and every test case generated in that session. It is a persistent workspace for a specific feature or flow. Close it and come back a week later — everything is exactly where you left it.
 
-### What a recipe contains
+## What a recipe contains
 
 Every recipe stores:
 
@@ -17,7 +17,7 @@ Every recipe stores:
 
 When you reopen a recipe, the agent loads everything. You can say "change test 3 to High priority" or "add a negative case to the login test" and it knows exactly what you mean.
 
-### Creating a recipe
+## Creating a recipe
 
 **Step 1.** Click **Test Studio** in the left navigation panel.
 
@@ -44,7 +44,7 @@ The more context you attach before the first prompt, the more specific and accur
 
 **Step 9.** Keep prompting in the same input to add more tests, adjust priorities, or refine what was generated. The agent holds the full session in memory.
 
-### The recipe list
+## The recipe list
 
 When you open Test Studio, you see all your saved recipes as a grid of cards. Each card shows:
 
@@ -55,7 +55,7 @@ When you open Test Studio, you see all your saved recipes as a grid of cards. Ea
 
 Click any card to reopen it and continue where you left off.
 
-### Naming recipes
+## Naming recipes
 
 A recipe name should make it obvious what feature or flow it covers without having to open it. Be specific.
 
@@ -66,7 +66,7 @@ A recipe name should make it obvious what feature or flow it covers without havi
 | "Onboarding — Android Q3 sprint"        | "Onboarding tests 2" |
 | "Profile photo upload & crop"           | "Profile"            |
 
-### When to create a new recipe vs. continue an existing one
+## When to create a new recipe vs. continue an existing one
 
 **Create a new recipe when:**
 
@@ -84,7 +84,7 @@ A recipe name should make it obvious what feature or flow it covers without havi
 
 The key signal: if removing one recipe's context would make the new tests meaningless, continue. If the new work stands completely on its own, create a new recipe.
 
-### The Tests panel
+## The Tests panel
 
 Click **TESTS** on the right edge of the screen to open the Tests panel.
 
@@ -95,7 +95,7 @@ As the agent generates test cases, they appear here as individual cards. Each ca
 * **Description** — a brief explanation of what the test covers
 * **Counter** — total number of test cases in the current session (e.g., "Tests (8)")
 
-#### Selecting and saving tests
+## Selecting and saving tests
 
 | Action                     | How                                          |
 | -------------------------- | -------------------------------------------- |
@@ -105,7 +105,7 @@ As the agent generates test cases, they appear here as individual cards. Each ca
 | Add directly to a suite    | Select tests → click **+ Add to Suite**      |
 | Deselect without saving    | Click **Clear**                              |
 
-### Refining tests mid-session
+## Refining tests mid-session
 
 You do not need to save and start over if the first output isn't right. Stay in the same recipe and keep prompting:
 
@@ -117,7 +117,7 @@ You do not need to save and start over if the first output isn't right. Stay in 
 
 The agent updates the Tests panel as it makes changes. Session memory means it always knows what you are referring to.
 
-### Organising recipes
+## Organising recipes
 
 * Use one recipe per feature area — do not mix unrelated features in a single session
 * Archive old or completed recipes to keep the list clean

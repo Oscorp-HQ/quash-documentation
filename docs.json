@@ -1,13 +1,13 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "aspen",
+  "theme": "maple",
   "name": "Quash Documentation",
   "colors": {
     "primary": "#FFD233",
     "light": "#FFD233",
     "dark": "#403715"
   },
-  "favicon": "/images/logo(2).png",
+  "favicon": "/images/logo-2.png",
   "navigation": {
     "tabs": [
       {
@@ -15,14 +15,15 @@
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "pages": [
               "index",
               "getting-started/quickstart-guide",
               "getting-started/platform-overview",
               {
                 "group": "Core concepts",
+                "root": "getting-started/core-concepts/index",
                 "pages": [
-                  "getting-started/core-concepts/index",
                   "getting-started/core-concepts/memory",
                   "getting-started/core-concepts/guidance",
                   "getting-started/core-concepts/megumi-and-mahoraga",
@@ -34,6 +35,7 @@
           },
           {
             "group": "Devices",
+            "icon": "smartphone",
             "pages": [
               "devices/overview",
               "devices/physical-android-devices",
@@ -45,20 +47,39 @@
             ]
           },
           {
+            "group": "Apps",
+            "icon": "app-window",
+            "pages": [
+              "apps/adding-an-app",
+              {
+                "group": "Apps manager",
+                "root": "apps/apps-manager/index",
+                "pages": [
+                  "apps/apps-manager/overview",
+                  "apps/apps-manager/builds",
+                  "apps/apps-manager/knowledge"
+                ]
+              },
+              "apps/credentials",
+              "apps/test-data-in-app"
+            ]
+          },
+          {
             "group": "Test Studio",
+            "icon": "flask-conical",
             "pages": [
               "test-studio/overview",
               {
                 "group": "Recipe",
+                "root": "test-studio/recipe/index",
                 "pages": [
-                  "test-studio/recipe/index",
                   "test-studio/recipe/attaching-context"
                 ]
               },
               {
                 "group": "Prompting guide (test generation)",
+                "root": "test-studio/prompting-guide-test-generation/index",
                 "pages": [
-                  "test-studio/prompting-guide-test-generation/index",
                   "test-studio/prompting-guide-test-generation/writing-effective-prompts",
                   "test-studio/prompting-guide-test-generation/prompt-patterns-and-examples",
                   "test-studio/prompting-guide-test-generation/common-mistakes"
@@ -71,12 +92,13 @@
             ]
           },
           {
-            "group": "Test management",
+            "group": "Test Management",
+            "icon": "clipboard-list",
             "pages": [
               {
-                "group": "Test case",
+                "group": "Test Cases",
+                "root": "test-management/test-case/index",
                 "pages": [
-                  "test-management/test-case/index",
                   "test-management/test-case/about-the-test-cases-library",
                   "test-management/test-case/creating-a-test-case",
                   "test-management/test-case/managing-test-cases",
@@ -84,9 +106,9 @@
                 ]
               },
               {
-                "group": "Test data overview",
+                "group": "Test Data",
+                "root": "test-management/test-data-overview/index",
                 "pages": [
-                  "test-management/test-data-overview/index",
                   "test-management/test-data-overview/creating-datasets",
                   "test-management/test-data-overview/using-slug-in-prompts",
                   "test-management/test-data-overview/importing-from-file"
@@ -95,46 +117,30 @@
             ]
           },
           {
-            "group": "Apps",
-            "pages": [
-              "apps/adding-an-app",
-              {
-                "group": "Apps manager",
-                "pages": [
-                  "apps/apps-manager/index",
-                  "apps/apps-manager/overview",
-                  "apps/apps-manager/builds",
-                  "apps/apps-manager/knowledge"
-                ]
-              },
-              "apps/credentials",
-              "apps/test-data-in-app"
-            ]
-          },
-          {
-            "group": "Running tests",
+            "group": "Running Tests",
+            "icon": "circle-play",
             "pages": [
               {
-                "group": "Task overview",
+                "group": "Tasks",
+                "root": "running-tests/task-overview/index",
                 "pages": [
-                  "running-tests/task-overview/index",
                   "running-tests/task-overview/creating-and-running-a-task",
                   "running-tests/task-overview/rerun",
                   "running-tests/task-overview/prompting-guide-task-execution"
                 ]
               },
               {
-                "group": "Suites overview",
+                "group": "Suites",
+                "root": "running-tests/suites-overview/index",
                 "pages": [
-                  "running-tests/suites-overview/index",
                   "running-tests/suites-overview/creating-a-suite",
                   "running-tests/suites-overview/sequential-vs.-isolated"
                 ]
               },
               {
-                "group": "Backend validations",
+                "group": "Backend Validations",
+                "root": "running-tests/backend-validations/index",
                 "pages": [
-                  "running-tests/backend-validations/index",
                   "running-tests/backend-validations/connections",
                   "running-tests/backend-validations/creating-a-validation",
                   "running-tests/backend-validations/using-slug-in-prompts"
@@ -143,7 +149,8 @@
             ]
           },
           {
-            "group": "Execution reports",
+            "group": "Execution Reports",
+            "icon": "chart-bar",
             "pages": [
               "execution-reports/report-dashboard",
               "execution-reports/reading-an-execution-report",
@@ -152,6 +159,7 @@
           },
           {
             "group": "Integrations",
+            "icon": "plug",
             "pages": [
               "integrations/overview",
               "integrations/slack",
@@ -160,26 +168,28 @@
             ]
           },
           {
+            "group": "Account & Organization",
+            "icon": "users",
+            "pages": [
+              "reference/organization-and-members",
+              "administration/how-quash-pricing-works"
+            ]
+          },
+          {
             "group": "Reference",
+            "icon": "book-open",
             "pages": [
               {
                 "group": "Troubleshooting",
+                "root": "reference/troubleshooting/index",
                 "pages": [
-                  "reference/troubleshooting/index",
                   "reference/troubleshooting/device-and-connection-issues",
                   "reference/troubleshooting/test-execution-failures",
                   "reference/troubleshooting/test-studio-issues"
                 ]
               },
               "reference/glossary",
-              "reference/organization-and-members",
               "reference/help-and-support"
-            ]
-          },
-          {
-            "group": "Administration",
-            "pages": [
-              "administration/how-quash-pricing-works"
             ]
           }
         ]
@@ -225,6 +235,9 @@
   },
   "fonts": {
     "family": "Inter"
+  },
+  "icons": {
+    "library": "lucide"
   },
   "seo": {
     "indexing": "all"

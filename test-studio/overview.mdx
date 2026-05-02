@@ -3,7 +3,7 @@ title: "Overview"
 description: "Test Studio is where you generate test cases from plain English. No scripting. No selectors. No test frameworks to configure. Describe a feature or a flow, and Quash builds a ready-to-run set of te..."
 ---
 
-![](/images/image (1).png)
+![](/images/image-1.png)
 
 Test Studio is where you generate test cases from plain English. No scripting. No selectors. No test frameworks to configure. Describe a feature or a flow, and Quash builds a ready-to-run set of test cases from that description — covering what to test, what edge cases to include, and how to structure each scenario.
 
@@ -11,27 +11,33 @@ Every test case generated can be reviewed, refined, saved to your library, or pu
 
 **To open Test Studio:** Click **Test Studio** in the left navigation panel.
 
-### How it works
+## How it works
 
 Test Studio is powered by two agents. Understanding what each one does is the foundation for using the platform effectively.
 
-https://www.youtube.com/watch?v=nuUuKJLiI8Q
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/nuUuKJLiI8Q"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
 
-#### Megumi— the test generation agent
+## Megumi— the test generation agent
 
 Megumi is the AI agent that lives inside Test Studio. You give it context — your app, your designs, your requirements — and it generates structured, executable test cases. It works like a senior QA engineer who has read everything about your product before writing a single test.
 
 Megumi is not just a code generator. It understands intent. You can describe a user journey, paste a PRD, attach a Figma screen, or simply type what you want to validate — and Megumi figures out the scenarios, the edge cases, and the assertions that belong in the test.
 
-[Learn more about Megumi](../getting-started/core-concepts/megumi-and-mahoraga)
+[Learn more about Megumi](/getting-started/core-concepts/megumi-and-mahoraga)
 
-#### Mahoraga — the execution agent
+## Mahoraga — the execution agent
 
 Mahoraga is the agent that acts. It runs on your Android device or emulator, interacts with the UI, executes API calls, detects elements, and captures results. While Megumi thinks and plans, Mahoraga executes.
 
 When you run a test case, it is Mahoraga doing the work on-device.
 
-### The mental model
+## The mental model
 
 Think of Quash like a new QA engineer joining your company.
 
@@ -41,7 +47,7 @@ Test Studio is built around this same idea. The more context you give Quash befo
 
 Context in Quash works in three layers: **Knowledge** (what you set up before testing), **Recipe Memory** (what happens inside a session), and **Guidance** (what the agent learns over time). Each layer is documented separately.
 
-### What Test Studio replaces
+## What Test Studio replaces
 
 | Traditional approach                   | Test Studio                                     |
 | -------------------------------------- | ----------------------------------------------- |
@@ -52,17 +58,17 @@ Context in Quash works in three layers: **Knowledge** (what you set up before te
 | One engineer writes all tests          | Entire team contributes — PM, designer, dev, QA |
 | Requires automation expertise          | Works for anyone who can write a clear sentence |
 
-### When to use Test Studio
+## When to use Test Studio
 
 Use Test Studio when you need to generate multiple test cases quickly, when you want comprehensive coverage including edge cases you might miss manually, when you have a spec or PRD you want to translate into tests, or when requirements are evolving and you need to iterate fast.
 
 Use manual test case creation when you need a single very specific test, or when you want to edit an existing test case — do that in the Test Cases library directly, not here.
 
-### Next steps
+## Next steps
 
 * [Recipes — What a recipe is and how to create your first one](/test-studio/recipe)
-* [Memory — How Quash builds and uses context](../getting-started/core-concepts/memory)
-* [Guidance — How the agent learns your app over time](../getting-started/core-concepts/guidance)
+* [Memory — How Quash builds and uses context](/getting-started/core-concepts/memory)
+* [Guidance — How the agent learns your app over time](/getting-started/core-concepts/guidance)
 * [Knowledge & Context — Setting up your app, GitHub, Figma, and Jira](/apps/apps-manager/knowledge)
 * [Writing Prompts — How to write prompts that produce great tests](/test-studio/prompting-guide-test-generation)
 * [Configuration — Coverage depth, scope, platform, and validation settings](configuration-in-test-studio)

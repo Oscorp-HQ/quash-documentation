@@ -7,7 +7,7 @@ The quality of the tests Recipe generates is directly proportional to the contex
 
 Attaching context is the single highest-leverage thing you can do before sending your first prompt in a recipe.
 
-### Two ways to attach context
+## Two ways to attach context
 
 Every recipe has two attachment controls at the bottom of the prompt area.
 
@@ -19,9 +19,9 @@ Both can be used simultaneously. A well-prepared recipe session typically has an
 
 > **Attach before your first prompt.** Recipe uses the context that is present at the time of each prompt. Attaching a document after you have already sent a prompt means it was not available for that generation. Set everything up first, then prompt.
 
-### Your app
+## Your app
 
-Selecting your app gives Recipe visibility into your app's structure — the screens that exist, the navigation flows, and the UI patterns Mahoraga has learned through [Guidance](../../getting-started/core-concepts/guidance).
+Selecting your app gives Recipe visibility into your app's structure — the screens that exist, the navigation flows, and the UI patterns Mahoraga has learned through [Guidance](/getting-started/core-concepts/guidance).
 
 **How to attach:**
 
@@ -31,9 +31,9 @@ Selecting your app gives Recipe visibility into your app's structure — the scr
 
 The selected app name appears as a tag in the prompt area. Recipe now knows which app this recipe is for and can draw on everything configured in Apps — including Guidance.
 
-If no apps appear in the dropdown, add one first in Apps→[ +Add app](../../apps/adding-an-app)
+If no apps appear in the dropdown, add one first in Apps→[ +Add app](/apps/adding-an-app)
 
-### GitHub repository branch
+## GitHub repository branch
 
 Connecting a GitHub branch gives Recipe access to your codebase — real API endpoints, real data models, real field names, real validation logic. Tests generated with a branch connected reference what your code actually does, not what the UI implies it does.
 
@@ -47,7 +47,7 @@ Connecting a GitHub branch gives Recipe access to your codebase — real API end
 
 If no repositories appear, connect one first in Apps → [Knowledge](/apps/apps-manager/knowledge). Indexing takes 4–5 minutes on first connection.
 
-### Figma designs
+## Figma designs
 
 Attaching a Figma file gives Recipe access to your screen designs — component names, interaction states, error states, empty states, and any annotations your designer has written about intended behaviour. This is context that neither a codebase nor a PRD captures as clearly.
 
@@ -79,7 +79,7 @@ Figma integration uses Figma's desktop MCP server — the agent explores your de
 
 **Use the final handoff version.** Early-stage or exploratory Figma files with placeholder content produce less accurate tests than final designs. If your file has both WIP and final frames, link directly to the completed screens.
 
-### Jira issues, epics, and sprints
+## Jira issues, epics, and sprints
 
 Attaching a Jira source gives Recipe the documented requirements for the feature — user stories, acceptance criteria, bug descriptions, epics, and sprint context. Tests generated with Jira attached align directly with what was formally specified.
 
@@ -111,7 +111,7 @@ To connect Jira: go to your profile → **Integrations** → locate Jira → cli
 
 **Attach the most specific source available.** A specific feature ticket (MYAPP-1204) produces more targeted tests than an entire epic. If your work spans multiple tickets, attach the one most directly relevant to the tests you are generating in this session.
 
-### PRDs and specification documents
+## PRDs and specification documents
 
 Attaching a document gives Recipe access to written requirements, feature specifications, product briefs, or any other documentation that describes what you are building and why.
 
@@ -136,7 +136,7 @@ The document is uploaded and processed. Recipe reads it as context for all subse
 
 **Be selective.** A focused 10-page feature spec produces better tests than a 200-page product requirements document. If you have a large PRD, consider attaching only the relevant section or creating a focused summary document for test generation purposes.
 
-### Using multiple sources together
+## Using multiple sources together
 
 The most effective recipe sessions combine all available sources. Each one fills a gap the others cannot.
 
@@ -162,7 +162,7 @@ They are not redundant — they are complementary. A codebase tells you what the
 
 With this setup, Recipe has everything it needs to generate tests that are specific to your app, aligned with your codebase, grounded in your designs, and traceable to your requirements — without you having to describe any of it in the prompt.
 
-### The difference context makes
+## The difference context makes
 
 Without context, Recipe generates tests like this:
 
@@ -189,8 +189,8 @@ With app selected, GitHub branch connected, and Figma attached:
 
 Same intent. Completely different specificity. The second version is directly executable without any additional interpretation. That difference comes entirely from context.
 
-### Context and the session token limit
+## Context and the session token limit
 
 Every source you attach contributes to the session's token count. Attaching a large PRD, a full GitHub repository, and a multi-page Figma file all at once will push the context window higher. Quash auto-compacts at the 200k token limit, but you can use `/compact` manually before that point to keep the session sharp.
 
-[→ Token management & /compact](../token-management)
+[→ Token management & /compact](/test-studio/token-management)

@@ -5,14 +5,14 @@ description: "Get from zero to your first test result in 5 minutes. This guide u
 
 Get from zero to your first test result in 5 minutes. This guide uses a local Android emulator — the fastest path to a working test with no hardware required.
 
-### Before you start
+## Before you start
 
 You need:
 
 * Quash installed on your computer ([Download here](https://quashbugs.com/download))
 * Android Studio installed with at least one AVD (Android Virtual Device) configured
 
-### Step 1 - Install and log in
+## Step 1 - Install and log in
 
 **Mac:**
 
@@ -28,7 +28,7 @@ You need:
 
 Once launched, sign in with your email and password, or click **Continue with Google** for instant access.
 
-### Step 2 - Connect a device
+## Step 2 - Connect a device
 
 The fastest way to get started is with an Android emulator which does not require physical device or additional setups. Follow the steps below to connect one, or skip to the device type that applies to you.
 
@@ -49,7 +49,7 @@ Quash automatically installs the Mahoraga agent on the emulator with accessibili
 4. Click **Connect**.
 5. Open the Mahoraga app on your device, tap **Accessibility Service**, and enable it from your device settings.
 
-→ See [\[Physical Android Devices\]](../devices/physical-android-devices) for the full walkthrough including bounding box calibration.
+→ See [\[Physical Android Devices\]](/devices/physical-android-devices) for the full walkthrough including bounding box calibration.
 
 **Physical iOS Device**
 
@@ -58,7 +58,7 @@ Quash automatically installs the Mahoraga agent on the emulator with accessibili
 3. Register your device UDID in your Apple Developer account at developer.apple.com.
 4. In Quash, click **Devices → Scan for Devices**. Your iPhone appears and connects automatically.
 
-→ See [\[Physical iOS Devices\]](../devices/physical-ios-devices) for the full walkthrough including Apple Developer account setup and troubleshooting.
+→ See [\[Physical iOS Devices\]](/devices/physical-ios-devices) for the full walkthrough including Apple Developer account setup and troubleshooting.
 
 **iOS Simulator**
 
@@ -66,7 +66,7 @@ Quash automatically installs the Mahoraga agent on the emulator with accessibili
 2. In Quash, click **Devices → Scan for Devices**. Your simulator appears in the list.
 3. Click **Connect**.
 
-→ See [\[iOS Simulators\]](../devices/ios-simulators-mac-only) for setup details.
+→ See [\[iOS Simulators\]](/devices/ios-simulators-mac-only) for setup details.
 
 **Quash Cloud Device**
 
@@ -76,9 +76,9 @@ Quash automatically installs the Mahoraga agent on the emulator with accessibili
 
 Quash cloud devices come with Mahoraga pre-installed. You get 60 minutes of free usage. If all devices are in use, you will be placed in a queue and notified when one becomes available.
 
-→ See [\[Cloud Devices\]](../devices/cloud-device) for full details including screen mirroring and parallel testing.
+→ See [\[Cloud Devices\]](/devices/cloud-device) for full details including screen mirroring and parallel testing.
 
-### Step 3 - Add your app
+## Step 3 - Add your app
 
 1. Click **Apps** in the left navigation.
 2. Click **+ New App**.
@@ -88,7 +88,7 @@ Quash cloud devices come with Mahoraga pre-installed. You get 60 minutes of free
 Your app is now configured in Quash. For this quickstart you do not need to upload a build or connect GitHub. Those are for deeper test generation. You can skip them and come back later.\
 For the full walkthrough, see [\[Apps\]](/apps/adding-an-app)
 
-### Step 4 - Run your first task
+## Step 4 - Run your first task
 
 A task is a single plain English instruction you give to Mahoraga. It is the fastest way to test something right now without setting up a full test suite.
 
@@ -107,7 +107,7 @@ and password, tap Sign In, and verify the home screen loads.
 
 Mahoraga launches your app on the connected device and starts executing. You can watch it work in real time in the device view panel.
 
-#### Writing your first task prompt
+## Writing your first task prompt
 
 Task prompts are plain English, but their structure matters. Every good task prompt follows the same shape:
 
@@ -128,9 +128,9 @@ Open the app, navigate to the login screen, enter a valid email and password,
 tap Sign In, and verify the home screen loads.
 ```
 
-→ For the complete guide to writing task prompts — including data-driven testing, credential management, and common mistakes — [see Task Prompt Guide.](../running-tests/task-overview/prompting-guide-task-execution)
+→ For the complete guide to writing task prompts — including data-driven testing, credential management, and common mistakes — [see Task Prompt Guide.](/running-tests/task-overview/prompting-guide-task-execution)
 
-### Step 5 - Read the report
+## Step 5 - Read the report
 
 When the run finishes, the report opens automatically. Click **Reports** in the left navigation at any time to find it again.
 
@@ -143,7 +143,7 @@ The report shows:
 
 If the run returned **Partial Success**, open Observations first. This almost always means Mahoraga hit something it could not handle — a CAPTCHA, a permission dialog it was not instructed to dismiss, or a loading screen that timed out.
 
-### What's next
+## What's next
 
 You have run your first test. Here is where to go from here depending on what you want to do next.
 
@@ -155,7 +155,7 @@ You have run your first test. Here is where to go from here depending on what yo
 | Connect a physical device                              | Physical Devices |
 | Understand how Quash's AI context system works         | Memory           |
 
-### Generating tests in Test Studio
+## Generating tests in Test Studio
 
 When you are ready to move from running individual tasks to generating full test suites, Test Studio is where you work. The quality of what Recipe generates depends almost entirely on how you prompt it, a vague prompt produces generic tests, a specific one produces tests you can run immediately.
 
@@ -163,18 +163,28 @@ Every prompt to Recipe works best when it includes: the feature or flow you are 
 
 Before diving in, read:
 
-* [Writing effective prompts ](../test-studio/prompting-guide-test-generation/writing-effective-prompts)— how to structure prompts, use multiple context sources, and refine tests after the first pass
-* [Prompt patterns & examples](../test-studio/prompting-guide-test-generation/prompt-patterns-and-examples) — five proven templates with worked examples
-* [Common mistakes ](../test-studio/prompting-guide-test-generation/common-mistakes)— the most frequent prompting errors and a pre-prompt checklist
+* [Writing effective prompts ](/test-studio/prompting-guide-test-generation/writing-effective-prompts)— how to structure prompts, use multiple context sources, and refine tests after the first pass
+* [Prompt patterns & examples](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples) — five proven templates with worked examples
+* [Common mistakes ](/test-studio/prompting-guide-test-generation/common-mistakes)— the most frequent prompting errors and a pre-prompt checklist
 
-https://www.youtube.com/watch?v=nuUuKJLiI8Q
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/nuUuKJLiI8Q"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
 
-
-
-### **Creating and Running a Test Suite**
+## **Creating and Running a Test Suite**
 
 Suites let you run a collection of related test cases together in a single go, with one unified report covering everything. You can build a suite from scratch by importing existing cases from your library or writing new ones on the spot, organise them into groups for readability, and choose between Sequential or Isolated execution depending on whether your cases share state or run independently.
 
 For the full step-by-step walkthrough, see [**Suite Overview**.](/running-tests/suites-overview)
 
-https://www.youtube.com/watch?v=b1jU5EefytY
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/b1jU5EefytY"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>

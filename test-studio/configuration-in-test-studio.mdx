@@ -3,13 +3,13 @@ title: "Configuration in Test Studio"
 description: "The CONFIG panel controls how Megumi generates tests — how thorough, what type, which platform, and what kinds of validations to include. Set it before your first prompt to shape everything Megumi ..."
 ---
 
-![](/images/image (3).png)
+![](/images/image-3.png)
 
 The **CONFIG** panel controls how Megumi generates tests — how thorough, what type, which platform, and what kinds of validations to include. Set it before your first prompt to shape everything Megumi produces in the recipe session.
 
 **To open the CONFIG panel:** Click **CONFIG** on the right edge of the Test Studio screen.
 
-### When to configure
+## When to configure
 
 **Before your first prompt.** This is the ideal time. Configuration shapes how Megumi interprets your prompt — a Full coverage depth with Integration scope will produce significantly different output than a Minimal depth with Feature scope from the same prompt.
 
@@ -19,7 +19,7 @@ The **CONFIG** panel controls how Megumi generates tests — how thorough, what 
 
 If you are unsure what to set, leave the defaults. They work well for most scenarios.
 
-### Coverage Depth
+## Coverage Depth
 
 Controls how comprehensive the generated tests are.
 
@@ -31,7 +31,7 @@ Controls how comprehensive the generated tests are.
 
 **When to use Full:** Before a major release, for any flow that handles payment or personal data, or when a feature has a history of regression bugs.
 
-### Test Scope
+## Test Scope
 
 Sets the type of tests Abgumi generates.
 
@@ -43,7 +43,7 @@ Sets the type of tests Abgumi generates.
 
 These are not mutually exclusive — you can run multiple recipes with different scopes on the same feature. A Feature recipe and a Flow recipe for the same checkout module will produce complementary, non-overlapping coverage.
 
-### Platform
+## Platform
 
 Sets whether Abgumi generates tests for iOS, Android, or both.
 
@@ -55,7 +55,7 @@ Sets whether Abgumi generates tests for iOS, Android, or both.
 
 If you are testing a feature that behaves differently on each platform — like biometric authentication, file picker behaviour, or notification handling — generate separate recipes per platform rather than using Both.
 
-### Priority Levels
+## Priority Levels
 
 Controls which priority tiers Recipe includes in its output.
 
@@ -68,7 +68,7 @@ Controls which priority tiers Recipe includes in its output.
 
 For a smoke suite, use Critical only. For a regression suite, enable all tiers. For exploratory coverage, start with Critical and High, then add Medium once the core is solid.
 
-### Validations
+## Validations
 
 Controls whether Recipe adds assertion steps to generated tests — verifying that the expected outcome actually occurred, not just that the steps ran.
 
@@ -82,7 +82,7 @@ Multiple validation types can be active simultaneously. For most cases, enabling
 
 When validations are off, Recipe generates tests that confirm steps were executed but do not verify the outcome. This is useful for exploratory or navigation-focused tests where you are checking coverage rather than correctness.
 
-### Output formatting
+## Output formatting
 
 Two additional options that control how Recipe structures the generated test steps.
 
