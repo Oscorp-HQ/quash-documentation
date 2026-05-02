@@ -1,11 +1,9 @@
 ---
 title: "Core Concepts"
-description: "Quash works differently from traditional test automation tools. There are no scripts to write, no selectors to define, no frameworks to configure. Instead, you describe what you want to test in pla..."
+description: "How context compounds in Quash and which core concept page to read before deep Test Studio work."
 ---
 
-Quash works differently from traditional test automation tools. There are no scripts to write, no selectors to define, no frameworks to configure. Instead, you describe what you want to test in plain English and two AI agents handle the rest — one generates the tests, the other executes them on your device.
-
-This sounds simple, and it is to use. But getting consistently good output — tests that are specific to your app, that cover edge cases you didn't think of, that reference your actual screen names and API contracts — requires understanding how the system thinks.
+It feels simple in daily use, and it is. But getting consistently good output — tests that are specific to your app, that cover edge cases you didn't think of, that reference your actual screen names and API contracts — requires understanding how the system thinks.
 
 Everything in Quash comes down to one idea: **context determines quality.** The more the agents know about your app, the better the output. That knowledge builds across three layers — what you configure, what happens in a session, and what the agent learns through experience. Each layer compounds on the others, and none of them ever resets.
 
@@ -29,7 +27,7 @@ Memory is how Quash builds and maintains context across sessions. It operates in
 
 ## Guidance
 
-Guidance is the knowledge the Abgumi agent builds for itself through repeated testing. You do not write it — it accumulates automatically as Mahoraga runs tests on your app. It starts empty and grows every session, mapping screens, learning flows, and recording edge cases. It is also editable, which matters when your app changes between releases.
+Guidance is the knowledge the Megumi agent builds for itself through repeated testing. You do not write it — it accumulates automatically as Mahoraga runs tests on your app. It starts empty and grows every session, mapping screens, learning flows, and recording edge cases. It is also editable, which matters when your app changes between releases.
 
 **Read this if:** you have been using Quash for a few sessions and want to understand what the agent has learned, how to review it, and when to correct it.
 
