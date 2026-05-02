@@ -21,8 +21,8 @@
               "getting-started/platform-overview",
               {
                 "group": "Core concepts",
+                "root": "getting-started/core-concepts/index",
                 "pages": [
-                  "getting-started/core-concepts/index",
                   "getting-started/core-concepts/memory",
                   "getting-started/core-concepts/guidance",
                   "getting-started/core-concepts/megumi-and-mahoraga",
@@ -50,8 +50,8 @@
               "apps/adding-an-app",
               {
                 "group": "Apps manager",
+                "root": "apps/apps-manager/index",
                 "pages": [
-                  "apps/apps-manager/index",
                   "apps/apps-manager/overview",
                   "apps/apps-manager/builds",
                   "apps/apps-manager/knowledge"
@@ -67,15 +67,15 @@
               "test-studio/overview",
               {
                 "group": "Recipe",
+                "root": "test-studio/recipe/index",
                 "pages": [
-                  "test-studio/recipe/index",
                   "test-studio/recipe/attaching-context"
                 ]
               },
               {
                 "group": "Prompting guide (test generation)",
+                "root": "test-studio/prompting-guide-test-generation/index",
                 "pages": [
-                  "test-studio/prompting-guide-test-generation/index",
                   "test-studio/prompting-guide-test-generation/writing-effective-prompts",
                   "test-studio/prompting-guide-test-generation/prompt-patterns-and-examples",
                   "test-studio/prompting-guide-test-generation/common-mistakes"
@@ -89,8 +89,8 @@
           },
           {
             "group": "Test Cases",
+            "root": "test-management/test-case/index",
             "pages": [
-              "test-management/test-case/index",
               "test-management/test-case/about-the-test-cases-library",
               "test-management/test-case/creating-a-test-case",
               "test-management/test-case/managing-test-cases",
@@ -99,8 +99,8 @@
           },
           {
             "group": "Test Data",
+            "root": "test-management/test-data-overview/index",
             "pages": [
-              "test-management/test-data-overview/index",
               "test-management/test-data-overview/creating-datasets",
               "test-management/test-data-overview/using-slug-in-prompts",
               "test-management/test-data-overview/importing-from-file"
@@ -111,8 +111,8 @@
             "pages": [
               {
                 "group": "Tasks",
+                "root": "running-tests/task-overview/index",
                 "pages": [
-                  "running-tests/task-overview/index",
                   "running-tests/task-overview/creating-and-running-a-task",
                   "running-tests/task-overview/rerun",
                   "running-tests/task-overview/prompting-guide-task-execution"
@@ -120,8 +120,8 @@
               },
               {
                 "group": "Suites",
+                "root": "running-tests/suites-overview/index",
                 "pages": [
-                  "running-tests/suites-overview/index",
                   "running-tests/suites-overview/creating-a-suite",
                   "running-tests/suites-overview/sequential-vs.-isolated"
                 ]
@@ -130,8 +130,8 @@
           },
           {
             "group": "Backend Validations",
+            "root": "running-tests/backend-validations/index",
             "pages": [
-              "running-tests/backend-validations/index",
               "running-tests/backend-validations/connections",
               "running-tests/backend-validations/creating-a-validation",
               "running-tests/backend-validations/using-slug-in-prompts"
@@ -166,8 +166,8 @@
             "pages": [
               {
                 "group": "Troubleshooting",
+                "root": "reference/troubleshooting/index",
                 "pages": [
-                  "reference/troubleshooting/index",
                   "reference/troubleshooting/device-and-connection-issues",
                   "reference/troubleshooting/test-execution-failures",
                   "reference/troubleshooting/test-studio-issues"

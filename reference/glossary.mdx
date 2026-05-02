@@ -7,7 +7,7 @@ description: "An AI-powered automation module that performs a specific role in t
 
 An AI-powered automation module that performs a specific role in the testing workflow. Quash has two agents: Megumi (test generation) and Mahoraga (test execution). They operate sequentially — Recipe produces the plan, Mahoraga carries it out.
 
-[Megumi & Mahoraga](../getting-started/core-concepts/megumi-and-mahoraga)
+[Megumi & Mahoraga](/getting-started/core-concepts/megumi-and-mahoraga)
 
 #### APK
 
@@ -44,7 +44,7 @@ A label applied to an uploaded build in the Builds tab to indicate its testing c
 
 The knowledge the Recipe agent builds for itself through repeated testing. Not configured by you — accumulated automatically as Mahoraga runs tests on your app. Starts empty. Grows with every session. Stores screen maps, learned flows, UI patterns, permanent vs temporary states, and edge cases encountered in previous runs. Editable from **Apps → Knowledge tab**.
 
-[→ Guidance](../getting-started/core-concepts/guidance)
+[→ Guidance](/getting-started/core-concepts/guidance)
 
 #### Knowledge Tab
 
@@ -56,37 +56,37 @@ The tab inside an App that houses two things: the connected GitHub repository an
 
 The execution agent. Runs on your Android device or emulator, interacts with the UI, executes test case instructions, captures screenshots, records the session, and reports results back to Quash. Installs automatically on connected devices. Uses Android's accessibility APIs to detect and interact with UI elements.
 
-[Megumi & Mahoraga](../getting-started/core-concepts/megumi-and-mahoraga)
+[Megumi & Mahoraga](/getting-started/core-concepts/megumi-and-mahoraga)
 
 #### Memory
 
 The system that manages context across all Quash sessions. Operates in three layers: Apps context (configured by you, workspace-wide), Recipe Memory (per-session conversation history), and Guidance (agent-built knowledge, per app). None of the three layers ever resets — they are cumulative.
 
-[→ Memory](../getting-started/core-concepts/memory)
+[→ Memory](/getting-started/core-concepts/memory)
 
 #### **Megumi**&#x20;
 
 The test generation agent inside Test Studio. Takes context — your app, your GitHub branch, a Figma file, a PRD, a Jira ticket, or a plain English prompt — and generates structured, executable test cases. Purpose-built for QA test generation. Works conversationally inside a Recipe session — follow-up prompts build on the previous context within the same Recipe.&#x20;
 
-[→ Megumi & Mahoraga](../getting-started/core-concepts/megumi-and-mahoraga)
+[→ Megumi & Mahoraga](/getting-started/core-concepts/megumi-and-mahoraga)
 
 #### Recipe
 
 A test generation session inside Test Studio. Each Recipe is a named, persistent workspace where you prompt Megumi to generate test cases. Recipes retain their full conversation history and generated tests indefinitely — reopening a Recipe picks up exactly where you left off. → Test Studio
 
-[→ Megumi & Mahoraga](../getting-started/core-concepts/megumi-and-mahoraga)
+[→ Megumi & Mahoraga](/getting-started/core-concepts/megumi-and-mahoraga)
 
 #### Recipe Memory
 
 The second layer of Memory. Everything discussed and generated inside a specific Recipe session — prompts, responses, generated tests, and refinements. Persists indefinitely. Loads automatically when you reopen a recipe. Scoped to its own recipe — does not carry over to other sessions.
 
-[→ Memory](../getting-started/core-concepts/memory)
+[→ Memory](/getting-started/core-concepts/memory)
 
 #### **Rerun**&#x20;
 
 A subsequent execution of a task that has already completed successfully at least once. On a rerun, Mahoraga follows the stored path from the previous successful run instead of reasoning through the flow from scratch, resulting in significantly faster execution.
 
-[→ Rerun](../running-tests/task-overview/rerun)
+[→ Rerun](/running-tests/task-overview/rerun)
 
 #### Slug
 
@@ -134,7 +134,7 @@ The fundamental building block of testing in Quash. Defines a single test scenar
 
 The central repository where all test cases in a workspace are stored. Every test case created manually or saved from Test Studio lives here. Searchable and filterable by source, priority, type, and tag. Test cases in the library can be added to any number of suites and reused across projects and sprints.
 
-[→ About the Library](../test-management/test-case/about-the-test-cases-library)
+[→ About the Library](/test-management/test-case/about-the-test-cases-library)
 
 #### Test Data
 
@@ -146,13 +146,13 @@ A section in Quash (and a tab within each App) where structured datasets are sto
 
 A CONFIG panel setting that determines the type of tests Recipe generates. **Feature** targets one piece of functionality in isolation. **Flow** traces a user through a multi-step journey. **Integration** validates how different parts of the app work together.
 
-[→ Configuration](../test-studio/configuration-in-test-studio)
+[→ Configuration](/test-studio/configuration-in-test-studio)
 
 #### Test Studio
 
 The AI-powered test generation section in Quash. Where you work with the Recipe agent to generate test cases from plain English, attached documents, Figma designs, GitHub branches, and Jira tickets. Organised into sessions called Recipes. Accessible from the left navigation panel.
 
-[→ What is Test Studio?](../test-studio/overview)
+[→ What is Test Studio?](/test-studio/overview)
 
 #### Test Suite
 
@@ -170,7 +170,7 @@ The right-side panel in Test Studio, opened by clicking **TESTS** on the screen 
 
 The unit of measurement for how much context the Recipe agent is actively processing in a session. Every prompt, response, attached document, and generated test case consumes tokens. Quash retains only what is actively needed. In long sessions, use the `/compact` command to compress conversation history and free up token budget.
 
-[→ Tokens & /compact](../getting-started/core-concepts/tokens-and-compact)
+[→ Tokens & /compact](/getting-started/core-concepts/tokens-and-compact)
 
 #### Type (Test Case)
 
@@ -188,13 +188,13 @@ In Test Studio: a CONFIG panel setting that adds assertion steps to generated te
 
 In Backend Validations: a separately configured API call that verifies backend state during a test run.
 
-→ [Configuration](../test-studio/configuration-in-test-studio) · [Backend Validations](/running-tests/backend-validations)
+→ [Configuration](/test-studio/configuration-in-test-studio) · [Backend Validations](/running-tests/backend-validations)
 
 #### Workspace
 
 The top-level organisational unit in Quash, shared by a team. Contains all apps, devices, test cases, suites, reports, and settings. Every team member with access to the workspace can see and contribute to shared resources — recipes, test case libraries, credentials, and reports.
 
-[→ Platform Overview](../getting-started/platform-overview)
+[→ Platform Overview](/getting-started/platform-overview)
 
 #### **WDA (WebDriverAgent)**&#x20;
 
@@ -204,6 +204,6 @@ A framework used by Quash to communicate with and control a physical iPhone duri
 
 A command typed directly into the Recipe prompt input that compresses the full conversation history into a condensed form. Preserves essential context — what was tested, what tests were generated, what decisions were made — while freeing up significant token budget so a long session can continue without losing context.
 
-[→ Tokens & /compact](../getting-started/core-concepts/tokens-and-compact)
+[→ Tokens & /compact](/getting-started/core-concepts/tokens-and-compact)
 
 ###
