@@ -5,7 +5,7 @@ description: "This page covers issues that occur during test runs — when a tas
 
 This page covers issues that occur during test runs — when a task or suite starts but doesn't complete as expected, returns Partial Success, or produces inconsistent results.
 
-### Understanding the three outcomes
+## Understanding the three outcomes
 
 Before troubleshooting, confirm which outcome you are dealing with — each has a different root cause and a different resolution path.
 
@@ -15,7 +15,7 @@ Before troubleshooting, confirm which outcome you are dealing with — each has 
 | **Partial Success**           | The agent completed some steps but was blocked by something it could not handle               | Observations + screenshot at point of failure         |
 | **Pass with wrong behaviour** | The test passed but the app behaviour seems incorrect                                         | Review the Expected Result field and step screenshots |
 
-### Partial Success — agent stopped mid-run
+## Partial Success — agent stopped mid-run
 
 Partial Success almost always means Mahoraga encountered something it was not instructed to handle. It is not a bug in Quash — it is a gap in the task prompt.
 
@@ -39,7 +39,7 @@ _Fix:_ Add dismissal instructions: _"If a rating prompt appears, tap Not Now."_ 
 
 _Fix:_ Open the Device View recording and find exactly where navigation diverged. Add a verification step before the problematic navigation: _"Verify the \[screen name] is visible before tapping \[button]."_
 
-### Tests passing locally but failing in CI
+## Tests passing locally but failing in CI
 
 This is almost always a configuration or environment issue, not a test issue.
 
@@ -53,7 +53,7 @@ This is almost always a configuration or environment issue, not a test issue.
 
 **5. Check the active build.** Confirm the build version set as active in Apps → Builds matches what is deployed in the environment you are testing against. Running tests against an old build when a new version is deployed is a common cause of unexpected failures.
 
-### Flaky tests — inconsistent pass/fail results
+## Flaky tests — inconsistent pass/fail results
 
 A test that passes sometimes and fails other times without any code changes is a flaky test. Flakiness is usually caused by timing issues, animation interference, or unstable test environment state.
 
@@ -69,13 +69,13 @@ A test that passes sometimes and fails other times without any code changes is a
 
 **6. Check storage.** A device with very little free storage will slow down noticeably, causing timing-sensitive tests to fail. Clear old test artifacts and app data regularly.
 
-### Agent tapping in wrong location
+## Agent tapping in wrong location
 
 If Mahoraga is consistently tapping in the wrong place — above a button, to the side of a field — this is a [bounding box calibration ](/devices/device-configuration)issue, not a test writing issue.
 
 Recalibrate the bounding box offset in the Mahoraga app. This is particularly common after a device OS update.
 
-### Credentials not working during runs
+## Credentials not working during runs
 
 If a test fails at a login step with what appears to be an authentication error:
 
@@ -85,19 +85,19 @@ If a test fails at a login step with what appears to be an authentication error:
 
 **3. Check for MFA.** If the account has multi-factor authentication enabled, Mahoraga cannot complete the MFA step. Use a dedicated test account with MFA disabled, or configure your app to bypass MFA for test accounts in the test environment.<br />
 
-### **Rerun is not faster than the first run**
+## **Rerun is not faster than the first run**
 
 This happens when no successful run exists yet for the task. Mahoraga only stores a path after a run completes successfully. If the first run ended in a partial success or failure, no path was stored and the next run starts fresh.
 
 _Fix:_ Run the task once and ensure it reaches a successful or complete status. The run after that will use the stored path.
 
-### **Mahoraga is failing on a step it previously handled correctly**
+## **Mahoraga is failing on a step it previously handled correctly**
 
 If a rerun fails on a step that worked before, the stored path may be outdated due to a significant UI change that Mahoraga could not automatically resolve.
 
 _Fix:_ Run the task from scratch once. Mahoraga will reason through the updated flow, store the new path, and use it on subsequent reruns.
 
-### Run completes but report is empty or missing
+## Run completes but report is empty or missing
 
 If a run finishes but no report appears in Reports:
 

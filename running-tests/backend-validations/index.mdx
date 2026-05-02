@@ -15,13 +15,13 @@ Backend Validations let you verify what happens in your backend while Mahoraga i
   allowFullScreen
 ></iframe>
 
-### Why backend validations matter
+## Why backend validations matter
 
 UI testing alone has a blind spot. Mahoraga can verify that the success screen appeared after a purchase — but it cannot verify that the order was actually created in your backend, that the inventory count decreased, or that the payment was processed correctly. These are backend facts, and they are invisible to a screen-level agent.
 
 Backend Validations close that gap. They run API calls against your backend during a test and assert that the response matches what you expect. Combine them with Mahoraga's UI execution and you get true end-to-end verification — the UI behaved correctly _and_ the backend reflected the correct state.
 
-### Two ways to use validations
+## Two ways to use validations
 
 **Saved Validation** Create a validation once and reuse it across any number of tasks and suites. Saved validations live in the Validations section and can be attached to tasks from task settings — set to run before execution, after execution, or both.
 
@@ -29,7 +29,7 @@ Backend Validations close that gap. They run API calls against your backend duri
 
 Most teams use both: saved validations for systematic checks attached to suites, and `@slug` prompt actions for precise moment-specific checks inside complex task flows.
 
-### The structure of a validation
+## The structure of a validation
 
 Every backend validation has two parts:
 
@@ -39,7 +39,7 @@ Every backend validation has two parts:
 
 [→ Setting up a connection ](/running-tests/backend-validations/connections) [→ Creating a validation](/running-tests/backend-validations/creating-a-validation)
 
-### What you can assert
+## What you can assert
 
 Validations support four assertion types, and you can combine them in a single validation:
 
@@ -50,7 +50,7 @@ Validations support four assertion types, and you can combine them in a single v
 | **Regex**            | The response body matches a text pattern                                     |
 | **Extract variable** | Captures a value from the response to use in subsequent steps                |
 
-### Next steps
+## Next steps
 
 * [Connections ](/running-tests/backend-validations/connections)— set up your backend connection
 * [Creating a validation ](/running-tests/backend-validations/creating-a-validation)— define the API call and assertions

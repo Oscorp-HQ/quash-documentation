@@ -7,7 +7,7 @@ Memory is how Quash builds and maintains context. It determines how well the Abg
 
 Getting this right is the difference between tests that are generic and tests that are specific to your exact product.
 
-### The analogy
+## The analogy
 
 A new QA engineer joins your company.
 
@@ -17,11 +17,11 @@ A month later, that same engineer is writing significantly better tests than the
 
 Memory is how Quash gives the Abgumi agent that same accumulating understanding. So that each session starts more informed than the last. So that the agent is not starting from zero every time.
 
-### Three layers
+## Three layers
 
 Memory in Quash is not a single thing. It operates across three layers, each with a different scope, a different creator, and a different purpose.
 
-#### Layer 1 — Apps context
+## Layer 1 — Apps context
 
 **What it is:** The foundational context you configure in the Apps section before any testing begins.
 
@@ -42,7 +42,7 @@ Apps context never resets. Once configured, it is available in every recipe you 
 
 [→ Set up your app](/apps/adding-an-app)
 
-#### Layer 2 — Recipe Memory
+## Layer 2 — Recipe Memory
 
 **What it is:** The working memory of a single recipe session — everything discussed and generated in that conversation.
 
@@ -64,7 +64,7 @@ Every prompt you send, every response Recipe generates, and every test case prod
 
 **The boundary that matters:** Recipe Memory is specific to its recipe. It does not carry across to other recipes. Open a new recipe and the agent starts with only your Apps context and Guidance — it has no memory of what happened in a different session.
 
-#### Layer 3 — Guidance
+## Layer 3 — Guidance
 
 **What it is:** The knowledge the agent builds for itself through repeated testing. Not configured by you — accumulated automatically.
 
@@ -80,7 +80,7 @@ Guidance starts empty. The first session on a new app draws only from Apps conte
 
 [→ Full Guidance documentation](guidance)
 
-### How the layers stack
+## How the layers stack
 
 The three layers are not alternatives — they all operate simultaneously. When you open a recipe and send a prompt, Recipe draws on all three at once:
 
@@ -98,7 +98,7 @@ In practice:
 
 A session with all three layers populated produces tests that are orders of magnitude more specific than a session with none. This is why setting up Apps thoroughly before your first Test Studio session makes such a visible difference.
 
-### Tokens and context limits
+## Tokens and context limits
 
 Memory is not unlimited. Each recipe session operates within a token budget — a measure of how much context the agent is actively holding at once. Quash is designed to be efficient. It retains what is actively needed and prunes what is not.
 

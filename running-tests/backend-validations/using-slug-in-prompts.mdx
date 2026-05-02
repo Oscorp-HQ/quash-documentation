@@ -5,13 +5,13 @@ description: "Once a validation has a prompt action enabled, you can call it inl
 
 Once a validation has a prompt action enabled, you can call it inline inside any task prompt by typing `@`. The validation runs at exactly the point in the sequence where you place it — not before, not after. Order matters.
 
-### How to insert a validation
+## How to insert a validation
 
 Type `@` in any task prompt input. A dropdown appears listing all validations that have prompt actions enabled, showing their slug and description. Select the one you want. The `@slug` is inserted at the cursor position.
 
 You can also type the slug directly — `@verify-order-created` — without using the dropdown.
 
-### How execution works
+## How execution works
 
 When Mahoraga reaches an `@slug` reference in a task prompt, it pauses UI interaction, triggers the validation, waits for the result, and then continues with the next instruction.
 
@@ -29,7 +29,7 @@ Verify the order confirmation screen shows the correct order number.
 
 Here, `@verify-order-created` runs immediately after the purchase is completed — checking the backend state before the agent continues to verify the confirmation screen. If the backend check fails, Mahoraga notes it in the report and continues (unless the validation is marked as required, in which case the run stops).
 
-### Prompt action vs. task settings
+## Prompt action vs. task settings
 
 You have two ways to attach a validation to a task:
 
@@ -39,7 +39,7 @@ You have two ways to attach a validation to a task:
 
 Both methods can be used together. A task can have validations in settings (run at start and end) and `@slug` references mid-prompt (run at a specific step).
 
-### Passing parameters to validations
+## Passing parameters to validations
 
 If a validation is configured with parameters, pass values to them inline using `key=value` syntax after the slug.
 
@@ -50,7 +50,7 @@ If a validation is configured with parameters, pass values to them inline using 
 
 Parameters let a single validation work across many different test scenarios without creating separate validations for each one.
 
-### Reading validation results in reports
+## Reading validation results in reports
 
 Every validation that runs during a task appears in the [Execution Report](/execution-reports/report-dashboard) under Observations. The report shows:
 
@@ -64,7 +64,7 @@ If a validation marked as **required** fails, the report shows it as a definitiv
 
 If a validation marked as **optional** fails, it appears as a warning in Observations — noted for visibility but not counted as a run failure.
 
-### Common patterns
+## Common patterns
 
 **Verify state after creation:**
 

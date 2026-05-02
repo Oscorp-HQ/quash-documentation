@@ -7,7 +7,7 @@ A task prompt is a plain English instruction given directly to Mahoraga — the 
 
 The difference matters. Recipe prompts are about describing what to test. Task prompts are about describing what to do. The more precisely you write a task prompt, the more consistently Mahoraga executes it.
 
-### The structure that works
+## The structure that works
 
 Every good task prompt follows the same shape:
 
@@ -17,7 +17,7 @@ Open the app, navigate to [screen], do [action], and verify [expected outcome].
 
 Start with where to go. Then what to do. Then what should be true at the end. This gives Mahoraga a clear sequence with a defined success condition.
 
-### Examples
+## Examples
 
 **Simple verification:**
 
@@ -57,9 +57,9 @@ appears, tap Allow. If an onboarding carousel appears, swipe through all
 screens and tap Get Started. Verify the home feed loads with content.
 ```
 
-### Principles for good prompts
+## Principles for good prompts
 
-#### 1. Be specific about UI elements
+## 1. Be specific about UI elements
 
 Name buttons, fields, and screens as they appear in the app. Mahoraga uses accessibility APIs to find elements by their labels. The closer your prompt matches the actual UI text, the more reliably it finds the right element.
 
@@ -70,7 +70,7 @@ Name buttons, fields, and screens as they appear in the app. Mahoraga uses acces
 | "Go to settings"    | "Tap the gear icon in the top-right corner to open Settings" |
 | "Scroll down"       | "Scroll down to the Payment Methods section"                 |
 
-#### 2. Include the expected outcome
+## 2. Include the expected outcome
 
 Without a verification step, Mahoraga executes the actions but cannot determine if they succeeded. Always end with what should be true at the end.
 
@@ -80,7 +80,7 @@ Without a verification step, Mahoraga executes the actions but cannot determine 
 | "Add item to cart"          | "Add the first product to the cart and verify the cart badge shows 1 and the item name appears in the cart list"          |
 | "Delete a notification"     | "Swipe left on the first notification, tap Delete, and verify the notification is removed and the count decreases by one" |
 
-#### 3. Handle interruptions explicitly
+## 3. Handle interruptions explicitly
 
 If your app shows permission dialogs, onboarding tooltips, cookie banners, or update prompts, tell Mahoraga what to do with them. Otherwise, it may get stuck on an unexpected dialog.
 
@@ -92,7 +92,7 @@ and verify the product feed loads.
 
 This matters most on first-run flows, after app updates, or when testing on a device that has been factory-reset.
 
-#### 4. Use credentials from Apps
+## 4. Use credentials from Apps
 
 If credentials are configured in Apps → Credentials, reference them by name instead of hardcoding login details:
 
@@ -106,7 +106,7 @@ Log in using the Admin Account credentials and navigate to the User Management p
 
 Mahoraga pulls the stored credentials automatically. This keeps prompts clean and means you never need to update prompts when passwords change — just update the credential set in Apps.
 
-#### 5. Be explicit about navigation
+## 5. Be explicit about navigation
 
 Do not assume Mahoraga knows the fastest path between screens. Describe the navigation steps if the route matters for the test:
 
@@ -123,7 +123,7 @@ Navigate to the Change Password screen.
 
 Mahoraga will find its own path. Use explicit navigation when the route itself is what you are testing (e.g., "verify the back button returns to the previous screen, not the home screen").
 
-### Using test data with /slug
+## Using test data with /slug
 
 If the same task needs to run with different inputs — different user accounts, different search terms, different product selections — use Test Data instead of writing separate tasks.
 
@@ -143,7 +143,7 @@ If `/login-credentials` has five rows, the task runs five times — once per set
 
 → Test Data
 
-### Common mistakes
+## Common mistakes
 
 **Not naming UI elements:** "Tap the button" — which button? Mahoraga sees every button on screen. Say "tap the Sign In button" or "tap the Submit Order button."
 
@@ -155,7 +155,7 @@ If `/login-credentials` has five rows, the task runs five times — once per set
 
 **Hardcoding credentials:** "Enter admin@company.com and password123" — store these in Apps → Credentials and reference them by name. Hardcoded credentials break when passwords rotate and expose sensitive data in task history.
 
-### When to use tasks vs. Test Studio
+## When to use tasks vs. Test Studio
 
 | Situation                                       | Use                           |
 | ----------------------------------------------- | ----------------------------- |

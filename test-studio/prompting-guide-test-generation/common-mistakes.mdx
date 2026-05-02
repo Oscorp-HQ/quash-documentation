@@ -5,7 +5,7 @@ description: "These are the prompting errors that most frequently lead to generi
 
 These are the prompting errors that most frequently lead to generic, incomplete, or unusable test output from Megumi. Each one has a specific fix.
 
-### Too vague
+## Too vague
 
 **The prompt:**
 
@@ -30,7 +30,7 @@ Use the exact field names "Email Address" and "Password" and the
 button label "Sign In".
 ```
 
-### Too broad in a single prompt
+## Too broad in a single prompt
 
 **The prompt:**
 
@@ -54,7 +54,7 @@ Generate tests for the user profile and settings screens.
 
 Megumi produces better output when the scope is clear. If you need full app coverage, create separate recipes for each major feature and run them independently.
 
-### No expected outcomes
+## No expected outcomes
 
 **The prompt:**
 
@@ -83,7 +83,7 @@ Test the payment flow with an expired credit card and verify:
 - The user remains on the payment screen with the form still filled
 ```
 
-### Relying on assumed knowledge
+## Relying on assumed knowledge
 
 **The prompt:**
 
@@ -107,7 +107,7 @@ Test the standard checkout flow for a logged-in user with items in cart:
 
 Do not assume the PRD or Figma file is self-explanatory. Megumi reads them, but your prompt directs how it uses that information.
 
-### Not specifying error messages
+## Not specifying error messages
 
 **The prompt:**
 
@@ -134,7 +134,7 @@ attached Figma designs. If a message is not specified in the designs,
 use a reasonable placeholder and flag it for review.
 ```
 
-### Mixing generation and execution concerns
+## Mixing generation and execution concerns
 
 **The prompt:**
 
@@ -153,7 +153,7 @@ payment failures, and promo code edge cases.
 
 After generation, save the tests to your library, add them to a suite, and run the suite on your Pixel 6.
 
-### Not using follow-up prompts
+## Not using follow-up prompts
 
 **The problem:** a user generates tests, finds them too generic, discards everything, and starts a new recipe with a more detailed prompt.
 
@@ -175,7 +175,7 @@ the user is already logged in.
 
 Iterating in the same session is faster and produces better results than starting over, because Megumi has the full conversation context to build on.
 
-### Checklist before prompting
+## Checklist before prompting
 
 Before sending your first prompt in a recipe, verify:
 

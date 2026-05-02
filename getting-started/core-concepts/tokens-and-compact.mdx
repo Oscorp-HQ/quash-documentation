@@ -5,13 +5,13 @@ description: "Every recipe session in Test Studio has a context window — a lim
 
 Every recipe session in Test Studio has a context window — a limit on how much the Recipe agent can hold in active memory at once. Understanding why this limit exists and how Quash handles it will help you get the most out of long sessions.
 
-### What tokens are
+## What tokens are
 
 Tokens are the unit of measurement for how much content the Recipe agent is actively processing in a session.
 
 Everything in a recipe contributes to the token count — your prompts, the agent's responses, attached documents, connected app data, and the full history of the conversation. The more that has been discussed, the more tokens are in use.
 
-### Why there is a limit
+## Why there is a limit
 
 The 200,000 token limit exists not because of cost or storage, but because of how AI models work.
 
@@ -19,13 +19,13 @@ As a conversation grows beyond a certain size, the model's ability to reason coh
 
 This is a fundamental characteristic of current language models, not a limitation specific to Quash.
 
-### What Quash does automatically
+## What Quash does automatically
 
 When a recipe session approaches 200,000 tokens, Quash automatically compacts the conversation. It summarises the full history into a condensed form — preserving what matters while discarding the raw back-and-forth that is no longer needed for the current work.
 
 You do not need to do anything for this to happen. It is handled in the background. After auto-compact, the session continues from the same point with a lighter context that the agent can reason over accurately again.
 
-### The /compact command
+## The /compact command
 
 `/compact` is the manual version of the same process. Instead of waiting for Quash to auto-compact at the limit, you can trigger it yourself at any point by typing `/compact` in the recipe prompt input and pressing Enter.
 
@@ -50,13 +50,13 @@ Type `/compact` in the prompt input and press Enter. Recipe summarises the conve
 * It does not reset the recipe — you are continuing the same session with a more compact history
 * It does not lose what matters — it compresses the exchange history, not the substance of what was decided
 
-### When to use /compact manually
+## When to use /compact manually
 
 A good signal: if the session has gone through more than 15–20 exchanges and you still have significant work to do, compact it. Do not wait for the agent's responses to feel off — by that point, auto-compact may be about to trigger anyway.
 
 You can use `/compact` more than once in a session. If you compact mid-session and then continue working for another twenty exchanges on a new area, compact again before switching focus.
 
-### Practical habits for long sessions
+## Practical habits for long sessions
 
 **Save tests as you go.** Do not wait until the end of a long session to save to your library. Save good tests progressively — the conversation history and the Tests panel are independent. Even if the session auto-compacts, your saved tests are safe.
 

@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "aspen",
+  "theme": "maple",
   "name": "Quash Documentation",
   "colors": {
     "primary": "#FFD233",
@@ -15,6 +15,7 @@
         "groups": [
           {
             "group": "Getting started",
+            "icon": "rocket",
             "pages": [
               "index",
               "getting-started/quickstart-guide",
@@ -34,6 +35,7 @@
           },
           {
             "group": "Devices",
+            "icon": "smartphone",
             "pages": [
               "devices/overview",
               "devices/physical-android-devices",
@@ -46,6 +48,7 @@
           },
           {
             "group": "Apps",
+            "icon": "app-window",
             "pages": [
               "apps/adding-an-app",
               {
@@ -63,6 +66,7 @@
           },
           {
             "group": "Test Studio",
+            "icon": "flask-conical",
             "pages": [
               "test-studio/overview",
               {
@@ -89,6 +93,7 @@
           },
           {
             "group": "Test Management",
+            "icon": "clipboard-list",
             "pages": [
               {
                 "group": "Test Cases",
@@ -113,6 +118,7 @@
           },
           {
             "group": "Running Tests",
+            "icon": "circle-play",
             "pages": [
               {
                 "group": "Tasks",
@@ -144,6 +150,7 @@
           },
           {
             "group": "Execution Reports",
+            "icon": "chart-bar",
             "pages": [
               "execution-reports/report-dashboard",
               "execution-reports/reading-an-execution-report",
@@ -152,6 +159,7 @@
           },
           {
             "group": "Integrations",
+            "icon": "plug",
             "pages": [
               "integrations/overview",
               "integrations/slack",
@@ -161,6 +169,7 @@
           },
           {
             "group": "Account & Organization",
+            "icon": "users",
             "pages": [
               "reference/organization-and-members",
               "administration/how-quash-pricing-works"
@@ -168,6 +177,7 @@
           },
           {
             "group": "Reference",
+            "icon": "book-open",
             "pages": [
               {
                 "group": "Troubleshooting",
@@ -225,6 +235,9 @@
   },
   "fonts": {
     "family": "Inter"
+  },
+  "icons": {
+    "library": "lucide"
   },
   "seo": {
     "indexing": "all"
