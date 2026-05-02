@@ -1,9 +1,7 @@
 ---
 title: "Connections"
-description: "A connection is the configuration Quash uses to reach your backend. It defines where your API lives, how to authenticate with it, and any headers required to make a valid request. Every validation ..."
+description: "Store base URL, auth, and shared headers once; every validation inherits them so teams stop duplicating credentials and environment details."
 ---
-
-A connection is the configuration Quash uses to reach your backend. It defines where your API lives, how to authenticate with it, and any headers required to make a valid request. Every validation you create is built on top of a connection — the connection handles authentication once so individual validations do not need to repeat it.
 
 One connection can support any number of validations. If you have multiple environments — staging, production — create a separate connection for each.
 

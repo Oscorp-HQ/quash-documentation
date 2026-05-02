@@ -1,9 +1,7 @@
 ---
 title: "Rerun"
-description: "When you run a task for the first time, Mahoraga operates in full reasoning mode - reading each screen, identifying elements, handling interruptions, and making decisions at every step. When the ru..."
+description: "After a successful first run, Mahoraga replays a stored path for speed—unless the UI drifts; then it reasons again and updates what it learned."
 ---
-
-When you run a task for the first time, Mahoraga operates in full reasoning mode - reading each screen, identifying elements, handling interruptions, and making decisions at every step. When the run completes successfully, Mahoraga stores the full path it took.
 
 From the second run onwards, Mahoraga follows that stored path directly. For each step, it checks the current screen against what it expects. If the screen matches, it executes immediately — no inference, no reasoning pause. A test that took around 5 minutes on the first run typically completes in around 1 minute on reruns.
 
