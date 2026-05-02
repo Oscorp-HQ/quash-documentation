@@ -88,22 +88,27 @@
             ]
           },
           {
-            "group": "Test Cases",
-            "root": "test-management/test-case/index",
+            "group": "Test Management",
             "pages": [
-              "test-management/test-case/about-the-test-cases-library",
-              "test-management/test-case/creating-a-test-case",
-              "test-management/test-case/managing-test-cases",
-              "test-management/test-case/best-practices"
-            ]
-          },
-          {
-            "group": "Test Data",
-            "root": "test-management/test-data-overview/index",
-            "pages": [
-              "test-management/test-data-overview/creating-datasets",
-              "test-management/test-data-overview/using-slug-in-prompts",
-              "test-management/test-data-overview/importing-from-file"
+              {
+                "group": "Test Cases",
+                "root": "test-management/test-case/index",
+                "pages": [
+                  "test-management/test-case/about-the-test-cases-library",
+                  "test-management/test-case/creating-a-test-case",
+                  "test-management/test-case/managing-test-cases",
+                  "test-management/test-case/best-practices"
+                ]
+              },
+              {
+                "group": "Test Data",
+                "root": "test-management/test-data-overview/index",
+                "pages": [
+                  "test-management/test-data-overview/creating-datasets",
+                  "test-management/test-data-overview/using-slug-in-prompts",
+                  "test-management/test-data-overview/importing-from-file"
+                ]
+              }
             ]
           },
           {
@@ -125,16 +130,16 @@
                   "running-tests/suites-overview/creating-a-suite",
                   "running-tests/suites-overview/sequential-vs.-isolated"
                 ]
+              },
+              {
+                "group": "Backend Validations",
+                "root": "running-tests/backend-validations/index",
+                "pages": [
+                  "running-tests/backend-validations/connections",
+                  "running-tests/backend-validations/creating-a-validation",
+                  "running-tests/backend-validations/using-slug-in-prompts"
+                ]
               }
-            ]
-          },
-          {
-            "group": "Backend Validations",
-            "root": "running-tests/backend-validations/index",
-            "pages": [
-              "running-tests/backend-validations/connections",
-              "running-tests/backend-validations/creating-a-validation",
-              "running-tests/backend-validations/using-slug-in-prompts"
             ]
           },
           {
