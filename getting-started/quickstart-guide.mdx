@@ -7,8 +7,11 @@ description: "Hands-on walkthrough: install, connect a device, add an app, run a
 
 You need:
 
-* Quash installed on your computer ([Download here](https://quashbugs.com/download))
-* Android Studio installed with at least one AVD (Android Virtual Device) configured
+- Quash installed on your computer ([Download here](https://quashbugs.com/download))
+- Android Studio installed with at least one AVD (Android Virtual Device) configured
+- A supported device is recommended for the best experience using Quash \
+  - **Mac:** M1–M5 (Air or Pro), 16GB RAM, macOS 13 Ventura or above \
+  - **Windows:** 13th Gen Intel Core i5 or equivalent, 8GB RAM minimum, 512GB storage 
 
 ## Step 1 - Install and log in
 
@@ -79,7 +82,7 @@ Quash cloud devices come with Mahoraga pre-installed. You get 60 minutes of free
 ## Step 3 - Add your app
 
 1. Click **Apps** in the left navigation.
-2. Click **+ New App**.
+2. Click **\+ New App**.
 3. Search for your app by name as it appears on the Play Store.
 4. Select it and confirm.
 
@@ -91,12 +94,12 @@ For the full walkthrough, see [\[Apps\]](/apps/adding-an-app)
 A task is a single plain English instruction you give to Mahoraga. It is the fastest way to test something right now without setting up a full test suite.
 
 1. Click **Tasks** in the left navigation.
-2. Click **+ New Task**.
+2. Click **\+ New Task**.
 3. Select your connected device from the device picker.
 4. Select your app.
 5. Type an instruction in the prompt field. For example:
 
-```
+```text
 Open the app, navigate to the login screen, enter a valid email
 and password, tap Sign In, and verify the home screen loads.
 ```
@@ -109,19 +112,19 @@ Mahoraga launches your app on the connected device and starts executing. You can
 
 Task prompts are plain English, but their structure matters. Every good task prompt follows the same shape:
 
-```
+```text
 Open the app, navigate to [screen], do [action], and verify [expected outcome].
 ```
 
 A few things that make the biggest difference:
 
-* **Name UI elements as they appear in the app.** Say "tap the Sign In button" not "tap the button." Mahoraga uses accessibility labels to find elements — the closer your wording matches the actual UI text, the more reliably it lands.
-* **Always end with a verification step.** Without it, Mahoraga executes the actions but cannot determine if they succeeded. "Verify the home dashboard loads" is what turns a series of taps into a pass/fail result.
-* **Handle interruptions explicitly.** If your app shows permission dialogs, onboarding tooltips, or cookie banners, tell Mahoraga what to do: "If a notification permission dialog appears, tap Allow."
+- **Name UI elements as they appear in the app.** Say "tap the Sign In button" not "tap the button." Mahoraga uses accessibility labels to find elements — the closer your wording matches the actual UI text, the more reliably it lands.
+- **Always end with a verification step.** Without it, Mahoraga executes the actions but cannot determine if they succeeded. "Verify the home dashboard loads" is what turns a series of taps into a pass/fail result.
+- **Handle interruptions explicitly.** If your app shows permission dialogs, onboarding tooltips, or cookie banners, tell Mahoraga what to do: "If a notification permission dialog appears, tap Allow."
 
 **Example prompt to try first:**
 
-```
+```text
 Open the app, navigate to the login screen, enter a valid email and password,
 tap Sign In, and verify the home screen loads.
 ```
@@ -134,10 +137,10 @@ When the run finishes, the report opens automatically. Click **Reports** in the 
 
 The report shows:
 
-* **Executive Summary** — a plain English paragraph written by the AI describing exactly what happened and where it stopped if it didn't complete
-* **Observations** — specific findings from the run, flagged behaviours, and recommendations
-* **Detailed breakdown** — every step the agent took, with screenshots
-* **Device recording** — a full screen recording of the run you can replay and scrub through
+- **Executive Summary** — a plain English paragraph written by the AI describing exactly what happened and where it stopped if it didn't complete
+- **Observations** — specific findings from the run, flagged behaviours, and recommendations
+- **Detailed breakdown** — every step the agent took, with screenshots
+- **Device recording** — a full screen recording of the run you can replay and scrub through
 
 If the run returned **Partial Success**, open Observations first. This almost always means Mahoraga hit something it could not handle — a CAPTCHA, a permission dialog it was not instructed to dismiss, or a loading screen that timed out.
 
@@ -145,13 +148,13 @@ If the run returned **Partial Success**, open Observations first. This almost al
 
 You have run your first test. Here is where to go from here depending on what you want to do next.
 
-| Goal                                                   | Where to go      |
-| ------------------------------------------------------ | ---------------- |
-| Generate many test cases at once from a spec or PRD    | Test Studio      |
-| Set up your app properly — GitHub, builds, credentials | Apps             |
-| Organise tests into a suite and run them together      | Suites           |
-| Connect a physical device                              | Physical Devices |
-| Understand how Quash's AI context system works         | Memory           |
+| Goal | Where to go |
+| --- | --- |
+| Generate many test cases at once from a spec or PRD | Test Studio |
+| Set up your app properly — GitHub, builds, credentials | Apps |
+| Organise tests into a suite and run them together | Suites |
+| Connect a physical device | Physical Devices |
+| Understand how Quash's AI context system works | Memory |
 
 ## Generating tests in Test Studio
 
@@ -161,17 +164,11 @@ Every prompt to Recipe works best when it includes: the feature or flow you are 
 
 Before diving in, read:
 
-* [Writing effective prompts ](/test-studio/prompting-guide-test-generation/writing-effective-prompts)— how to structure prompts, use multiple context sources, and refine tests after the first pass
-* [Prompt patterns & examples](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples) — five proven templates with worked examples
-* [Common mistakes ](/test-studio/prompting-guide-test-generation/common-mistakes)— the most frequent prompting errors and a pre-prompt checklist
+- [Writing effective prompts ](/test-studio/prompting-guide-test-generation/writing-effective-prompts)— how to structure prompts, use multiple context sources, and refine tests after the first pass
+- [Prompt patterns & examples](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples) — five proven templates with worked examples
+- [Common mistakes ](/test-studio/prompting-guide-test-generation/common-mistakes)— the most frequent prompting errors and a pre-prompt checklist
 
-<iframe
-  className="w-full aspect-video rounded-xl"
-  src="https://www.youtube.com/embed/nuUuKJLiI8Q"
-  title="YouTube video player"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-></iframe>
+<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/nuUuKJLiI8Q" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
 
 ## **Creating and Running a Test Suite**
 
@@ -179,10 +176,4 @@ Suites let you run a collection of related test cases together in a single go, w
 
 For the full step-by-step walkthrough, see [**Suite Overview**.](/running-tests/suites-overview)
 
-<iframe
-  className="w-full aspect-video rounded-xl"
-  src="https://www.youtube.com/embed/b1jU5EefytY"
-  title="YouTube video player"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  allowFullScreen
-></iframe>
+<iframe className="w-full aspect-video rounded-xl" src="https://www.youtube.com/embed/b1jU5EefytY" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowFullScreen />
