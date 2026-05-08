@@ -1,0 +1,28 @@
+---
+title: "Overview"
+description: "Central guide for writing high-quality prompts across test generation, task execution, test data, and backend validations."
+---
+
+Prompt quality directly affects test quality in Quash. This section is your single source of truth for prompt structure, examples, and best practices across products.
+
+## Download the full guide
+
+[Download: How to Prompt Guide (May 2026) (PDF)](/images/How%20To%20Prompt%20Guide%20(May%202026).pdf)
+
+## Fundamentals that apply everywhere
+
+Use these principles before any workflow-specific prompt:
+
+1. **Be specific about targets.** Name screens, buttons, and fields exactly as they appear in UI text.
+2. **Define expected outcomes.** Say what must be true at the end so execution has a clear pass/fail condition.
+3. **Handle interruptions explicitly.** Mention what to do if permissions, onboarding, banners, or popups appear.
+4. **Keep prompt scope focused.** One coherent objective per prompt gives stronger and more reliable results.
+
+These fundamentals apply to both generation and execution workflows.
+
+## Choose your workflow
+
+- [Prompting for test generation (Recipe / Megumi)](/test-studio/prompting-guide-test-generation)
+- [Prompting for task execution (Tasks / Mahoraga)](/running-tests/task-overview/prompting-guide-task-execution)
+- [Using test data in prompts (`/slug`)](/test-management/test-data-overview/using-slug-in-prompts)
+- [Using backend validations in prompts (`@slug`)](/running-tests/backend-validations/using-slug-in-prompts)

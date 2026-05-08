@@ -1,23 +1,21 @@
 ---
-title: "Prompting Guide (Test Generation)"
-description: "Stronger prompts mean less guesswork for Megumi and generated tests that match what you actually wanted to validate."
+title: "Prompting for Test Generation"
+sidebarTitle: "Prompting for Test Generation"
+description: "Write high-signal prompts for Megumi so generated tests are specific, complete, and aligned to your real product behavior."
 ---
 
-Megumi generates tests by inferring intent from what you write. The more clearly you express what you want to test, what the expected outcomes are, and which edge cases matter, the less inferring the agent has to do — and the more accurately the output reflects your actual intent.
+[Download: How to Prompt Guide (May 2026) (PDF)](/images/How%20To%20Prompt%20Guide%20(May%202026).pdf)  
+[Browse all prompting guides](/prompting)
+
+Megumi generates tests by inferring intent from what you write. The clearer your prompt, the less interpretation Megumi has to do, and the closer the output matches what you actually wanted to validate.
 
 You do not need to write code. You do not need to know test frameworks. You need to write clearly.
 
-## What to include in every prompt
+## Start with shared fundamentals
 
-Every prompt in Recipe should include four things:
+Before writing generation-specific instructions, apply the shared fundamentals in [Overview](/prompting): specificity, explicit outcomes, interruption handling, and clear scope.
 
-**The feature or flow you are testing.** Be explicit. Name it. Do not say "the main screen" — say "the product listing screen". Do not say "the flow" — say "the checkout flow from cart to order confirmation".
-
-**The scenarios you want covered.** List them. Recipe will cover more than you list, but listing the key scenarios ensures they are definitely included. Think: happy path, sad path, edge cases, validation errors.
-
-**The expected outcomes.** What should happen when each scenario runs correctly? Include this. Expected outcomes become the assertions in the test case — the actual pass/fail criteria. Without them, a test confirms that steps ran but not that they worked correctly.
-
-**UI element names, if you know them.** If you know the button is called "Sign In" (not "Login"), say so. If the field is labelled "Mobile Number" (not "Phone"), use that. Specificity here makes tests directly executable rather than requiring interpretation.
+For generation workflows, add one extra requirement: define the scenario coverage you want (happy path, failures, edges) so Megumi knows breadth as well as depth.
 
 ## Prompt length
 
@@ -35,10 +33,10 @@ Your prompt tells Megumi _what_ to test. The CONFIG panel tells it _how_ thoroug
 
 [→ Writing effective prompts](/test-studio/prompting-guide-test-generation/writing-effective-prompts)
 
-**Prompt patterns & examples** — five proven patterns with templates and worked examples: feature + scenarios, user journey, edge cases, spec-driven, and multi-source generation.
+**Prompt Playbooks** — five proven patterns with templates and worked examples: feature + scenarios, user journey, edge cases, spec-driven, and multi-source generation.
 
-[→ Prompt patterns & examples](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples)
+[→ Prompt Playbooks](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples)
 
-**Common mistakes** — the most frequent prompting errors and how to fix them, with a pre-prompt checklist.
+**Troubleshooting Prompts** — the most frequent prompting errors and how to fix them, with a pre-prompt checklist.
 
-[→ Common mistakes](/test-studio/prompting-guide-test-generation/common-mistakes)
+[→ Troubleshooting Prompts](/test-studio/prompting-guide-test-generation/common-mistakes)
