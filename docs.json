@@ -76,15 +76,6 @@
                   "test-studio/recipe/attaching-context"
                 ]
               },
-              {
-                "group": "Prompting guide (test generation)",
-                "root": "test-studio/prompting-guide-test-generation/index",
-                "pages": [
-                  "test-studio/prompting-guide-test-generation/writing-effective-prompts",
-                  "test-studio/prompting-guide-test-generation/prompt-patterns-and-examples",
-                  "test-studio/prompting-guide-test-generation/common-mistakes"
-                ]
-              },
               "test-studio/configuration-in-test-studio",
               "test-studio/token-management",
               "test-studio/saving-generated-tests",
@@ -110,18 +101,20 @@
                 "root": "test-management/test-data-overview/index",
                 "pages": [
                   "test-management/test-data-overview/creating-datasets",
-                  "test-management/test-data-overview/using-slug-in-prompts",
                   "test-management/test-data-overview/importing-from-file"
                 ]
               }
             ]
           },
           {
-            "group": "Prompting",
+            "group": "Prompting Fundamentals",
             "icon": "message-square-text",
             "pages": [
               "prompting/index",
               "test-studio/prompting-guide-test-generation/index",
+              "test-studio/prompting-guide-test-generation/writing-effective-prompts",
+              "test-studio/prompting-guide-test-generation/prompt-patterns-and-examples",
+              "test-studio/prompting-guide-test-generation/common-mistakes",
               "running-tests/task-overview/prompting-guide-task-execution",
               "test-management/test-data-overview/using-slug-in-prompts",
               "running-tests/backend-validations/using-slug-in-prompts"
@@ -136,8 +129,7 @@
                 "root": "running-tests/task-overview/index",
                 "pages": [
                   "running-tests/task-overview/creating-and-running-a-task",
-                  "running-tests/task-overview/rerun",
-                  "running-tests/task-overview/prompting-guide-task-execution"
+                  "running-tests/task-overview/rerun"
                 ]
               },
               {
@@ -153,8 +145,7 @@
                 "root": "running-tests/backend-validations/index",
                 "pages": [
                   "running-tests/backend-validations/connections",
-                  "running-tests/backend-validations/creating-a-validation",
-                  "running-tests/backend-validations/using-slug-in-prompts"
+                  "running-tests/backend-validations/creating-a-validation"
                 ]
               }
             ]
