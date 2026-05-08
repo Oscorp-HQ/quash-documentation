@@ -117,6 +117,17 @@
             ]
           },
           {
+            "group": "Prompting",
+            "icon": "message-square-text",
+            "pages": [
+              "prompting/index",
+              "test-studio/prompting-guide-test-generation/index",
+              "running-tests/task-overview/prompting-guide-task-execution",
+              "test-management/test-data-overview/using-slug-in-prompts",
+              "running-tests/backend-validations/using-slug-in-prompts"
+            ]
+          },
+          {
             "group": "Running Tests",
             "icon": "circle-play",
             "pages": [
