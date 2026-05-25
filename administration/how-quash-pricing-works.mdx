@@ -1,148 +1,201 @@
 ---
 title: "How Quash Pricing Works"
-description: "Credits, per-task LLM costs with platform markup, cloud minutes, and what we never charge for."
+description: "Plans, test minutes, cloud sessions, overage, and what changes when you upgrade."
 ---
 
-Every task you run in Quash consumes LLM API calls. The cost of a task depends on:
+Quash offers tiered plans that scale with your team's testing needs. Start with a free trial, then pick the plan that fits your usage. Every plan includes full platform access — the difference is capacity.
 
-* The complexity of the task (how much reasoning, validation and recovery is required)
-* The model used (for example, Claude or GPT)
-* The tools and reasoning capabilities enabled during execution
+## Plans at a glance
 
-More complex tasks naturally require deeper reasoning, more decision-making and additional tooling, which in turn increases underlying API usage. Pricing scales with this complexity rather than with fixed or predefined steps.
+| | Free Trial | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|---|
+| **Price** | — | $79/mo | $319/mo | $719/mo | Custom |
+| **Test minutes** | 100 (one-time) | 800/mo | 3,500/mo | 9,000/mo | Custom |
+| **Apps** | 1 | 1 | 2 | 4 | Unlimited |
+| **Concurrent cloud sessions** | 1 | 1 | 3 | 6 | Custom |
+| **Users / seats** | 1 | 2 | 5 | Unlimited | Unlimited |
+| **Cloud devices** | ✓ | ✓ | ✓ | ✓ | ✓ |
+| **Real device fleet** | — | — | — | Add-on | ✓ Custom |
 
-Quash does not charge based on:
+Save 20% with annual billing.
 
-* Seats or users
-* Test cases or test suites
-* Projects or environments
-* Number of devices connected / parallel executions
+## Free trial
 
-Instead, pricing reflects the actual compute and API usage required to execute your task.
+When you sign up, you get a 14-day free trial with 100 test minutes — no credit card required. The trial gives you full platform access so you can run real tasks, generate tests, and see how Quash works end to end.
 
-#### Free plan <a href="#free-plan" id="free-plan"></a>
+The free trial does not include overage. Once the 100 minutes are used, you upgrade to a paid plan to continue.
 
-When you sign up, you receive $10 in free usage credits.
+## What counts as a test minute
 
-These credits let you:
+A test minute is one minute of active test execution on a device — local or cloud. The timer runs while Mahoraga is executing instructions on the device. Time spent writing prompts, generating tests in Test Studio, or reviewing reports does not count.
 
-* Run real tasks
-* See how Quash breaks tasks down internally
-* Understand how pricing compounds with task complexity
+## Overage
 
-There are no feature restrictions on the Free plan. Once your credits are exhausted, you can add funds and continue using Quash on a pay-as-you-go basis.
+Included minutes cover normal team usage. When you exceed your plan's monthly allocation, Quash bills per-minute so short runs stay cheap and long suites stay predictable.
 
-#### Pay-as-you-go pricing <a href="#pay-as-you-go-pricing" id="pay-as-you-go-pricing"></a>
+**Test minutes overage:** $0.20/min
 
-Quash follows a task-based pay-as-you-go model. There are no subscriptions or fixed monthly fees. You are charged only when you run tasks.
+Annual customers get 20% off overage rates. The free trial does not include overage.
 
-**What you pay for**
+## What each plan includes
 
-Each task execution incurs:
+**Free Trial**
+- Full platform access
+- Local devices and emulators
+- Prompt-to-execution testing
+- Detailed execution reports
 
-* LLM API usage cost (passed through from the model provider)
-* A \~20% platform markup to cover:
-* Agent orchestration
-* Execution reliability
-* Infrastructure and maintenance
-* Tooling, monitoring, and reporting
+**Starter** — everything in Free Trial, plus:
+- Cloud devices
+- Backend validation
+- Full test suite management
+- Overage available
 
-The platform markup is applied on top of the underlying API cost.
+**Growth** — everything in Starter, plus:
+- 3 concurrent cloud sessions
+- 2 app projects
+- CI/CD integration (GitHub Actions, GitLab, Bitbucket, Jenkins)
+- Priority support
 
-#### Why pricing varies between tasks <a href="#why-pricing-varies-between-tasks" id="why-pricing-varies-between-tasks"></a>
+**Pro** — everything in Growth, plus:
+- 6 concurrent cloud sessions
+- 4 app projects
+- Unlimited users
+- Scheduled regression runs
+- Agentic app monitoring
+- Real device fleet (add-on)
 
-Tasks in Quash are not flat-priced.
+**Enterprise** — everything in Pro, plus:
+- Dedicated real device fleet
+- Bring your own LLM keys (Azure OpenAI, Amazon Bedrock)
+- Test generation from code and Figma
+- Custom integrations
+- Dedicated account manager
+- SLA and security review
 
-A task may:
+## Feature comparison
 
-* Require multiple reasoning steps
-* Retry actions if the UI changes
-* Validate UI state or backend responses
-* Run longer depending on app behavior
+### Test Execution
 
-As a result, more complex tasks consume more API calls, which increases cost.
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Intent-driven test execution | ✓ | ✓ | ✓ | ✓ |
+| Local devices and emulators | ✓ | ✓ | ✓ | ✓ |
+| Cloud devices (Quash-hosted) | ✓ | ✓ | ✓ | ✓ |
+| Vision + reasoning models (Claude, GPT) | ✓ | ✓ | ✓ | ✓ |
+| Adaptive execution | — | ✓ | ✓ | ✓ |
+| Bring your own LLM API keys | — | — | — | ✓ |
 
-This is expected and intentional, so pricing scales with actual work done.
+### Test Generation
 
-#### Example: how a task is priced <a href="#example-how-a-task-is-priced" id="example-how-a-task-is-priced"></a>
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Natural language test generation | ✓ | ✓ | ✓ | ✓ |
+| Codebase ingestion | — | — | — | ✓ |
+| Figma ingestion | — | — | — | ✓ |
 
-Consider the following task:
+### Test Management
 
-“Open the app, log in with valid credentials, navigate to the profile screen and verify the username is displayed correctly.”
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Full test suite management | ✓ | ✓ | ✓ | ✓ |
+| Test paths (memory-driven reruns) | ✓ | ✓ | ✓ | ✓ |
+| Apps Manager and Knowledge | ✓ | ✓ | ✓ | ✓ |
+| Scheduled regression runs | — | — | ✓ | ✓ |
 
-To execute this, Quash may:
+### Backend and API
 
-* Interpret the task intent
-* Break it into multiple steps
-* Make several LLM API calls to plan and execute actions
-* Validate UI state and generate a report
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Backend response validation | ✓ | ✓ | ✓ | ✓ |
+| API validation | ✓ | ✓ | ✓ | ✓ |
+| Database validation | — | ✓ | ✓ | ✓ |
 
-Each of these steps consumes API calls.
+### Reporting and Analytics
 
-The total task cost is calculated by:
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Detailed execution reports | ✓ | ✓ | ✓ | ✓ |
+| AI-powered debugging insights | ✓ | ✓ | ✓ | ✓ |
+| Real-time usage tracking | ✓ | ✓ | ✓ | ✓ |
 
-1. Summing all LLM API usage during execution
-2. Applying the platform markup
-3. Deducting the final amount from your balance
+### Integrations and Workflow
 
-A short, simple task may cost only a few cents. A longer or more complex task may cost more, depending on how many API calls are required.
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Webhooks and triggers | — | ✓ | ✓ | ✓ |
+| CI/CD (GitHub Actions, GitLab, Bitbucket, Jenkins) | — | ✓ | ✓ | ✓ |
+| Issue tracker (Jira, Linear, GitHub Issues) | — | ✓ | ✓ | ✓ |
+| Agentic app monitoring | — | — | ✓ | ✓ |
 
-#### Cloud device usage <a href="#cloud-device-usage" id="cloud-device-usage"></a>
+### Security and Administration
 
-Tasks can be executed on:
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Encryption in transit and at rest | ✓ | ✓ | ✓ | ✓ |
+| RBAC | — | ✓ | ✓ | ✓ |
+| SSO (SAML / OIDC) | — | — | — | ✓ |
+| SCIM provisioning | — | — | — | ✓ |
+| On-prem / self-hosted | — | — | — | ✓ |
+| Private VPC | — | — | — | ✓ |
+| Custom data residency | — | — | — | ✓ |
+| Compliance docs (SOC 2, ISO 27001, GDPR, DPDPA) | — | — | — | ✓ |
 
-* Local devices or emulators
-* Cloud-hosted devices
+### Support
 
-**Free usage**
+| Feature | Starter | Growth | Pro | Enterprise |
+|---|---|---|---|---|
+| Community support | ✓ | ✓ | ✓ | ✓ |
+| Email support | ✓ | ✓ | ✓ | ✓ |
+| Priority response (&lt;4 biz hours) | — | — | ✓ | ✓ |
+| Hands-on onboarding | — | — | ✓ | ✓ |
+| Implementation services | — | — | — | ✓ |
+| Dedicated CSM | — | — | — | ✓ |
+| Custom SLA | — | — | — | ✓ |
+| Full automation guarantee | — | — | — | ✓ |
 
-* Each account includes 60 minutes (1 hour) of cloud device usage at no cost, intended for evaluation and light testing.
+## Common questions
 
-**Usage-based cloud devices**
+**What counts as a "test minute"?**
 
-* Cloud device usage beyond the free allowance is billed based on Cloud Device Minutes.
-* Usage is metered per minute, per device and clearly reflected in billing.
+A test minute is one minute of active test execution on a device — local or cloud. The timer runs while Mahoraga is executing instructions on the device. Time spent writing prompts, generating tests in Test Studio, or reviewing reports does not count.
 
-**Dedicated cloud devices**
+**What if I exceed my plan's included minutes?**
 
-* You can request dedicated cloud devices assigned exclusively to your organization.
-* Dedicated devices are not usage-based and are billed separately.
-* Pricing is quoted based on:
-  * Number of devices
-  * Device models
-  * Duration of reservation
-* Once provisioned, devices are reserved for your use for the agreed time period.
+You are billed at $0.20 per additional minute. Annual customers get 20% off overage rates. Usage is tracked in real time so there are no surprises.
 
-All cloud device costs are transparently tracked and documented.
+**Can I add more apps?**
 
-#### Billing transparency <a href="#billing-transparency" id="billing-transparency"></a>
+The number of apps under test is set by your plan. If you need more, upgrade to the next tier or contact us for Enterprise.
 
-Quash provides detailed billing information for every task, including:
+**What is the difference between cloud devices and the real device fleet?**
 
-* Task name
-* Execution status
-* Model used
-* Number of API calls
-* Total cost deducted
+Cloud devices are shared, Quash-hosted Android devices available on all plans. The real device fleet is a set of dedicated devices assigned exclusively to your organisation — available as an add-on on Pro and included in Enterprise.
 
-You can view this breakdown at any time in the Billing section under Profile.
+**How does annual billing work?**
 
-#### Enterprise plans <a href="#enterprise-plans" id="enterprise-plans"></a>
+Annual plans are billed yearly and save 20% on the monthly rate. Annual customers also get 20% off overage rates.
 
-Enterprise plans are designed for teams with advanced scale, security and infrastructure requirements.
+**How does the free trial work?**
 
-Enterprise plans include:
+Sign up and get 14 days with 100 test minutes, full platform access, no credit card required. When the trial ends or minutes run out, pick a plan to continue.
 
-* Unlimited usage across Agent Actions and test execution
-* Dedicated cloud devices assigned exclusively to your organization
-* Support for bringing your own LLM API keys (for example, via Azure OpenAI or Amazon Bedrock) to run Quash using your preferred models and accounts
+**Can I bring my own LLM API keys?**
 
-Enterprise pricing is customized based on:
+Yes, on Enterprise. You can connect your own Azure OpenAI or Amazon Bedrock accounts so Quash runs on your preferred models.
 
-* Device requirements (quantity and models)
-* Infrastructure and deployment preferences
-* Support, compliance and security needs
+**What is in Enterprise that I cannot get in Pro?**
 
-If you’re evaluating Quash for a larger organization, contact us to design a plan that fits your workflow.
+Dedicated real device fleet (not an add-on), bring your own LLM API keys, test generation from code and Figma, SSO (SAML/OIDC), SCIM provisioning, on-prem / self-hosted deployment, private VPC, custom data residency, compliance documentation (SOC 2, ISO 27001, GDPR, DPDPA), implementation services, a dedicated CSM, custom SLA, and a full automation guarantee.
+
+**I am a fintech or regulated company — what plan should I use?**
+
+Enterprise. It includes SSO, SCIM, on-prem deployment, private VPC, custom data residency, and compliance documentation (SOC 2, ISO 27001, GDPR, DPDPA).
+
+**I am already on a custom plan — what happens?**
+
+Your existing plan is honoured. The Quash team will reach out to discuss how the new tiers map to your current arrangement and whether any changes apply. Nothing changes automatically — you will be contacted before any migration.
+
+For more details, visit the [pricing page on the Quash website](https://quashbugs.com/pricing).
 
 <br />
