@@ -1,0 +1,193 @@
+---
+title: "Quash MCP"
+description: "Connect Quash mobile-app automation to your AI agent and run tests without leaving your editor."
+---
+
+The Quash MCP server lets an AI agent drive real mobile-app automation on a connected device. Claude Code, Claude Desktop, or Cursor can run natural-language test tasks, generate test cases, manage apps and builds, and pull back reports. You talk to your agent. Your agent talks to Quash.
+
+## What you can do
+
+Once the server is connected, the agent can reach the full Quash workflow:
+
+* **Run tests.** Describe a test task in plain language. The agent runs it on the device and streams the result back live.
+* **Generate test cases.** Build test cases from a prompt, from files, or straight from a git repo.
+* **Manage apps and builds.** List your org's apps, browse builds, and install an APK on the device.
+* **Review results.** Browse recent runs, pull a run's report and share link, and check your plan usage.
+
+You do not memorize tool names or syntax. You ask in plain language and the agent picks the right tool. Under the hood, the server exposes tools like `connect`, `execute`, `generate_test_cases`, `setup_portal`, `setup_simulator`, `setup_device`, `runs`, `builds`, `install_build`, and others for auth, configuration, and usage tracking.
+
+## Platform support
+
+On macOS (Apple Silicon) you get both Android and iOS automation. On Windows (x64) the server is Android only, because iOS automation depends on Apple's macOS-only toolchain.
+
+It works across emulators and physical devices: Android on both platforms, plus iOS simulators and physical iPhones on macOS.
+
+## Before you install
+
+You need:
+
+* macOS 13 or later (Apple Silicon), or Windows 10/11 (x64)
+* `adb` on your PATH (comes with Android platform-tools). On Windows, the installer also checks `%LOCALAPPDATA%\Android\Sdk`
+* A device: Android device or emulator with USB debugging on. On macOS, you can also use an iOS simulator or a physical iPhone with Developer Mode enabled and trusted over USB
+* A Quash account
+* For iOS on macOS: Xcode installed to build WebDriverAgent
+
+## Install
+
+One command. It installs the server and auto-registers Quash in every supported agent config it finds.
+
+**macOS:**
+
+```shell
+curl -fsSL https://raw.githubusercontent.com/Oscorp-HQ/quash-mcp-releases/main/install.sh | sh
+```
+
+**Windows (PowerShell):**
+
+```powershell
+irm https://raw.githubusercontent.com/Oscorp-HQ/quash-mcp-releases/main/install.ps1 | iex
+```
+
+Environment variables go on the piped `sh` (macOS) or as `$env:` before `irm` (Windows). A prefix on `curl` is ignored.
+
+**With options (macOS):**
+
+```shell
+curl -fsSL .../install.sh | QUASH_API_TOKEN=qsh_xxxxxxxx sh
+curl -fsSL .../install.sh | QUASH_VERSION=v1.1.0 sh
+```
+
+**With options (Windows):**
+
+```powershell
+$env:QUASH_API_TOKEN = "qsh_xxxxxxxx"
+irm https://raw.githubusercontent.com/Oscorp-HQ/quash-mcp-releases/main/install.ps1 | iex
+```
+
+| Variable            | Default    | What it does                                                            |
+| ------------------- | ---------- | ---------------------------------------------------------------------- |
+| `QUASH_API_TOKEN`   | (unset)    | API token. If set, the server signs in automatically on startup        |
+| `QUASH_VERSION`     | latest     | Release tag to install                                                  |
+| `QUASH_BACKEND_URL` | production | Override the backend (staging or local dev)                            |
+| `QUASH_FORCE`       | 0          | Set to 1 to force a full reinstall even if the version matches          |
+
+## Generate an API token
+
+The token lets the server authenticate without opening a browser. If you prefer not to manage one, skip this and use Google sign-in during the auth step instead.
+
+1. Open the Quash desktop app and sign in.
+2. Go to Settings → Integrations.
+3. Click Generate token (or Regenerate to replace an existing one).
+4. Copy the token. It starts with `qsh_` and is shown only once.
+
+### Via web console
+
+1. Open [console.quashbugs.com](https://console.quashbugs.com) and sign in.
+2. Go to the API Keys section.
+3. Click Generate token (or Regenerate to replace an existing one).
+4. Copy the token. It starts with `qsh_` and is shown only once.
+
+Generating a new token invalidates the previous one. Update it everywhere you use it.
+
+## Add the server to your agent
+
+The installer handles this automatically. If you need to verify or add it manually, here is what the config looks like.
+
+**macOS.** Replace `<you>` with your macOS username. The two paths point to the MCP binary and the sidecar binary that the installer placed in `~/.quash`.
+
+```json
+{
+  "mcpServers": {
+    "quash": {
+      "type": "stdio",
+      "command": "/Users/<you>/.quash/bin/quash-mcp",
+      "env": {
+        "QUASH_SIDECAR_CMD": "/Users/<you>/.quash/sidecar/quash-sidecar/quash-sidecar",
+        "QUASH_API_TOKEN": "qsh_xxxxxxxx"
+      }
+    }
+  }
+}
+```
+
+**Windows.** Same idea. Replace `<you>` with your Windows username. Windows also needs `ANDROID_HOME` pointing to your SDK.
+
+```json
+{
+  "mcpServers": {
+    "quash": {
+      "type": "stdio",
+      "command": "C:\\Users\\<you>\\.quash\\bin\\quash-mcp\\quash-mcp.exe",
+      "env": {
+        "QUASH_SIDECAR_CMD": "C:\\Users\\<you>\\.quash\\sidecar\\quash-sidecar\\quash-sidecar.exe",
+        "QUASH_API_TOKEN": "qsh_xxxxxxxx",
+        "ANDROID_HOME": "C:\\Users\\<you>\\AppData\\Local\\Android\\Sdk"
+      }
+    }
+  }
+}
+```
+
+Where these configs live depends on your agent:
+
+* **Claude Code:** `~/.claude.json` (macOS) / `%USERPROFILE%\.claude.json` (Windows)
+* **Claude Desktop:** `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS) / `%APPDATA%\Claude\claude_desktop_config.json` (Windows)
+* **Cursor:** `~/.cursor/mcp.json` (macOS) / `%USERPROFILE%\.cursor\mcp.json` (Windows)
+
+Restart the agent after editing the config.
+
+## Authenticate
+
+Three ways to sign in. Pick whichever fits your workflow.
+
+**API token.** If you set `QUASH_API_TOKEN` in the config, the server signs in automatically on startup. Nothing else needed.
+
+**Google.** Tell your agent: "Use Quash, run auth with mode google." A browser window opens for Google sign-in.
+
+**Token (manual).** Tell your agent: "Use Quash, run auth with my token qsh_…."
+
+Check your status anytime with the `about` or `configure` tools.
+
+## Connect and prepare your device
+
+Tell your agent: "Use Quash, connect." It detects the device, warms the engine, and runs a health check.
+
+After connecting, finish setup for your device type:
+
+* **Android.** If connect reports "Portal not ready", run `setup_portal`. This installs the Portal app and enables accessibility. It is safe to run again on an already-configured device.
+* **iOS simulator (macOS).** Run `setup_simulator`. Builds and launches WebDriverAgent. No code signing needed.
+* **Physical iPhone (macOS).** Run `setup_device`. This resolves your Apple signing team (set it with `configure signing_team=<TEAMID>` or let it auto-detect), signs WebDriverAgent, and launches it over USB. You need Xcode, Developer Mode on the phone, and the device trusted.
+
+For full device setup details, see [Devices](/devices/overview).
+
+## Try it
+
+Once connected, talk to your agent:
+
+```
+"Use Quash: connect, then run setup_portal if needed."        (Android)
+"Use Quash: connect, then setup_simulator."                   (iOS simulator on macOS)
+"Run this on the device: open Settings and turn on Airplane mode."
+"Show me the report for that run."
+"Generate test cases for https://github.com/acme/my-app."
+```
+
+## Updating
+
+Re-run the installer. macOS: run the `curl` command again. Windows: run the `irm` command again. Restart the agent after updating.
+
+The `about` tool reports the running version and tells you if a newer release exists.
+
+## Troubleshooting
+
+**"Portal not ready" (Android).** Run `setup_portal`. If it returns `manual_required`, go to Settings → Accessibility on the device and enable Mahoraga Portal manually.
+
+**adb or device not found.** Make sure `adb` is on your PATH and the device shows up in `adb devices`. On Windows, also set `ANDROID_HOME`.
+
+**iOS setup_device signing fails (macOS).** Set your team ID with `configure signing_team=<TEAMID>`. Your Apple ID needs to be signed into Xcode under Settings → Accounts with an Apple Development certificate. The iPhone needs Developer Mode on and must be trusted.
+
+**Session expired or not authenticated.** Re-run `auth`, or update `QUASH_API_TOKEN` in your agent config and restart.
+
+**macOS Gatekeeper blocks the binary.** Allow the ad-hoc-signed binaries under System Settings → Privacy & Security.
+
+**Windows SmartScreen or Defender warning.** Click More info → Run anyway, or add a Defender exclusion for `%USERPROFILE%\.quash`.

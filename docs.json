@@ -170,6 +170,13 @@
             ]
           },
           {
+            "group": "Quash MCP",
+            "icon": "terminal",
+            "pages": [
+              "quash-mcp/overview"
+            ]
+          },
+          {
             "group": "Account & Organization",
             "icon": "users",
             "pages": [

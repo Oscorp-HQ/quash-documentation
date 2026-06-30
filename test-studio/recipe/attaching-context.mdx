@@ -47,7 +47,7 @@ If no repositories appear, connect one first in Apps → [Knowledge](/apps/apps-
 
 ## Figma designs
 
-Attaching a Figma file gives Recipe access to your screen designs — component names, interaction states, error states, empty states, and any annotations your designer has written about intended behaviour. This is context that neither a codebase nor a PRD captures as clearly.
+Attaching a Figma file gives Recipe direct access to your screens, components, annotations, and interaction states. This is context that neither a codebase nor a PRD captures as clearly.
 
 When Recipe has your Figma designs, it generates tests that:
 
@@ -56,26 +56,25 @@ When Recipe has your Figma designs, it generates tests that:
 * Include edge cases visible in annotations that would not appear in a text description
 * Match the exact copy used for error messages and confirmation text
 
-**How Figma works in Quash**
+**Requirements**
 
-Figma integration uses Figma's desktop MCP server — the agent explores your design file directly through Figma's own tooling. This means Figma must be open on your computer with MCP enabled before you attach a design.
+Quash connects to Figma through its MCP server. This requires:
 
-**Before attaching:**
-
-* Open the Figma desktop app
-* Ensure MCP is enabled in Figma (check Figma → Preferences → Enable MCP server)
-* Have the file you want to attach open
+* The **Figma desktop app.** The browser version does not expose the MCP server. If you normally work in the browser (most developers do), you will need to install the desktop app for this step.
+* A **paid Figma plan.** MCP is not available on free or Starter plans. You need Professional, Organization, or Enterprise. If your team is on a free plan, talk to whoever manages your Figma account about upgrading.
+* **MCP enabled.** Go to Figma → Preferences → Enable MCP server before you start.
 
 **How to attach:**
 
-1. Click the **+** button at the bottom of the prompt area.
-2. Select **Add Figma design** from the dropdown.
-3. In the modal that appears, paste your Figma file URL (e.g. `figma.com/design/...`).
-4. Click **Add**.
+1. Open your file in the Figma desktop app.
+2. Click the frame you want to attach. The URL bar updates to include a node ID (e.g. `figma.com/design/ABCDEF/My-File?node-id=123-456`). Copy this URL from the address bar, not the Share button.
+3. In Quash, click **+** at the bottom of the prompt area, select **Add Figma design**, paste the URL, and click **Add**.
 
-**Link to a specific frame where possible.** A URL pointing to a specific screen or component gives Recipe focused, precise context rather than an entire project file.
+**Always link to a specific frame.** Do not paste the top-level project URL. A project-level link dumps the entire file into context and Recipe cannot tell which screens matter and which are noise.
 
-**Use the final handoff version.** Early-stage or exploratory Figma files with placeholder content produce less accurate tests than final designs. If your file has both WIP and final frames, link directly to the completed screens.
+**If your feature spans multiple screens,** group all the relevant frames into a single parent frame in Figma first, then link to that parent frame. One URL gives Recipe the full flow without pulling in unrelated work. If you are working with a designer, ask them to create a handoff frame that collects the final screens for whatever you are testing.
+
+**Use the final handoff version.** Early-stage Figma files with placeholder content produce less accurate tests. If your file has both WIP and final frames, link to the completed screens.
 
 ## Jira issues, epics, and sprints
 
