@@ -250,5 +250,11 @@
   },
   "seo": {
     "indexing": "all"
+  },
+  "integrations": {
+    "posthog": {
+      "apiKey": "phc_m7XePD1UdhbMtShD7HAbnPdkwKxS7cJ9lrkG9Aw68b8",
+      "sessionRecording": true
+    }
   }
 }
