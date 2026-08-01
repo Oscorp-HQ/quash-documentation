@@ -19,6 +19,7 @@ One page rewritten, four leaked claims corrected, one glossary entry added.
 | `devices/overview.mdx` | 1 edit (line 70) |
 | `getting-started/quickstart-guide.mdx` | 1 edit (line 85) |
 | `reference/glossary.mdx` | Add "Execution" entry |
+| `quash-mcp/overview.mdx` | 1 edit — plan availability (added 2026-08-01, see MCP amendment) |
 
 `docs.json` needs no change — the nav entry `administration/how-quash-pricing-works` and its label are still correct.
 
@@ -242,11 +243,26 @@ Content: one test run on a device; counts on local, emulator, and cloud alike; f
 
 No "test minute" entry exists in the glossary, so there is nothing to remove.
 
+## Amendment — MCP availability (2026-08-01)
+
+Added after the initial pass, on user report that MCP had been left out of the plan model entirely. **The MCP server is available on every plan, including Free.** It is not a paid upgrade. Plan limits still apply to what you do through it: agent-started tests count as executions like any other run, and plan-gated capabilities (cloud devices, for instance) stay gated when the request arrives over MCP.
+
+Reflected in six places:
+
+- **Plans at a glance** — new `MCP server` row, ✓ across all four tiers.
+- **What counts as an execution** — the first rule broadened from "wherever it runs" to "wherever it runs, **and however you start it**", naming the Quash app, web console, and MCP as equivalent. This closes a gap the original draft left: a user could have read the execution definition as covering device type only, and assumed agent-driven runs were metered differently or not at all.
+- **What each plan includes** — added to the Free bullet list, so it inherits up the ladder.
+- **Integrations and Workflow** table — new row, ✓ across all tiers. It is the only row in that table not gated at Team, which is the correct and useful contrast.
+- **Common questions** — new "Is the Quash MCP server available on my plan?" entry carrying both halves: free to connect, limits still apply.
+- **Glossary** — the Execution entry now names how a run is started alongside where it runs.
+
+Plus one edit outside the pricing page: `quash-mcp/overview.mdx` "Before you install" now says "A Quash account on any plan, including Free", linking to the pricing page. Someone evaluating MCP reads that page, not the pricing page.
+
 ## Deliberately not done
 
-Per §5 of the brief, nothing on the pricing page asserts per-surface metering behaviour. The product spans three surfaces with different meters right now — platform already meters runs, while console and desktop are still on test minutes and migrating. The page stays surface-agnostic: it describes the published commercial model without claiming what any given surface displays in-product.
+Per §5 of the brief, nothing on the pricing page asserts per-surface metering behaviour. The product spans three surfaces with different meters — platform already meters runs, while console and desktop were still on test minutes and migrating. The page stays surface-agnostic: it describes the published commercial model without claiming what any given surface displays in-product.
 
-**Known gap this leaves:** a user opening the desktop app or console during the migration may see a minutes counter the docs no longer mention. Adding a "what you'll see while we migrate" note is a product-comms decision, deliberately left to the user rather than assumed.
+**Resolved 2026-08-01:** the user confirmed the surface metering gap is being closed within a day, so no migration note is needed. The surface-agnostic framing stands on its own merits and needs no follow-up.
 
 ## Open items to raise at handoff
 

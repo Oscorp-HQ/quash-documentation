@@ -19,6 +19,7 @@ Test generation is unlimited on every plan, including Free. You are only metered
 | **Overage billing** | None | None | None | None |
 | **Cloud devices** | — | ✓ | ✓ | ✓ |
 | **Real device fleet** | — | — | — | ✓ |
+| **MCP server** | ✓ | ✓ | ✓ | ✓ |
 | **Support** | Community | Community | Onboarding + email | Dedicated CSM, custom SLA |
 
 Solo is billed at $99/mo, or $79/mo on annual billing. Team and Enterprise are quoted to your actual setup — see [What each plan includes](#what-each-plan-includes) for how to tell which one fits, or talk to us through the [pricing page](https://quashbugs.com/pricing).
@@ -29,7 +30,7 @@ Solo is billed at $99/mo, or $79/mo on annual billing. Team and Enterprise are q
 
 Three rules define it, and they hold across every plan:
 
-* **It counts wherever it runs.** Local device, emulator, or Quash-hosted cloud device — all the same. The cost is the agent reasoning about your app, not the device it reasons on, and that work happens identically on a local run.
+* **It counts wherever it runs, and however you start it.** Local device, emulator, or Quash-hosted cloud device — all the same. Started from the Quash app, the web console, or an AI agent through the [Quash MCP server](/quash-mcp/overview) — also all the same. The cost is the agent reasoning about your app, not the device it reasons on or the surface you launched it from, and that work happens identically on a local run.
 * **A failed test counts the same as one that passes.** Finding a failure is the product doing its job. You are not penalised for it.
 * **Generation never counts.** Describing flows, generating test cases, refining prompts, editing suites, reading reports, and inviting teammates are all free, on all plans, including Free.
 
@@ -55,6 +56,7 @@ No credit card, no expiry. Free is a permanent plan, not a trial — it does not
 * Local devices and emulators
 * Prompt-to-execution testing
 * Detailed execution reports
+* [Quash MCP server](/quash-mcp/overview) — drive Quash from Claude Code, Claude Desktop, or Cursor
 * Community support
 
 **Solo** — everything in Free, plus:
@@ -140,6 +142,7 @@ Enterprise fits teams that need a private deployment or are running upwards of 1
 
 | Feature | Free | Solo | Team | Enterprise |
 |---|---|---|---|---|
+| MCP server (Claude Code, Claude Desktop, Cursor) | ✓ | ✓ | ✓ | ✓ |
 | Webhooks and triggers | — | — | ✓ | ✓ |
 | CI/CD (GitHub Actions, GitLab, Bitbucket, Jenkins) | — | — | ✓ | ✓ |
 | Issue tracker (Jira, Linear, GitHub Issues) | — | — | ✓ | ✓ |
@@ -194,6 +197,12 @@ Nothing is billed automatically — there is no overage on any plan. You keep fu
 **When should I move from Solo to Team?**
 
 When you are past roughly 150 executions a month, need 3 or more seats, or are testing more than one app. Team is quoted to your setup rather than sold at a fixed price, so it starts wherever you are.
+
+**Is the Quash MCP server available on my plan?**
+
+Yes. The [MCP server](/quash-mcp/overview) is available on every plan, including Free — connecting Claude Code, Claude Desktop, or Cursor to Quash is not a paid upgrade.
+
+Your plan's limits still apply to what you do through it. Tests started by an agent count as executions exactly like tests started from the Quash app, and anything gated by your plan — cloud devices, for instance — stays gated when the request comes from MCP.
 
 **Can I add more apps?**
 
