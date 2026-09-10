@@ -1,0 +1,18 @@
+---
+title: "Physical Android Devices"
+description: "Pair a physical Android device with Quash over USB after enabling developer and debugging options."
+---
+
+1. Turn on developer options in your android device. Find out how to do this \[[here](https://developer.android.com/studio/debug/dev-options)].
+2. Turn on USB debugging and wireless debugging from developer options.
+3. Connect your device to your laptop through a USB cable.
+4. In the Devices section on the Quash app, click on the "Scan for devices" button. You should see your linked device listed there.
+5. Click on the "Connect" button next to the device. Your device will start showing under the connected devices section with device status as available.
+
+> Once connected, Quash will automatically install a Mahoraga Android App on your device. If you're prompted to allow the installation on your phone, please do that.
+>
+> Before running any tests, please open the app on your phone, tap on Accessibility Service, and enable accessibility for the app from your device settings. Once done, you should start seeing yellow bounding boxes around the UI elements on your screen. In the Mahoraga app, make sure overlay is enabled and use the offset slider to correct the position of the bounding boxes and match it to your actual UI elements.&#x20;
+>
+> Once done, you can toggle off the overlay button.
+
+You will now see the device listed as an option in the prompt box when you click on "Devices", and can now run tasks on this device.

@@ -1,0 +1,48 @@
+---
+title: "Jira"
+description: "Connect Jira to auto-file failures and pull tickets into Test Studio as recipe context."
+---
+
+## Connecting Jira
+
+1. Go to your profile → **Integrations**.
+2. Click **Connect** next to Jira.
+3. You will be redirected to Atlassian — log in if prompted.
+4. Select the Jira workspace you want to connect and click **Accept**.
+5. Back in Quash, select the default Jira project where failed-test issues should be created.
+6. Click **Save**.
+
+## Automatic issue creation on test failures
+
+When a test fails during a suite run, Quash creates a Jira issue automatically. Each issue is pre-populated with:
+
+* **Summary** — the test case name and failure type
+* **Description** — what the agent was doing, what happened, and where it stopped
+* **Labels** — suite name and device used
+* **Attachment** — screenshot at the point of failure
+* **Link** — direct URL to the full execution report in Quash
+
+No copy-pasting. No manual ticket creation. The failure goes straight into your backlog.
+
+## Using Jira in Test Studio recipes
+
+Once connected, you can attach Jira issues, epics, or sprints as context when generating tests in Test Studio. Recipe reads the user story, acceptance criteria, and any notes on the ticket and generates tests aligned with what was formally specified.
+
+**To attach a Jira source in a recipe:**
+
+1. Open or create a recipe in Test Studio.
+2. Click the **+** button at the bottom of the prompt area.
+3. Select **Add Jira issue**.
+4. Search for or paste the issue ID, epic, or sprint you want to attach.
+
+> This is separate from the failure-reporting connection. Attaching a Jira ticket in a recipe gives Recipe the requirements context. The Integrations connection handles issue creation on failure. Both use the same connection.
+
+[→ Attaching Context](/test-studio/recipe/attaching-context)
+
+## Disconnecting Jira
+
+1. Go to **Integrations**.
+2. Click **Settings** next to Jira.
+3. Click the **✕** button.
+
+Automatic issue creation stops immediately. Existing issues created by Quash are not affected.

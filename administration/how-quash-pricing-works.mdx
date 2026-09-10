@@ -1,0 +1,241 @@
+---
+title: "How Quash Pricing Works"
+description: "Plans, executions, what counts against your usage, and what changes when you upgrade."
+---
+
+Write all the tests you want. Pay only when they run.
+
+Test generation is unlimited on every plan, including Free. You are only metered on executions — and one execution is one test run on a device. Describing flows, generating test cases, and refining prompts cost nothing.
+
+## Plans at a glance
+
+| | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| **Price** | $0 | $99/mo ($79/mo billed annually) | Quoted | Quoted |
+| **Test generation** | Unlimited | Unlimited | Unlimited | Unlimited |
+| **Executions** | 40 to start, then 5/month | 150/month | Provisioned | Provisioned |
+| **Apps** | 1 | 1 | Multiple | Unlimited |
+| **Seats** | 1 | 2 | Negotiated | Unlimited |
+| **Overage billing** | None | None | None | None |
+| **Cloud devices** | — | ✓ | ✓ | ✓ |
+| **Real device fleet** | — | — | — | ✓ |
+| **MCP server** | ✓ | ✓ | ✓ | ✓ |
+| **Support** | Community | Community | Onboarding + email | Dedicated CSM, custom SLA |
+
+Solo is billed at $99/mo, or $79/mo on annual billing. Team and Enterprise are quoted to your actual setup — see [What each plan includes](#what-each-plan-includes) for how to tell which one fits, or talk to us through the [pricing page](https://quashbugs.com/pricing).
+
+## What counts as an execution
+
+**One execution = one test run on a device.**
+
+Three rules define it, and they hold across every plan:
+
+* **It counts wherever it runs, and however you start it.** Local device, emulator, or Quash-hosted cloud device — all the same. Started from the Quash app, the web console, or an AI agent through the [Quash MCP server](/quash-mcp/overview) — also all the same. The cost is the agent reasoning about your app, not the device it reasons on or the surface you launched it from, and that work happens identically on a local run.
+* **A failed test counts the same as one that passes.** Finding a failure is the product doing its job. You are not penalised for it.
+* **Generation never counts.** Describing flows, generating test cases, refining prompts, editing suites, reading reports, and inviting teammates are all free, on all plans, including Free.
+
+Generation is subject to fair use to prevent abuse. In normal team usage you will not encounter it, and there is no generation quota on any plan.
+
+## No overage billing
+
+No plan bills overage. There is no per-execution rate and no way to run up a bill you did not agree to.
+
+If you outgrow Solo, we will size a plan with you — you will never get a surprise invoice.
+
+## The Free plan
+
+Free gives you unlimited test generation and 40 executions to start, then 5 executions every month after that.
+
+No credit card, no expiry. Free is a permanent plan, not a trial — it does not run out after a fixed window, and nothing stops working if you leave it running for a year.
+
+## What each plan includes
+
+**Free**
+
+* Unlimited test generation
+* Local devices and emulators
+* Prompt-to-execution testing
+* Detailed execution reports
+* [Quash MCP server](/quash-mcp/overview) — drive Quash from Claude Code, Claude Desktop, or Cursor
+* Community support
+
+**Solo** — everything in Free, plus:
+
+* Cloud devices
+* Backend and API validation
+* Full test suite management
+
+**Team** — everything in Solo, plus:
+
+* CI/CD integrations (GitHub Actions, GitLab, Bitbucket, Jenkins)
+* Issue tracker integrations (Jira, Linear, GitHub Issues)
+* Webhooks and triggers
+* Scheduled regression runs
+* Hands-on onboarding
+* Email support
+
+Team fits once you are past roughly 150 executions a month, need 3 or more seats, or are testing multiple apps.
+
+> **Team is not an enterprise-only tier.** It is quoted to your actual setup — it starts wherever you are, and plenty of Team customers are small.
+
+**Enterprise** — everything in Team, plus:
+
+* Private VPC or on-prem deployment
+* Custom data residency
+* SSO (SAML / OIDC)
+* RBAC
+* SCIM provisioning
+* Compliance documentation (SOC 2, ISO 27001, GDPR, DPDPA)
+* Dedicated real device fleet
+* Dedicated CSM
+* Custom SLA
+
+Enterprise fits teams that need a private deployment or are running upwards of 1,500 executions a month.
+
+## Feature comparison
+
+### Test Execution
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Intent-driven test execution | ✓ | ✓ | ✓ | ✓ |
+| Local devices and emulators | ✓ | ✓ | ✓ | ✓ |
+| Cloud devices (Quash-hosted) | — | ✓ | ✓ | ✓ |
+| Vision + reasoning models (Claude, GPT) | ✓ | ✓ | ✓ | ✓ |
+| Adaptive execution | ✓ | ✓ | ✓ | ✓ |
+| Bring your own LLM API keys | — | — | — | ✓ |
+
+### Test Generation
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Natural language test generation | ✓ | ✓ | ✓ | ✓ |
+| Codebase ingestion | ✓ | ✓ | ✓ | ✓ |
+| Figma ingestion | ✓ | ✓ | ✓ | ✓ |
+
+### Test Management
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Full test suite management | — | ✓ | ✓ | ✓ |
+| Test paths (memory-driven reruns) | ✓ | ✓ | ✓ | ✓ |
+| Apps Manager and Knowledge | ✓ | ✓ | ✓ | ✓ |
+| Scheduled regression runs | — | — | ✓ | ✓ |
+
+### Backend and API
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Backend response validation | — | ✓ | ✓ | ✓ |
+| API validation | — | ✓ | ✓ | ✓ |
+| Database validation | — | — | ✓ | ✓ |
+
+### Reporting and Analytics
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Detailed execution reports | ✓ | ✓ | ✓ | ✓ |
+| AI-powered debugging insights | ✓ | ✓ | ✓ | ✓ |
+| Real-time usage tracking | ✓ | ✓ | ✓ | ✓ |
+
+### Integrations and Workflow
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| MCP server (Claude Code, Claude Desktop, Cursor) | ✓ | ✓ | ✓ | ✓ |
+| Webhooks and triggers | — | — | ✓ | ✓ |
+| CI/CD (GitHub Actions, GitLab, Bitbucket, Jenkins) | — | — | ✓ | ✓ |
+| Issue tracker (Jira, Linear, GitHub Issues) | — | — | ✓ | ✓ |
+| Agentic app monitoring | — | — | ✓ | ✓ |
+
+### Security and Administration
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Encryption in transit and at rest | ✓ | ✓ | ✓ | ✓ |
+| RBAC | — | — | — | ✓ |
+| SSO (SAML / OIDC) | — | — | — | ✓ |
+| SCIM provisioning | — | — | — | ✓ |
+| On-prem / self-hosted | — | — | — | ✓ |
+| Private VPC | — | — | — | ✓ |
+| Custom data residency | — | — | — | ✓ |
+| Compliance docs (SOC 2, ISO 27001, GDPR, DPDPA) | — | — | — | ✓ |
+
+### Support
+
+| Feature | Free | Solo | Team | Enterprise |
+|---|---|---|---|---|
+| Community support | ✓ | ✓ | ✓ | ✓ |
+| Email support | — | — | ✓ | ✓ |
+| Hands-on onboarding | — | — | ✓ | ✓ |
+| Implementation services | — | — | — | ✓ |
+| Dedicated CSM | — | — | — | ✓ |
+| Custom SLA | — | — | — | ✓ |
+
+## Common questions
+
+**What counts as an execution?**
+
+One execution is one test run on a device. It counts wherever it runs — local, emulator, or cloud — a failed run counts the same as a passing one, and generating tests never counts.
+
+**Do tests I run on my own device count?**
+
+Yes. Local and emulator runs count exactly like cloud runs. What you are paying for is the agent reasoning about your app, and that happens the same way regardless of which device the app is running on.
+
+**Does a failed test still count?**
+
+Yes, the same as a passing one. Catching a genuine failure is the outcome you wanted, so there is no penalty for it.
+
+**Does generating tests use up my executions?**
+
+No. Describing flows, generating test cases, refining prompts, editing suites, reading reports, and inviting teammates are all free on every plan. The meter only moves when a test actually runs on a device.
+
+**What happens when I run out of executions?**
+
+Nothing is billed automatically — there is no overage on any plan. You keep full access to generation and everything else; you just cannot start new runs until your next monthly allocation, or until you move to a plan sized for your usage.
+
+**When should I move from Solo to Team?**
+
+When you are past roughly 150 executions a month, need 3 or more seats, or are testing more than one app. Team is quoted to your setup rather than sold at a fixed price, so it starts wherever you are.
+
+**Is the Quash MCP server available on my plan?**
+
+Yes. The [MCP server](/quash-mcp/overview) is available on every plan, including Free — connecting Claude Code, Claude Desktop, or Cursor to Quash is not a paid upgrade.
+
+Your plan's limits still apply to what you do through it. Tests started by an agent count as executions exactly like tests started from the Quash app, and anything gated by your plan — cloud devices, for instance — stays gated when the request comes from MCP.
+
+**Can I add more apps?**
+
+Free and Solo each cover one app. Team covers multiple apps and Enterprise is unlimited — the exact number is set when your plan is sized.
+
+**What is the difference between cloud devices and the real device fleet?**
+
+Cloud devices are shared, Quash-hosted Android devices, available from Solo upwards. The real device fleet is a set of dedicated devices assigned exclusively to your organisation, available on Enterprise.
+
+**How does annual billing work?**
+
+Annual plans are billed yearly. Solo drops from $99 to $79/mo. Team and Enterprise pricing is set when your plan is quoted.
+
+**How does the Free plan work?**
+
+You get unlimited test generation and 40 executions to start, then 5 every month. No credit card and no expiry — it is a permanent plan rather than a trial.
+
+**Can I bring my own LLM API keys?**
+
+Yes, on Enterprise. You can connect your own Azure OpenAI or Amazon Bedrock accounts so Quash runs on your preferred models.
+
+**What is in Enterprise that I cannot get in Team?**
+
+Private VPC or on-prem deployment, custom data residency, SSO (SAML/OIDC), RBAC, SCIM provisioning, compliance documentation (SOC 2, ISO 27001, GDPR, DPDPA), a dedicated real device fleet, bring your own LLM API keys, implementation services, a dedicated CSM, and a custom SLA.
+
+**I am a fintech or regulated company — what plan should I use?**
+
+Enterprise. It includes SSO, RBAC, SCIM, on-prem deployment, private VPC, custom data residency, and compliance documentation (SOC 2, ISO 27001, GDPR, DPDPA).
+
+**I am already on a custom plan — what happens?**
+
+Your existing plan is honoured. The Quash team will reach out to discuss how the new tiers map to your current arrangement and whether any changes apply. Nothing changes automatically — you will be contacted before any migration.
+
+For more details, visit the [pricing page on the Quash website](https://quashbugs.com/pricing).
+
+<br />

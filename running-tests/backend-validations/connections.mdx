@@ -1,0 +1,80 @@
+---
+title: "Connections"
+description: "Store base URL, auth, and shared headers once; every validation inherits them so teams stop duplicating credentials and environment details."
+---
+
+One connection can support any number of validations. If you have multiple environments — staging, production — create a separate connection for each.
+
+## Creating a connection
+
+![](/images/image-13.png)
+
+1. Click **Validations** in the left navigation panel.
+2. Click the **Connections** tab.
+3. Click **Create your first connection** (or **+ New Connection** if connections already exist).
+4. Enter a **Connection name**. Be specific — include the environment: "Staging API", "Production Read-Only", "Auth Service — Dev".
+5. The connection type defaults to **API**. Database support is coming.
+6. Enter your **Base URL** — the root URL of your API, without a trailing slash. For example: `https://api.yourapp.com` or `https://staging.yourapp.com/api/v2`.
+7. Select your **Authentication type** and complete the relevant fields (see below).
+8. Click **Save**.
+
+## Authentication types
+
+Choose the authentication type that matches how your API handles access.
+
+## No Auth
+
+For public endpoints that require no authentication. No additional configuration needed. Use for health check endpoints, public product APIs, or any endpoint that returns data without requiring credentials.
+
+## Bearer Token
+
+Sends an `Authorization: Bearer <token>` header with every request. Enter your token in the token field.
+
+```
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+```
+
+Use for APIs using JWT or OAuth2 access tokens. If your token expires, update it in the connection settings — all validations using that connection will immediately use the updated token.
+
+## API Key
+
+Sends a custom header with a key name and value. Enter the header name (e.g., `X-API-Key`) and the key value.
+
+```
+X-API-Key: your-api-key-here
+```
+
+Use for APIs that authenticate via a dedicated API key header rather than a standard Authorization header.
+
+## Custom Header
+
+Add any custom header or combination of headers. Enter header name and value pairs. Add multiple headers as needed.
+
+Use when your API requires non-standard authentication — multiple custom headers, session tokens, or proprietary auth schemes.
+
+## Testing a connection
+
+After saving, click **Test Connection** to verify Quash can reach your backend with the configured settings. A successful test confirms the base URL is reachable and the authentication headers are accepted.
+
+If the test fails:
+
+* Confirm the base URL is correct and includes the protocol (`https://`)
+* Check that the API is accessible from outside your internal network — some staging environments require VPN or IP whitelisting
+* Verify the authentication credentials are current — tokens expire, API keys get rotated
+* Check for trailing slashes or path prefixes that should not be in the base URL
+
+## Editing a connection
+
+Click any connection in the Connections tab to open its settings. Update the base URL, authentication type, or credentials directly. Save to apply changes.
+
+Changes to a connection immediately affect all validations built on top of it. If you update a bearer token, every validation using that connection uses the new token on the next run.
+
+## Switching environments
+
+For teams that test across staging and production, the environment switcher at the top of the Validations section lets you filter connections and validations by environment. Create one connection per environment with the correct base URL and credentials for each, then switch the active environment when running tests against a different backend.
+
+## Deleting a connection
+
+Open the connection and click **Delete**. Confirm.
+
+Deleting a connection removes all validations built on it as well. Before deleting, check which validations use the connection and either migrate them to a different connection or delete them intentionally.

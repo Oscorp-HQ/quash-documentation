@@ -1,0 +1,44 @@
+---
+title: "Reading an Execution Report"
+description: "Clicking a report opens the full detail view, which includes:"
+---
+
+![](/images/image-15.png)
+
+1. Click **Reports** in the left navigation panel. The list shows all your runs, most recent first.
+2. Find the run you want to review. Use the filters at the top to narrow by type (Tasks / Suites) or result (Passed / Failed / All). Use the search bar to find a run by its prompt text.
+3. Click the report to open it. The header shows four key details: **Duration, Device, Started,** and **Final Verdict.**
+4. Read the **Executive Summary** first. This is the AI's plain-language account of the run — what it did, what it found, and where it stopped if it didn't complete. In most cases, this paragraph alone will tell you whether you need to dig deeper.
+5. If the run failed or returned a Partial Success, go to **Observations** next. This is the most actionable section — a specific list of what the agent encountered during execution.
+6. Open the **Detailed Test Case Report** to see the full step-by-step breakdown.
+7. Use the **Device View** panel on the right to replay the screen recording.
+8. To share the report, click **Share** to generate a link anyone can open without logging in. To export it, click **Download PDF** for the full report with screenshots included.
+
+## Detailed Report View
+
+Clicking a report opens the full detail view, which includes:
+
+* **Summary Header** — Duration, Device, Started, and Final Verdict at a glance.
+* **Executive Summary** — A plain-language paragraph written by the AI describing what happened during the run.
+* **Observations** — A list of specific findings from the run — steps that behaved unexpectedly, conditions that blocked completion, validations that were checked, performance notes, and recommendations to improve test coverage.
+* **Task Configurations** — A record of the settings active when the task ran: AI model, temperature, whether reasoning was enabled, maximum steps, and timeout. Useful when comparing results across multiple runs.
+* **Execution Timeline** — A timestamped log showing when the task was created, when execution started, and when it completed.
+* **Detailed Test Case Report** — A step-by-step breakdown of the entire run grouped by screen.
+* **Device View** — A screen recording of the device during the run.
+* **Run type** — Indicates whether this was a first run or a rerun. For reruns, shows the number of LLM calls made versus skipped, giving a direct measure of how much time the stored path saved.
+
+## Detailed Test Case Report
+
+The Detailed Test Case Report provides deep visibility into how each step was executed. For every step, Quash captures:
+
+* **Intent** — What the AI agent was trying to achieve at that step.
+* **Execution** — The actual action taken by the agent (such as taps, scrolls, API calls, or system interactions).
+* **Interpretation** — How the agent evaluated the result of the action.
+* **Duration** — Time taken to complete the step.
+* **Screenshots** — Visual snapshots captured during execution for context.
+
+This makes it easy to understand what happened, why it happened, and where things went wrong — without having to re-run the test.
+
+## Device View
+
+The Device View panel on the right side of the report shows a recording of the device screen during the run. Play, pause, or step through the recording using the playback controls. Adjust playback speed or scrub to any point in the timeline. Use this when the step-by-step breakdown alone doesn't tell the full story.

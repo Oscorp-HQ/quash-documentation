@@ -1,0 +1,136 @@
+---
+title: "Prompting for Task Execution"
+sidebarTitle: "Prompting for Task Execution"
+description: "Write clear, executable task prompts for Mahoraga with strong structure, flow control, and reliable verification."
+---
+
+[Download: How to Prompt Guide (May 2026) (PDF)](https://drive.google.com/uc?export=download&id=1oPApMi_NjGDMnIOS3UPFIj3rP5cZHW5C)  
+[Browse all prompting guides](/prompting)
+
+The difference matters. Recipe prompts are about describing what to test. Task prompts are about describing what to do. The more precisely you write a task prompt, the more consistently Mahoraga executes it.
+
+## Start with shared fundamentals
+
+Apply the shared fundamentals from [Overview](/prompting) first: name exact UI targets, define expected outcomes, handle interruptions, and keep scope focused.
+
+## The structure that works
+
+Every good task prompt follows the same shape:
+
+```
+Open the app, navigate to [screen], do [action], and verify [expected outcome].
+```
+
+Start with where to go. Then what to do. Then what should be true at the end. This gives Mahoraga a clear sequence with a defined success condition.
+
+## Examples
+
+**Simple verification:**
+
+```
+Open the app, go to the login screen, enter a valid email and password,
+tap Sign In, and verify the home dashboard loads.
+```
+
+**Data modification:**
+
+```
+Navigate to the profile screen, tap Edit, change the display name to
+"Test User", tap Save, and verify the new name appears on the profile page.
+```
+
+**Multi-step flow:**
+
+```
+Add three items to the cart, apply the promo code SAVE20, proceed to
+checkout, and verify the discount is reflected in the order summary.
+```
+
+**Negative test:**
+
+```
+Open the app, go to the login screen, enter a valid email with an incorrect
+password, tap Sign In, and verify the error message "Incorrect password.
+Try again." appears below the password field and the user remains on the
+login screen.
+```
+
+**First-run flow with interruptions:**
+
+```
+Open the app after a fresh install. If a notification permission dialog
+appears, tap Allow. If an onboarding carousel appears, swipe through all
+screens and tap Get Started. Verify the home feed loads with content.
+```
+
+## Execution-specific guidance
+
+## 1. Use credentials from Apps
+
+If credentials are configured in Apps → Credentials, reference them by name instead of hardcoding login details:
+
+```
+Log in using the Standard User credentials and verify the home dashboard loads.
+```
+
+```
+Log in using the Admin Account credentials and navigate to the User Management panel.
+```
+
+Mahoraga pulls the stored credentials automatically. This keeps prompts clean and means you never need to update prompts when passwords change — just update the credential set in Apps.
+
+## 2. Be explicit about navigation
+
+Do not assume Mahoraga knows the fastest path between screens. Describe the navigation steps if the route matters for the test:
+
+```
+From the home screen, tap the hamburger menu, tap Settings, tap Account,
+and tap Change Password.
+```
+
+If the route does not matter and you just need to arrive at a screen, a simpler instruction works:
+
+```
+Navigate to the Change Password screen.
+```
+
+Mahoraga will find its own path. Use explicit navigation when the route itself is what you are testing (e.g., "verify the back button returns to the previous screen, not the home screen").
+
+## Using test data with /slug
+
+If the same task needs to run with different inputs — different user accounts, different search terms, different product selections — use Test Data instead of writing separate tasks.
+
+Type `/` in the task prompt input. A dropdown appears listing available datasets with their slugs and sizes. Select one and the slug is inserted at the cursor.
+
+When the task runs, Mahoraga executes it once per row in the dataset automatically.
+
+**Example:**
+
+```
+Open the app and log in using /login-credentials.
+Navigate to the checkout flow and complete a purchase.
+Verify the confirmation screen shows the correct order details.
+```
+
+If `/login-credentials` has five rows, the task runs five times — once per set of credentials.
+
+→ Test Data
+
+For failure patterns and corrective rewrites, see [Troubleshooting Prompts](/test-studio/prompting-guide-test-generation/common-mistakes).
+
+## When to use tasks vs. Test Studio
+
+| Situation                                       | Use                           |
+| ----------------------------------------------- | ----------------------------- |
+| Quick sanity check before a release             | Task                          |
+| Verifying a specific bug fix                    | Task                          |
+| Exploring a new flow you haven't tested before  | Task                          |
+| Reproducing an issue a teammate reported        | Task                          |
+| Generating comprehensive coverage for a feature | Test Studio                   |
+| Creating reusable tests for regression          | Test Studio → save to library |
+| Building tests from a PRD or Figma design       | Test Studio                   |
+| Creating tests for a sprint's worth of tickets  | Test Studio                   |
+
+Tasks are ephemeral — run once, read the report, move on. If you find yourself running the same task repeatedly, save it as a test case and add it to a suite.
+
+[→ Test Cases → Suites](/test-management/test-case/managing-test-cases)

@@ -1,0 +1,67 @@
+---
+title: "Tokens & /compact"
+description: "Why recipe sessions cap around 200k tokens, how auto-compact works, and when to trigger /compact early."
+---
+
+Every prompt, attachment, and reply in a recipe feeds the same running total—planning longer sessions is easier once you know that.
+
+## What tokens are
+
+Tokens are the unit of measurement for how much content the Recipe agent is actively processing in a session.
+
+Everything in a recipe contributes to the token count — your prompts, the agent's responses, attached documents, connected app data, and the full history of the conversation. The more that has been discussed, the more tokens are in use.
+
+## Why there is a limit
+
+The 200,000 token limit exists not because of cost or storage, but because of how AI models work.
+
+As a conversation grows beyond a certain size, the model's ability to reason coherently over its full context begins to degrade. It does not run out of memory in a technical sense — it starts to lose coherence. Responses become less precise, earlier context gets weighted less accurately, and the quality of generated tests drops. At around 200,000 tokens, this degradation becomes significant enough to affect output quality in a meaningful way.
+
+This is a fundamental characteristic of current language models, not a limitation specific to Quash.
+
+## What Quash does automatically
+
+When a recipe session approaches 200,000 tokens, Quash automatically compacts the conversation. It summarises the full history into a condensed form — preserving what matters while discarding the raw back-and-forth that is no longer needed for the current work.
+
+You do not need to do anything for this to happen. It is handled in the background. After auto-compact, the session continues from the same point with a lighter context that the agent can reason over accurately again.
+
+## The /compact command
+
+`/compact` is the manual version of the same process. Instead of waiting for Quash to auto-compact at the limit, you can trigger it yourself at any point by typing `/compact` in the recipe prompt input and pressing Enter.
+
+**Why use it manually rather than waiting?**
+
+Auto-compact happens at the limit — when the model has already been operating in a degraded state for some exchanges. Using `/compact` proactively, before the session gets that large, means the agent compresses while it still has full coherence. The resulting summary is more accurate and complete than one produced at the edge of the context window.
+
+**How to use it:**
+
+Type `/compact` in the prompt input and press Enter. Recipe summarises the conversation, confirms what it has retained, and you continue prompting as normal.
+
+**What /compact preserves:**
+
+* The feature scope and testing intent of the session
+* All generated test cases — names, priorities, descriptions, decisions made
+* Key context from attached documents and connected sources
+* Any explicit adjustments or instructions given during the session
+
+**What /compact does not do:**
+
+* It does not delete your generated tests — those are in the Tests panel and save to your library independently of the conversation state
+* It does not reset the recipe — you are continuing the same session with a more compact history
+* It does not lose what matters — it compresses the exchange history, not the substance of what was decided
+
+## When to use /compact manually
+
+A good signal: if the session has gone through more than 15–20 exchanges and you still have significant work to do, compact it. Do not wait for the agent's responses to feel off — by that point, auto-compact may be about to trigger anyway.
+
+You can use `/compact` more than once in a session. If you compact mid-session and then continue working for another twenty exchanges on a new area, compact again before switching focus.
+
+## Practical habits for long sessions
+
+**Save tests as you go.** Do not wait until the end of a long session to save to your library. Save good tests progressively — the conversation history and the Tests panel are independent. Even if the session auto-compacts, your saved tests are safe.
+
+**Keep recipes focused.** A recipe covering one feature stays well within the context window. A recipe trying to cover an entire product across many sessions will hit the limit much faster. One feature, one recipe is the right default.
+
+**Compact before switching focus.** If you have finished generating tests for one part of a feature and are about to start on a different area, compact first. The summary captures what was completed, giving the agent a clean foundation for the next phase.
+
+**Start a new recipe when the scope genuinely shifts.** If you have moved on to a different feature or sprint entirely, start a new recipe. `/compact` is for continuing the same work with a lighter history — a new recipe is for starting fresh on something different.

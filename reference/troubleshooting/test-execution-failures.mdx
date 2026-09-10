@@ -1,0 +1,104 @@
+---
+title: "Test Execution Failures"
+description: "Diagnose Partial Success, flaky runs, CI mismatches, credentials, and empty reports."
+---
+
+## Understanding the three outcomes
+
+Before troubleshooting, confirm which outcome you are dealing with — each has a different root cause and a different resolution path.
+
+| Outcome                       | What it means                                                                                 | Where to start                                        |
+| ----------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| **Failed**                    | The agent could not complete the task — an error occurred or the expected outcome was not met | Observations section of the report                    |
+| **Partial Success**           | The agent completed some steps but was blocked by something it could not handle               | Observations + screenshot at point of failure         |
+| **Pass with wrong behaviour** | The test passed but the app behaviour seems incorrect                                         | Review the Expected Result field and step screenshots |
+
+## Partial Success — agent stopped mid-run
+
+Partial Success almost always means Mahoraga encountered something it was not instructed to handle. It is not a bug in Quash — it is a gap in the task prompt.
+
+**Most common causes:**
+
+**Permission dialog appeared and blocked the flow.** The app requested camera, microphone, location, or notification access mid-test. Mahoraga did not know to dismiss it.
+
+_Fix:_ Add an instruction to the prompt: _"If a permission dialog appears, tap Allow."_ Or pre-grant the permission manually in the device settings before running.
+
+**CAPTCHA appeared.** Mahoraga cannot solve CAPTCHAs. If your app shows a CAPTCHA in the test environment, disable it for that environment before running automated tests.
+
+**Loading screen timed out.** A screen took too long to load and the agent moved on before it was ready.
+
+_Fix:_ Add an explicit wait: _"Wait for the loading spinner to disappear before tapping."_ Or check whether the staging environment is slow — test runs against a staging server with high latency will time out more frequently.
+
+**Unexpected modal or tooltip appeared.** An onboarding tooltip, a rating prompt, a promotional banner, or a cookie consent dialog blocked the next interaction.
+
+_Fix:_ Add dismissal instructions: _"If a rating prompt appears, tap Not Now."_ Or disable promotional overlays in the test environment.
+
+**The screen the agent expected did not appear.** Navigation failed silently — the app went to an unexpected screen instead of the intended one.
+
+_Fix:_ Open the Device View recording and find exactly where navigation diverged. Add a verification step before the problematic navigation: _"Verify the \[screen name] is visible before tapping \[button]."_
+
+## Tests passing locally but failing in CI
+
+This is almost always a configuration or environment issue, not a test issue.
+
+**1. Check that the correct device is selected in CI.** Confirm `--device cloud` or the specific device name is correctly specified in your CI configuration. A mismatch between the device name in your config and what Quash recognises will cause the run to fail before it starts.
+
+**2. Verify environment variables are set.** Confirm `QUASH_API_KEY` is set in your CI secrets and being passed correctly. Check that any other environment-specific variables (base URLs, credentials) are set for the CI environment.
+
+**3. Check network access.** CI runners may be behind a firewall that blocks Quash's IP range. Check if your CI provider needs to whitelist Quash's outbound connections. Contact your infrastructure team if you are unsure about network access from the CI environment.
+
+**4. Enable verbose logging.** Add `QB_LOG_LEVEL=debug` before the Quash CLI command to get detailed output. The verbose log will show exactly where the run is failing and why.
+
+**5. Check the active build.** Confirm the build version set as active in Apps → Builds matches what is deployed in the environment you are testing against. Running tests against an old build when a new version is deployed is a common cause of unexpected failures.
+
+## Flaky tests — inconsistent pass/fail results
+
+A test that passes sometimes and fails other times without any code changes is a flaky test. Flakiness is usually caused by timing issues, animation interference, or unstable test environment state.
+
+**1. Disable animations on the test device.** Go to Developer Options on the device and set Window Animation Scale, Transition Animation Scale, and Animator Duration Scale all to **Off**. Animations are a major source of timing-related flakiness — disabling them makes test execution 20–30% faster and significantly more reliable.
+
+**2. Add explicit waits for slow elements.** If a specific step is flaky, the element being interacted with is probably not ready when Mahoraga tries to tap it. Add a wait instruction: _"Wait for the \[element] to be visible before tapping."_
+
+**3. Check for shared state between tests.** If you are running a Sequential suite and an earlier case leaves the app in an unexpected state, later cases will fail unpredictably. Add a step to the beginning of flaky cases to navigate to a known starting point.
+
+**4. Check network stability.** Physical devices on Wi-Fi can experience brief connection drops during a run. Use a wired connection where possible, or use cloud devices which have stable managed connections.
+
+**5. Check device temperature.** Physical devices running long test sessions can overheat, causing the processor to throttle and execution to slow down. Monitor device temperature during long runs — use a cooling pad for marathon sessions or switch to cloud devices.
+
+**6. Check storage.** A device with very little free storage will slow down noticeably, causing timing-sensitive tests to fail. Clear old test artifacts and app data regularly.
+
+## Agent tapping in wrong location
+
+If Mahoraga is consistently tapping in the wrong place — above a button, to the side of a field — this is a [bounding box calibration ](/devices/device-configuration)issue, not a test writing issue.
+
+Recalibrate the bounding box offset in the Mahoraga app. This is particularly common after a device OS update.
+
+## Credentials not working during runs
+
+If a test fails at a login step with what appears to be an authentication error:
+
+**1. Check the credential set in use.** Verify the credentials configured in Apps → Credentials are correct and up to date. Passwords change, tokens expire — check the stored values are current.
+
+**2. Confirm the environment.** Staging and production often have different user accounts. Ensure the credentials stored in Quash match the environment being tested. Consider creating separate credential sets labelled by environment — _"Standard User — Staging"_ and _"Standard User — Production"_.
+
+**3. Check for MFA.** If the account has multi-factor authentication enabled, Mahoraga cannot complete the MFA step. Use a dedicated test account with MFA disabled, or configure your app to bypass MFA for test accounts in the test environment.<br />
+
+## **Rerun is not faster than the first run**
+
+This happens when no successful run exists yet for the task. Mahoraga only stores a path after a run completes successfully. If the first run ended in a partial success or failure, no path was stored and the next run starts fresh.
+
+_Fix:_ Run the task once and ensure it reaches a successful or complete status. The run after that will use the stored path.
+
+## **Mahoraga is failing on a step it previously handled correctly**
+
+If a rerun fails on a step that worked before, the stored path may be outdated due to a significant UI change that Mahoraga could not automatically resolve.
+
+_Fix:_ Run the task from scratch once. Mahoraga will reason through the updated flow, store the new path, and use it on subsequent reruns.
+
+## Run completes but report is empty or missing
+
+If a run finishes but no report appears in Reports:
+
+1. Wait 30 seconds and refresh — report generation has a brief processing delay
+2. Check that the run actually completed — look for it in the active runs list
+3. If the run shows as completed but no report exists, contact support with the run ID

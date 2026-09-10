@@ -1,0 +1,61 @@
+---
+title: "Backend Validations"
+description: "Pair UI steps with API assertions in the same run: wire a connection, reuse saved checks or prompt-time actions, and combine assertion types."
+---
+
+**To access Backend Validations:** Click **Validations** in the left navigation panel.
+
+<iframe
+  className="w-full aspect-video rounded-xl"
+  src="https://www.youtube.com/embed/qsvUiM8KU74"
+  title="YouTube video player"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+  allowFullScreen
+></iframe>
+
+## Why backend validations matter
+
+UI testing alone has a blind spot. Mahoraga can verify that the success screen appeared after a purchase — but it cannot verify that the order was actually created in your backend, that the inventory count decreased, or that the payment was processed correctly. These are backend facts, and they are invisible to a screen-level agent.
+
+Backend Validations close that gap. They run API calls against your backend during a test and assert that the response matches what you expect. Combine them with Mahoraga's UI execution and you get true end-to-end verification — the UI behaved correctly _and_ the backend reflected the correct state.
+
+## Two ways to use validations
+
+**Saved Validation** Create a validation once and reuse it across any number of tasks and suites. Saved validations live in the Validations section and can be attached to tasks from task settings — set to run before execution, after execution, or both.
+
+**Prompt Action (`@slug`)** Reference a validation inline inside any task prompt by typing `@`. The validation runs at exactly the point in the sequence where you place it. Order matters — a validation placed after a "tap checkout" instruction runs after that tap, not before.
+
+Most teams use both: saved validations for systematic checks attached to suites, and `@slug` prompt actions for precise moment-specific checks inside complex task flows.
+
+## The structure of a validation
+
+Every backend validation has two parts:
+
+**A Connection** — defines where your backend lives and how to authenticate with it. The base URL, the authentication type, and any headers needed to make a valid request. One connection can power many validations.
+
+**A Validation** — the specific API call, what you expect back, and how to handle failures. Defined on top of a connection.
+
+[→ Setting up a connection ](/running-tests/backend-validations/connections) [→ Creating a validation](/running-tests/backend-validations/creating-a-validation)
+
+## What you can assert
+
+Validations support four assertion types, and you can combine them in a single validation:
+
+| Assertion type       | What it checks                                                               |
+| -------------------- | ---------------------------------------------------------------------------- |
+| **Status code**      | The HTTP response code matches the expected value (200, 201, 400, 404, etc.) |
+| **JSON Path**        | A specific field inside the response body has the expected value             |
+| **Regex**            | The response body matches a text pattern                                     |
+| **Extract variable** | Captures a value from the response to use in subsequent steps                |
+
+## Prompting with Backend Validations
+
+Prompting guidance for inline validation actions is now maintained in [Prompting Fundamentals](/prompting), so it stays aligned with Task and Test Studio prompting practices.
+
+Use [Using Backend Validations in Prompts](/running-tests/backend-validations/using-slug-in-prompts) to learn where to place `@slug` calls, how parameters work, and how results are evaluated in reports.
+
+## Next steps
+
+* [Connections ](/running-tests/backend-validations/connections)— set up your backend connection
+* [Creating a validation ](/running-tests/backend-validations/creating-a-validation)— define the API call and assertions
+* [Using Backend Validations in Prompts](/running-tests/backend-validations/using-slug-in-prompts) — run validations inline during task execution

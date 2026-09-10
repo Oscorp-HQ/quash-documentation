@@ -1,0 +1,163 @@
+---
+title: "Prompt Playbooks"
+sidebarTitle: "Prompt Playbooks"
+description: "Five copy-and-adapt patterns for features, user journeys, edge cases, attached specs, and multi-source generation in Recipe."
+---
+
+## Pattern 1 — Feature + scenarios
+
+Best for: covering one feature comprehensively.
+
+**Template:**
+
+```
+Generate tests for [feature] including [scenario 1], [scenario 2], [scenario 3].
+```
+
+**Example:**
+
+```
+Generate tests for password reset including: requesting a reset link via email,
+entering a new password, confirming the passwords match, handling an expired
+reset token, and attempting to reuse a token that has already been used.
+```
+
+Why it works: listing scenarios explicitly tells Megumi exactly what to cover. It will still add edge cases you did not list, but your scenarios are guaranteed to be included.
+
+## Pattern 2 — User journey
+
+Best for: end-to-end flows that span multiple screens.
+
+**Template:**
+
+```
+Test the flow where a user [action 1], then [action 2], and finally [action 3].
+Verify [expected outcome at the end].
+```
+
+**Example:**
+
+```
+Test the flow where a user browses products, filters by category, adds an item
+to the cart, applies a promo code, enters delivery details, and completes payment.
+Verify the order confirmation screen shows the correct order summary and
+sends a confirmation to the user's email address.
+```
+
+Why it works: user journey prompts produce tests with a natural flow across screens, catching integration issues that feature-level tests miss. Megumi generates setup steps, intermediate verifications, and a final pass condition automatically.
+
+## Pattern 3 — Edge cases and validation
+
+Best for: error handling, boundary conditions, and security scenarios.
+
+**Template:**
+
+```
+Generate tests for [feature] focusing on error states and edge cases.
+Include: [case 1], [case 2], [case 3].
+Verify that [specific error messages / outcomes] appear for each failure state.
+```
+
+**Example:**
+
+```
+Generate tests for the registration form focusing on validation:
+- Empty required fields (name, email, password)
+- Invalid email format
+- Password shorter than 8 characters
+- Password without uppercase letter
+- Duplicate email address already in use
+- Special characters in the name field
+
+Verify the correct error message appears for each case and the form does not submit.
+```
+
+Why it works: explicitly listing edge cases forces Megumi to generate specific negative tests rather than generic "invalid input" scenarios. The error message specification in the verify step makes the test directly executable.
+
+## Pattern 4 — Spec-driven generation
+
+Best for: when you have a PRD or design doc attached and want Recipe to base tests on it.
+
+**Template:**
+
+```
+Read the attached [doc/PRD/spec] carefully. Generate test cases that cover
+all the acceptance criteria and user stories described. Include both
+happy path and failure scenarios.
+```
+
+**Example — from a PRD:**
+
+```
+Read the attached PRD for the notifications feature. Generate test cases
+that cover every acceptance criterion listed. For each criterion, include
+at least one test for the success case and one for the failure or edge case.
+```
+
+**Example — from Figma designs:**
+
+```
+Read the attached Figma designs for the settings screen carefully.
+Generate tests for every interaction state shown in the designs —
+default, active, disabled, error, and loading. Use the exact component
+names and labels from the designs in the test instructions.
+```
+
+**Example — from a Jira epic:**
+
+```
+Read the attached Jira epic for the loyalty program. Generate test cases
+that cover every user story in the epic. For each story, include a test
+for the acceptance criteria and at least one edge case not mentioned in
+the ticket.
+```
+
+Why it works: telling Megumi to "read the attached \[source] carefully" primes it to extract structured information from the document rather than relying on your prompt alone. The instruction to include both happy path and failure scenarios prevents it from only generating the success cases the spec describes.
+
+## Pattern 5 — Multi-source generation
+
+Best for: when you have multiple context sources attached and want Megumi to synthesise all of them.
+
+**Template:**
+
+```
+Read [source 1], [source 2], and [source 3] carefully.
+Generate comprehensive test cases for [feature].
+Include [specific focus areas].
+Reference [what to use from each source].
+```
+
+**Example — full context setup:**
+
+```
+Read the attached PRD, the Figma designs for the checkout redesign, and
+the feature branch code carefully. Generate comprehensive test cases for
+the new checkout flow — address entry, payment selection, promo codes,
+order summary, and confirmation. Include edge cases from the designs,
+validate against the acceptance criteria in the PRD, and reference
+the API contracts in the codebase for backend state assertions.
+```
+
+**Example — Jira + Figma:**
+
+```
+Read the Jira ticket MYAPP-1204 and the attached Figma designs for
+the new notifications centre. Generate tests that:
+- Cover every acceptance criterion in the Jira ticket
+- Test every interaction state shown in the Figma designs
+- Include error states and empty states from the designs
+- Use the exact component names from Figma in the instructions
+```
+
+Why it works: without explicit direction, Megumi may lean on one source more than others. Telling it specifically what to extract from each source produces tests that reflect the full picture — requirements, design, and implementation aligned.
+
+## Combining patterns in a session
+
+Patterns are not mutually exclusive. A single recipe session often uses several in sequence:
+
+1. Start with **Pattern 4** (spec-driven) to get baseline coverage from a PRD
+2. Follow up with **Pattern 3** (edge cases) to deepen error handling coverage
+3. Use **Pattern 2** (user journey) for end-to-end flows that span the feature
+4. Close with a Recipe question: "Based on everything generated so far, what critical scenarios am I still missing?"
+
+Each follow-up prompt builds on the previous ones. Megumi remembers the full recipe session and produces complementary, non-overlapping tests.

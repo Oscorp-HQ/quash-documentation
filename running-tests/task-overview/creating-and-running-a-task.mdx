@@ -1,0 +1,130 @@
+---
+title: "Creating and Running a Task"
+description: "Ship ad-hoc UI checks fast: plain-English prompt, model and device pick, execution report—no suite or library setup."
+---
+
+Tasks are best for ad-hoc testing — a quick sanity check before a release, a one-off exploration of a new flow, or verifying a specific bug fix. For repeatable, organised test coverage, use [Test Cases ](/test-management/test-case)and [Suites.](/running-tests/suites-overview)
+
+**To access Tasks:** Click **Tasks** in the left navigation panel.
+
+## Writing a task prompt
+
+A task prompt is a plain English description of what Mahoraga should do. It is not a test script — you do not define selectors, write assertions in code, or specify element IDs. You describe the interaction the way you would describe it to a person.
+
+**The structure that works:**
+
+```
+Open the app, navigate to [screen], do [action],
+and verify [expected outcome].
+```
+
+**Examples:**
+
+```
+Open the app, go to the login screen, enter a valid email and password,
+tap Sign In, and verify the home dashboard loads.
+```
+
+```
+Navigate to the profile screen, tap Edit, change the display name to
+"Test User", tap Save, and verify the new name appears on the profile page.
+```
+
+```
+Add three items to the cart, apply the promo code SAVE20, proceed to
+checkout, and verify the discount is reflected in the order summary.
+```
+
+## What makes a good prompt
+
+**Be specific about UI elements.** Name buttons, fields, and screens as they appear in the app. "Tap the Sign In button" is better than "tap the button." If credentials are configured in [Apps → Credentials,](/apps/credentials) you can reference them directly: _"Log in using the Standard User credentials."_
+
+**Include the expected outcome.** Without a verification step, Mahoraga executes the actions but cannot determine if they succeeded. Always end with what should be true at the end of a successful run.
+
+**Handle interruptions explicitly.** If your app shows permission dialogs, onboarding tooltips, or cookie banners, instruct Mahoraga to handle them: _"If a notification permission dialog appears, tap Allow."_
+
+**Reference test data with `/slug`.** If your task requires multiple input combinations, attach a [Test Data ](/test-management/test-data-overview)dataset using `/slug` syntax. Mahoraga runs the full task once per row.
+
+## Running a task
+
+1. Click **+ New Task** in the Tasks section.
+2. Type your prompt in the task input field. The placeholder reads _"Describe what you'd like to automate on your device..."_
+3.  **Select a model.** Click the model dropdown in the bottom left of the prompt area — it defaults to **Claude Sonnet 4.5**. Choose from:
+
+    * Claude Sonnet 4.5 _(default — best for most tasks)_
+    * Claude Haiku 4.5 _(faster, lighter)_
+    * Claude 3.5 Sonnet
+    * Gemini 2.5 Pro
+    * GPT 5.2
+
+    For the majority of tasks, leave this on Claude Sonnet 4.5. Switch to a different model only if you have a specific reason to — for example, testing how your app behaves with a different AI agent, or running a quick lightweight check with Haiku.
+4. **Thinking Mode**: Click the brain like icon to enable thinking mode which will dive deep into the task and then generate results. You can toggle it on/off depending on your task.&#x20;
+5. **Adjust task settings (optional).** Click the **gear icon** to the right of the model dropdown. A popup appears with two settings:
+   * **Maximum steps** — the maximum number of actions Mahoraga will take before stopping. Default is 50. Increase for long flows with many steps; decrease for quick sanity checks.
+   * **Timeout (minutes)** — how long the task can run before timing out. Default is 20 minutes.
+6.  **Upload your app or select an existing one.** Click the **upload icon** to open the Upload App modal. Choose:
+
+    * **Android APK** — click to upload your `.apk` file
+    * **iOS IPA** — upload your `.ipa` or `.zip` file (Mac only)
+
+    If you have already uploaded a build in [Apps → Builds](/apps/apps-manager/builds), select it from the app picker instead of uploading again.
+7. **Select a device.** Click the **Devices** picker and choose the device to run on. If no devices are listed, connect one first — see [Devices](/devices/overview).
+8. Click **Run**.
+
+Mahoraga launches immediately. The device view panel on the right streams the run in real time — you can watch every action as it happens.
+
+\
+💡 **First run or rerun?** The first time you run a task, Mahoraga reasons through the entire flow. From the second run onwards, it uses a stored path and executes significantly faster. See[ **Rerun** ](rerun)for how this works.
+
+## During a run
+
+While a task is running you can:
+
+* **Watch the live device view** — the screen recording streams in real time
+* **See the step log** — each action Mahoraga takes appears as it happens
+* **Stop the run** — click **Stop** to terminate early if something has clearly gone wrong
+
+Do not close the browser tab while a run is in progress. The run itself continues server-side, but you will lose the live stream and need to find the report in Reports afterwards.
+
+## After a run
+
+Every completed task generates an [Execution Report ](/execution-reports/report-dashboard)automatically. The report is available immediately in the **Reports** section.
+
+The report includes:
+
+* **Executive Summary** — what the agent did and where it stopped, in plain English
+* **Observations** — specific findings, unexpected behaviours, and recommendations
+* **Step-by-step breakdown** — every action with screenshots
+* **Device recording** — full video replay of the run
+
+## Understanding the outcome
+
+| Outcome             | Meaning                                                                                                                      |
+| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| **Pass**            | All steps executed and the expected outcome was met                                                                          |
+| **Failed**          | The task did not complete — check Observations and the step where it stopped                                                 |
+| **Partial Success** | Some steps completed but the agent was blocked — usually a CAPTCHA, unexpected dialog, or timeout. Check Observations first. |
+
+## Using test data in tasks
+
+If the same task needs to run with different inputs — different users, different products, different search terms — use [Test Data ](/test-management/test-data-overview)instead of writing separate tasks.
+
+Type `/` in the task prompt to open a dropdown of available datasets. Select one and the slug is inserted at the cursor. When the task runs, Mahoraga executes it once per row in the dataset automatically.
+
+```
+Open the app and log in using /login-credentials.
+Navigate to the checkout flow and complete a purchase.
+Verify the confirmation screen shows the correct order details.
+```
+
+## Tasks vs. Test Cases vs. Suites
+
+|                      | Task                    | Test Case                    | Suite                           |
+| -------------------- | ----------------------- | ---------------------------- | ------------------------------- |
+| **Best for**         | Ad-hoc, one-off testing | Reusable, organised coverage | Running multiple tests together |
+| **Setup required**   | None                    | Minimal                      | Moderate                        |
+| **Saved to library** | No                      | Yes                          | Yes                             |
+| **Runs in CI/CD**    | No                      | Via suite                    | Yes                             |
+| **Report generated** | Yes                     | Yes                          | Yes                             |
+
+Use tasks for quick checks. Use test cases and suites for anything you plan to run more than once.

@@ -1,0 +1,108 @@
+---
+title: "Task Overview"
+description: "A task is the most direct interaction you can have with Quash. Write a plain English instruction, select a device, and Mahoraga executes it immediately. No test library to manage, no suite to confi..."
+---
+
+## Tasks
+
+A task is the most direct interaction you can have with Quash. Write a plain English instruction, select a device, and Mahoraga executes it immediately. No test library to manage, no suite to configure, no setup beyond having a device connected.
+
+**To access Tasks:** Click **New Task** in the left navigation panel.
+
+![](/images/image-7.png)
+
+### What a task actually is
+
+A task is a single instruction session between you and [Mahoraga ](/getting-started/core-concepts/megumi-and-mahoraga)— Quash's execution agent. You describe what you want tested in plain English. Mahoraga reads your instruction, opens your app on the connected device, and carries it out step by step — tapping, typing, scrolling, and navigating exactly as a human tester would.
+
+Every task run captures a full screen recording, a step-by-step screenshot log, and an AI-written summary of what happened. The result appears in [Reports](/execution-reports/report-dashboard) immediately after the run finishes.
+
+### What tasks are for
+
+Tasks are built for speed and flexibility. They are the right tool when you need an answer quickly — not when you are building systematic test coverage.
+
+**Use a task when:**
+
+* You want to quickly verify a specific bug fix before closing a ticket
+* You are exploring a new feature or flow for the first time
+* You need a fast sanity check before pushing a release
+* You are testing something once and have no plans to repeat it
+* You want to see how Mahoraga behaves on a particular screen before writing a formal test case
+
+**Do not use a task when:**
+
+* You need the test to run repeatedly on a schedule or in CI/CD — use a [Suite](/running-tests/suites-overview)
+* You want to build organised, reusable test coverage — use [Test Cases](/test-management/test-case)
+* You need to generate tests from a spec or PRD — use [Test Studio](/test-studio/recipe)
+
+### How tasks fit into the bigger picture
+
+Quash has three levels at which you interact with test execution. Tasks are the most immediate.
+
+```
+Task
+  └── A single ad-hoc run. No library, no setup.
+      Run once, read the report, move on.
+
+Test Case
+  └── A saved, reusable instruction in your library.
+      The same task — formalised, named, and ready to repeat.
+
+Suite
+  └── A collection of test cases run together.
+      Your testing strategy, executed as a unit.
+```
+
+A task often becomes a test case. You write a task to explore a flow, the run goes well, and you decide you want to run it regularly. At that point, you save the instruction as a test case in your library and add it to a suite. The task was the starting point — the test case is the permanence.
+
+### The task interface
+
+When you open Tasks, you see two things: the task input area on the left and the device view on the right.
+
+**Task input area** This is where you write your prompt. There is no character limit. The input also accepts context attachments — you can reference a [Test Data ](/test-management/test-data-overview)dataset using `/slug` syntax, and [Backend Validations ](/running-tests/backend-validations)using `@slug` syntax, directly inside the prompt.
+
+**Device picker** Above the prompt, you select which connected device Mahoraga runs the task on. Any device showing as **Available** in your [Devices ](/devices/overview)section can be selected. If the list is empty, connect a device first.
+
+**App picker** Select which app Mahoraga should test. The list shows apps you have added in [Apps](/apps/adding-an-app). If [Credentials ](/apps/credentials)are configured for the selected app, Mahoraga uses them automatically whenever authentication is needed during the run.
+
+**Device view** The right panel shows a live stream of the device screen during execution. Watch every tap and swipe in real time. After the run, the device view shows the session recording — you can replay, pause, and scrub through the full run.
+
+### What Mahoraga does with your instruction
+
+When you run a task, Mahoraga:
+
+1. Reads your full instruction before taking any action
+2. Launches the selected app on the device
+3. Navigates to the starting point your instruction describes
+4. Executes each step — tapping elements, entering text, scrolling, swiping
+5. Takes a screenshot after each significant action
+6. Evaluates whether the expected outcome in your instruction was met
+7. Returns a Pass, Failed, or Partial Success verdict with a full report
+
+Mahoraga uses Android's accessibility APIs to detect and interact with UI elements. It does not rely on hardcoded selectors or element IDs — it reads the live screen the same way a human would, which means it adapts naturally to minor UI changes without requiring prompt updates.
+
+### Task history
+
+Every task you run is saved to your task history. From the Tasks section you can:
+
+* See all previous task runs with their prompts, devices, and outcomes
+* Reopen any past task to view its report
+* Rerun a previous task with the same prompt on any available device
+* Use a past task prompt as the starting point for a new one
+
+Task history is workspace-scoped — all team members with appropriate access can see tasks run by others. This makes tasks useful for async debugging: a developer can run a task to reproduce a bug, and a QA engineer can open the same report and see exactly what the agent did.
+
+### Prompting in Tasks
+
+Task prompting guidance now lives in [Prompting Fundamentals](/prompting), which keeps shared principles and examples in one place across Quash docs.
+
+For execution-specific patterns, examples, and mistakes, use [Prompting for Task Execution](/running-tests/task-overview/prompting-guide-task-execution).
+
+### Next steps
+
+* [Creating a task](/running-tests/task-overview/creating-and-running-a-task) — prompt structure, examples, running, and outcomes
+* [Prompting hub — Central guide + downloadable PDF](/prompting)
+* [Test Cases ](/test-management/test-case)— formalise a task into reusable coverage
+* [Suites](/running-tests/suites-overview) — run multiple test cases together
+* [Test Data](/test-management/test-data-overview)[ ](/apps/test-data-in-app)— run the same task with multiple input sets using `/slug`
+* [Backend Validations ](/running-tests/backend-validations)— verify API state during a task run using `@slug`

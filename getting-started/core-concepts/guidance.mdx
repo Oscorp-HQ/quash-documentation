@@ -1,0 +1,83 @@
+---
+title: "Guidance"
+description: "How Guidance accumulates from real runs, matures across sessions, and when to audit it in Knowledge."
+---
+
+It is the closest thing Quash has to institutional memory.
+
+## What Guidance actually is
+
+Every time tests run on your app, the agent is observing. It sees which screens exist. It watches how navigation flows between them. It notices which actions are common, which inputs produce which outcomes, and which states behave differently from what was expected.
+
+All of that observed knowledge gets stored in Guidance.
+
+A QA engineer who has been testing your app for a year knows things that are not written in any document. They know which flows have a habit of breaking. They know that the checkout screen behaves differently when the cart has more than ten items. They know that the date picker on Android 12 requires an extra tap that it did not require on Android 11. They know these things because they experienced them — not because someone wrote them down.
+
+Guidance is Quash's equivalent of that earned knowledge. It grows with experience, it informs future sessions, and it makes the agent progressively more effective over time.
+
+## What Guidance stores
+
+Guidance organises what the agent learns into several categories:
+
+**Screen and navigation structure** Which screens exist in the app, how they connect, what triggers navigation between them, and which paths are linear versus branching. Over time this builds into a map of your entire app — not from documentation, but from direct observation.
+
+**Common actions and UI patterns** The typical interactions in your app — the gestures, the tap targets, the common input patterns. What a standard user flow looks like in practice, including the small things that vary between devices or OS versions.
+
+**Permanent vs. temporary states** One of the more subtle things Guidance tracks is the difference between real persistent data and temporary states — cached data, in-progress transactions, loading states, empty states that only appear once. This prevents the agent from validating a transient UI condition as if it were a stable, expected outcome.
+
+**Tips and learned behaviours** Things the agent has learned to do or avoid when testing specific parts of your app. If a particular flow requires an extra step that the documentation does not mention, Guidance stores that. If a specific screen is slow to load and requires a wait before the next action, Guidance notes it.
+
+**Edge cases and failure patterns** Scenarios that produced unexpected results in previous sessions. Flows that behaved differently from what the test expected. Errors the agent encountered and recovered from. These get recorded so the agent can factor them into future test generation — surfacing them as suggested scenarios or flagging them in reports.
+
+## The lifecycle of Guidance
+
+**Session 1 — empty**
+
+Guidance starts completely empty for every new app. The first session draws only from what you have configured in Apps and whatever context you attach in the recipe — your GitHub branch, your Figma file, your PRD. The output is still useful, but it lacks the depth that comes from direct experience.
+
+This is expected. Every expert starts as a beginner.
+
+**Sessions 2–5 — building**
+
+After a few sessions, Guidance starts to have shape. The agent has mapped the screens it has navigated. It has reinforced the flows it has executed successfully. It has a record of any unexpected states it encountered. Test generation becomes noticeably more specific — it references actual screen names, actual interaction patterns, actual failure modes it has observed.
+
+**Sessions 6+ — mature**
+
+A well-exercised Guidance profile produces tests that feel like they were written by someone who has spent months testing your app. The agent knows the fragile flows. It knows the tricky edge cases. It generates tests for scenarios that would not appear in any documentation because they only reveal themselves through direct interaction.
+
+## Guidance is editable
+
+The agent makes mistakes. Your app changes. Neither of these is a problem as long as you keep Guidance accurate.
+
+You can review and edit every entry in the Guidance profile from **Apps → Knowledge tab**. The interface shows what the agent has learned, organised by category. You can correct incorrect assumptions, remove outdated entries, and add notes the agent should factor into future sessions.
+
+**When to review Guidance:**
+
+After a significant release, go through the Guidance profile for any flows that changed in the new version. The agent will not automatically unlearn what it previously knew — if the checkout flow now has a new confirmation step, Guidance still reflects the old flow until you update it.
+
+If the agent is repeatedly making the same incorrect assumption across sessions, Guidance is almost always the source. Find the entry, correct it, and the behaviour changes going forward.
+
+When you onboard a new QA engineer onto the team, walking them through the Guidance profile is one of the fastest ways to transfer institutional knowledge about how the app actually behaves in testing — as distinct from how it is documented to behave.
+
+## Guidance vs. Apps context
+
+These two are easy to conflate because they both live in the Apps section. The distinction matters.
+
+|                         | Apps context                                    | Guidance                                                    |
+| ----------------------- | ----------------------------------------------- | ----------------------------------------------------------- |
+| **Created by**          | You                                             | The agent                                                   |
+| **What it contains**    | Store listing, GitHub repo, credentials, builds | Observed screen maps, learned flows, failure patterns, tips |
+| **When it is set**      | You configure it before testing                 | Accumulates during and after testing                        |
+| **Starts with content** | Yes — as much as you provide                    | No — always starts empty                                    |
+| **Editable**            | Yes                                             | Yes                                                         |
+| **Scope**               | Per app                                         | Per app                                                     |
+
+Apps context is what you teach the agent before it starts. Guidance is what the agent teaches itself through experience.
+
+Both matter. Apps context gives the agent a strong foundation on day one. Guidance makes the agent more effective with every session that follows. The combination — a well-configured app plus a mature Guidance profile — is what produces the most specific, accurate test generation.
+
+## A note on the first session
+
+Because Guidance starts empty, your first session on any new app will produce more generic output than later sessions. This is not a flaw — it is just the starting point.
+
+The way to get the most out of a first session is to compensate with richer recipe context: attach a PRD, connect your GitHub branch, add a Figma file. The more you give Recipe to work with upfront, the less it has to infer. As Guidance builds, the reliance on attached documents naturally decreases — the agent already knows the app well enough to generate accurately without them.

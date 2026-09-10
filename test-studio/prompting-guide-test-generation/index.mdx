@@ -1,0 +1,42 @@
+---
+title: "Prompting for Test Generation"
+sidebarTitle: "Prompting for Test Generation"
+description: "Write high-signal prompts for Megumi so generated tests are specific, complete, and aligned to your real product behavior."
+---
+
+[Download: How to Prompt Guide (May 2026) (PDF)](https://drive.google.com/uc?export=download&id=1oPApMi_NjGDMnIOS3UPFIj3rP5cZHW5C)  
+[Browse all prompting guides](/prompting)
+
+Megumi generates tests by inferring intent from what you write. The clearer your prompt, the less interpretation Megumi has to do, and the closer the output matches what you actually wanted to validate.
+
+You do not need to write code. You do not need to know test frameworks. You need to write clearly.
+
+## Start with shared fundamentals
+
+Before writing generation-specific instructions, apply the shared fundamentals in [Overview](/prompting): specificity, explicit outcomes, interruption handling, and clear scope.
+
+For generation workflows, add one extra requirement: define the scenario coverage you want (happy path, failures, edges) so Megumi knows breadth as well as depth.
+
+## Prompt length
+
+There is no character limit on prompts. Write as much detail as you need. A longer, well-structured prompt almost always produces better output than a short vague one. If you have a lot of scenarios to cover, write them all out — numbered lists, bullet points, and plain paragraphs all work.
+
+## Prompts and CONFIG work together
+
+Your prompt tells Megumi _what_ to test. The CONFIG panel tells it _how_ thoroughly, what type, and on which platform. A prompt saying "generate tests for the checkout flow" produces significantly different output depending on whether CONFIG is set to Minimal + Feature or Full + Integration. Set CONFIG before your first prompt to shape everything that follows.
+
+[→ Configuration in Test Studio](/test-studio/configuration-in-test-studio)
+
+## In this section
+
+**Writing effective prompts** — how expected outcomes become assertions, how to use multiple context sources together, how to ask Megumi questions beyond test generation, how to refine tests after the first pass, and how to structure long prompts.
+
+[→ Writing effective prompts](/test-studio/prompting-guide-test-generation/writing-effective-prompts)
+
+**Prompt Playbooks** — five proven patterns with templates and worked examples: feature + scenarios, user journey, edge cases, spec-driven, and multi-source generation.
+
+[→ Prompt Playbooks](/test-studio/prompting-guide-test-generation/prompt-patterns-and-examples)
+
+**Troubleshooting Prompts** — the most frequent prompting errors and how to fix them, with a pre-prompt checklist.
+
+[→ Troubleshooting Prompts](/test-studio/prompting-guide-test-generation/common-mistakes)
