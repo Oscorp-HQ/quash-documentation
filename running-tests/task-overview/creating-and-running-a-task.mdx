@@ -99,11 +99,15 @@ The report includes:
 
 ## Understanding the outcome
 
-| Outcome             | Meaning                                                                                                                      |
-| ------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
-| **Pass**            | All steps executed and the expected outcome was met                                                                          |
-| **Failed**          | The task did not complete — check Observations and the step where it stopped                                                 |
-| **Partial Success** | Some steps completed but the agent was blocked — usually a CAPTCHA, unexpected dialog, or timeout. Check Observations first. |
+The agent decides the verdict by checking the run against the expected outcome in your instruction.
+
+| Outcome   | Meaning                                                                                                                                                        |
+| --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Pass**  | The agent determined that the expected outcome was met                                                                                                         |
+| **Fail**  | The agent determined that the expected outcome was not met — a failed product check. Check Observations and the step where it failed                           |
+| **Error** | The run hit an execution problem — for example, a CAPTCHA, an unexpected dialog, or a timeout — rather than a failed product check. Check Observations first |
+
+Some older reports show **Partial Success**, a legacy label. For any result that looks wrong, review the steps, screenshots and reasoning in the report, refine the instruction or context, and rerun.
 
 ## Using test data in tasks
 

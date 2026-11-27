@@ -9,10 +9,24 @@ description: "Clicking a report opens the full detail view, which includes:"
 2. Find the run you want to review. Use the filters at the top to narrow by type (Tasks / Suites) or result (Passed / Failed / All). Use the search bar to find a run by its prompt text.
 3. Click the report to open it. The header shows four key details: **Duration, Device, Started,** and **Final Verdict.**
 4. Read the **Executive Summary** first. This is the AI's plain-language account of the run — what it did, what it found, and where it stopped if it didn't complete. In most cases, this paragraph alone will tell you whether you need to dig deeper.
-5. If the run failed or returned a Partial Success, go to **Observations** next. This is the most actionable section — a specific list of what the agent encountered during execution.
+5. If the run failed or ended in Error, go to **Observations** next. This is the most actionable section — a specific list of what the agent encountered during execution.
 6. Open the **Detailed Test Case Report** to see the full step-by-step breakdown.
 7. Use the **Device View** panel on the right to replay the screen recording.
 8. To share the report, click **Share** to generate a link anyone can open without logging in. To export it, click **Download PDF** for the full report with screenshots included.
+
+## Understanding the verdict
+
+The agent decides the **Final Verdict** by checking the run against the expected outcome in your test.
+
+* **Pass** — The agent determined that the expected outcome was met.
+* **Fail** — The agent determined that the expected outcome was not met. This is a failed product check.
+* **Error** — The run hit an execution problem, such as being blocked by a screen it could not get past, rather than a failed product check.
+
+Some older reports show **Partial Success**, a legacy label.
+
+To make the check explicit, state the pass/fail criteria in the prompt or in a reusable skill. The report shows the steps, screenshots, the agent's reasoning, and a summary, so you can see how it reached the verdict.
+
+If a verdict looks wrong, investigate the steps and reasoning, refine the context, criteria, or test, and rerun.
 
 ## Detailed Report View
 

@@ -9,10 +9,12 @@ To get help, reach out to us on Slack, or directly at hamza@quashbugs.com
 
 #### Security & Privacy <a href="#security-and-privacy" id="security-and-privacy"></a>
 
-Quash prioritizes data protection and privacy:
+How Quash handles your testing data:
 
-* All device communications are **encrypted end-to-end**.
-* Task recordings are stored securely in your **S3 bucket**.
-* No sensitive data is sent to third-party services.
-* Local device access only – no remote control features.
-* **Privacy Note:** Quash processes all automation locally on your machine. LLM requests are sent only to your configured AI provider with **task descriptions** — no personal data or screenshots are shared.
+* **Use test environments.** Run Quash against UAT or test builds, with test accounts and suitable test data.
+* **AI processing.** Relevant data is sent to AI models to execute your tests. It is not used for training.
+* **Local devices.** Testing on your own devices does not mean data stays off AI models. Relevant data is still sent to AI models during execution.
+* **Retention.** Quash retains data for 90 days by default. Longer retention is available by arrangement. Quash also keeps backups.
+* **Private deployment.** If you have private deployment requirements, Quash can assess and scope them with your team.
+
+For questions about model providers, regions, credential protection, or deletion, contact the Quash team.

@@ -3,34 +3,38 @@ title: "Quash MCP"
 description: "Connect Quash mobile-app automation to your AI agent and run tests without leaving your editor."
 ---
 
-The Quash MCP server lets an AI agent drive real mobile-app automation on a connected device. Claude Code, Claude Desktop, or Cursor can run natural-language test tasks, generate test cases, manage apps and builds, and pull back reports. You talk to your agent. Your agent talks to Quash.
+The Quash MCP server lets a compatible AI client, such as Claude Code, Claude Desktop, or Cursor, drive Quash. Compatible MCP clients have the same Quash features and device coverage as the web interface. You talk to your agent. Your agent talks to Quash.
 
 ## What you can do
 
 Once the server is connected, the agent can reach the full Quash workflow:
 
-* **Run tests.** Describe a test task in plain language. The agent runs it on the device and streams the result back live.
+* **Run tests.** Describe a test task in plain language. The agent runs it and streams the result back live.
 * **Generate test cases.** Build test cases from a prompt, from files, or straight from a git repo.
-* **Manage apps and builds.** List your org's apps, browse builds, and install an APK on the device.
-* **Review results.** Browse recent runs, pull a run's report and share link, and check your plan usage.
+* **Manage apps and builds.** List your org's apps, browse builds, and install a build on a device.
+* **Review results.** Browse recent runs, pull a run's report and share link, and check your usage.
 
 You do not memorize tool names or syntax. You ask in plain language and the agent picks the right tool. Under the hood, the server exposes tools like `connect`, `execute`, `generate_test_cases`, `setup_portal`, `setup_simulator`, `setup_device`, `runs`, `builds`, `install_build`, and others for auth, configuration, and usage tracking.
 
-## Platform support
+## Device coverage
 
-On macOS (Apple Silicon) you get both Android and iOS automation. On Windows (x64) the server is Android only, because iOS automation depends on Apple's macOS-only toolchain.
+MCP has the same device coverage as the web interface: Android physical devices and emulators, physical iPhones and iOS simulators, Quash cloud Android and iOS devices, and browsers. MCP is not limited to devices connected to your own computer.
 
-It works across emulators and physical devices: Android on both platforms, plus iOS simulators and physical iPhones on macOS.
+What you set up depends on where the device runs:
+
+* **Quash cloud devices** are hosted by Quash. Your subscription sets device allocation and parallel capacity.
+* **Devices connected to your computer** need local device tooling. Android devices and emulators need `adb`. Physical iPhones and iOS simulators need a Mac with Xcode. A physical iPhone also needs Developer Mode, trust over USB, and an Apple Developer Program membership.
+
+> **Connection details.** The steps below cover the published installer. For any other connection method, get the supported connection details from the Quash team. Do not use an endpoint that is not documented here or given to you by Quash.
 
 ## Before you install
 
 You need:
 
 * macOS 13 or later (Apple Silicon), or Windows 10/11 (x64)
-* `adb` on your PATH (comes with Android platform-tools). On Windows, the installer also checks `%LOCALAPPDATA%\Android\Sdk`
-* A device: Android device or emulator with USB debugging on. On macOS, you can also use an iOS simulator or a physical iPhone with Developer Mode enabled and trusted over USB
-* A Quash account on any plan, including Free — see [How Quash Pricing Works](/administration/how-quash-pricing-works)
-* For iOS on macOS: Xcode installed to build WebDriverAgent
+* A Quash account. See [How Quash Pricing Works](/administration/how-quash-pricing-works) for how access starts.
+* For Android devices or emulators connected to your computer: `adb` on your PATH (comes with Android platform-tools). On Windows, the installer also checks `%LOCALAPPDATA%\Android\Sdk`. Turn on USB debugging for physical Android devices.
+* For iPhones or iOS simulators connected to your computer: a Mac with Xcode installed to build WebDriverAgent. For a physical iPhone, turn on Developer Mode and trust the Mac over USB.
 
 ## Install
 
@@ -93,7 +97,7 @@ Generating a new token invalidates the previous one. Update it everywhere you us
 
 The installer handles this automatically. If you need to verify or add it manually, here is what the config looks like.
 
-**macOS.** Replace `<you>` with your macOS username. The two paths point to the MCP binary and the sidecar binary that the installer placed in `~/.quash`.
+**macOS.** Replace `<you>` with your macOS username. The paths point to the MCP binary, the sidecar binary, and the test-generation component that the installer placed in `~/.quash`.
 
 ```json
 {
@@ -103,6 +107,7 @@ The installer handles this automatically. If you need to verify or add it manual
       "command": "/Users/<you>/.quash/bin/quash-mcp",
       "env": {
         "QUASH_SIDECAR_CMD": "/Users/<you>/.quash/sidecar/quash-sidecar/quash-sidecar",
+        "QUASH_TEST_GEN_AGENT_CMD": "/Users/<you>/.quash/test-gen-venv/bin/python -m test_gen_agent",
         "QUASH_API_TOKEN": "qsh_xxxxxxxx"
       }
     }
@@ -152,7 +157,7 @@ Check your status anytime with the `about` or `configure` tools.
 
 Tell your agent: "Use Quash, connect." It detects the device, warms the engine, and runs a health check.
 
-After connecting, finish setup for your device type:
+For a device connected to your computer, finish setup for your device type:
 
 * **Android.** If connect reports "Portal not ready", run `setup_portal`. This installs the Portal app and enables accessibility. It is safe to run again on an already-configured device.
 * **iOS simulator (macOS).** Run `setup_simulator`. Builds and launches WebDriverAgent. No code signing needed.
