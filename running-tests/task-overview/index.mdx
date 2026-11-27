@@ -77,9 +77,9 @@ When you run a task, Mahoraga:
 4. Executes each step — tapping elements, entering text, scrolling, swiping
 5. Takes a screenshot after each significant action
 6. Evaluates whether the expected outcome in your instruction was met
-7. Returns a Pass, Failed, or Partial Success verdict with a full report
+7. Returns a Pass or Fail verdict with a full report, or Error if the run hit an execution problem
 
-Mahoraga uses Android's accessibility APIs to detect and interact with UI elements. It does not rely on hardcoded selectors or element IDs — it reads the live screen the same way a human would, which means it adapts naturally to minor UI changes without requiring prompt updates.
+Mahoraga uses the platform's accessibility layer to detect and interact with UI elements. It does not rely on hardcoded selectors or element IDs — it reads the live screen the same way a human would, which helps it handle minor UI changes. If a change breaks the flow, refine the instruction and rerun.
 
 ### Task history
 

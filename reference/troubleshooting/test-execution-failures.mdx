@@ -1,21 +1,25 @@
 ---
 title: "Test Execution Failures"
-description: "Diagnose Partial Success, flaky runs, CI mismatches, credentials, and empty reports."
+description: "Diagnose Error results, failed checks, flaky runs, CI mismatches, credentials, and empty reports."
 ---
 
-## Understanding the three outcomes
+## Understanding the outcomes
 
 Before troubleshooting, confirm which outcome you are dealing with — each has a different root cause and a different resolution path.
 
-| Outcome                       | What it means                                                                                 | Where to start                                        |
-| ----------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------- |
-| **Failed**                    | The agent could not complete the task — an error occurred or the expected outcome was not met | Observations section of the report                    |
-| **Partial Success**           | The agent completed some steps but was blocked by something it could not handle               | Observations + screenshot at point of failure         |
-| **Pass with wrong behaviour** | The test passed but the app behaviour seems incorrect                                         | Review the Expected Result field and step screenshots |
+| Outcome                       | What it means                                                                         | Where to start                                        |
+| ----------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------- |
+| **Fail**                      | The agent determined that the expected outcome was not met — a failed product check   | Observations section of the report                    |
+| **Error**                     | The run hit an execution problem, such as being blocked by something it could not handle | Observations + screenshot where the run stopped    |
+| **Pass with wrong behaviour** | The test passed but the app behaviour seems incorrect                                 | Review the Expected Result field and step screenshots |
 
-## Partial Success — agent stopped mid-run
+Some older reports show **Partial Success**, a legacy label. Troubleshoot it the same way as an Error.
 
-Partial Success almost always means Mahoraga encountered something it was not instructed to handle. It is not a bug in Quash — it is a gap in the task prompt.
+To make verdicts more dependable, state explicit pass/fail criteria in the prompt or in a reusable skill. Whatever the outcome, the fix path is the same: investigate the steps, screenshots and reasoning in the report, refine the context, criteria or test, and rerun.
+
+## Error — agent stopped mid-run
+
+An Error often means Mahoraga encountered something it was not instructed to handle. Start by checking the task prompt for a gap.
 
 **Most common causes:**
 
@@ -85,7 +89,7 @@ If a test fails at a login step with what appears to be an authentication error:
 
 ## **Rerun is not faster than the first run**
 
-This happens when no successful run exists yet for the task. Mahoraga only stores a path after a run completes successfully. If the first run ended in a partial success or failure, no path was stored and the next run starts fresh.
+This happens when no successful run exists yet for the task. Mahoraga only stores a path after a run completes successfully. If the first run ended in Fail or Error, no path was stored and the next run starts fresh.
 
 _Fix:_ Run the task once and ensure it reaches a successful or complete status. The run after that will use the stored path.
 

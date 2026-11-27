@@ -42,7 +42,7 @@ A label applied to an uploaded build in the Builds tab to indicate its testing c
 
 ## Execution
 
-One test run on a device — the unit Quash meters usage in. An execution counts wherever it runs (local device, emulator, or Quash-hosted cloud device) and however it is started (the Quash app, the web console, or an AI agent through the MCP server). A test that fails counts the same as one that passes. Generating, refining, and editing tests never counts as an execution.
+An AI-driven test run on a device, also called a run. A run is usually one test case, and a Runbook can consume several runs. AI-driven device executions count even when they fail or are cancelled. How usage is counted for your team is set out in your agreement.
 
 [→ How Quash Pricing Works](/administration/how-quash-pricing-works)
 
@@ -60,7 +60,7 @@ The tab inside an App that houses two things: the connected GitHub repository an
 
 ## Mahoraga
 
-The execution agent. Runs on your Android device or emulator, interacts with the UI, executes test case instructions, captures screenshots, records the session, and reports results back to Quash. Installs automatically on connected devices. Uses Android's accessibility APIs to detect and interact with UI elements.
+The execution agent. Runs tests on your device (an Android device or emulator, an iPhone or iOS simulator, or a Quash cloud device), interacts with the UI, executes test case instructions, captures screenshots, records the session, and reports results back to Quash. On Android, it installs automatically on connected devices and uses Android's accessibility APIs to detect and interact with UI elements. Decides each run's Pass or Fail verdict. Mahoraga can also draft Runbooks from a process you describe.
 
 [Megumi & Mahoraga](/getting-started/core-concepts/megumi-and-mahoraga)
 
@@ -94,6 +94,12 @@ A subsequent execution of a task that has already completed successfully at leas
 
 [→ Rerun](/running-tests/task-overview/rerun)
 
+## Runbook
+
+A reusable workflow that can contain several test cases, including flows that span multiple apps or devices. Mahoraga can draft a Runbook from a process you describe. A Runbook reuses your app context and can consume several runs.
+
+[→ How Quash Pricing Works](/administration/how-quash-pricing-works)
+
 ## Slug
 
 A short reference identifier used to call a Dataset or Backend Validation inside a task prompt. Dataset slugs start with `/` (e.g., `/login-credentials`). Validation slugs start with `@` (e.g., `@get_products`). Typing `/` or `@` in a prompt input opens a dropdown of available items.
@@ -110,7 +116,7 @@ A structured record of a completed task run — the screens navigated, decisions
 
 ## **Self-healing**
 
-&#x20;The ability of Mahoraga to detect a mismatch between the current screen state and the stored path during a rerun, switch back into reasoning mode to resolve the deviation, continue the test, and update the stored path with the new information. This prevents minor UI changes from causing test failures.
+The ability of Mahoraga to detect a mismatch between the current screen state and the stored path during a rerun, switch back into reasoning mode, and adapt the step while preserving the test's intended objective. Mahoraga then continues the test and updates the stored path with the new information. Healing helps with minor UI changes but is not a guarantee. If a result looks wrong, review the report, refine the test or context, and rerun.
 
 ## @slug
 

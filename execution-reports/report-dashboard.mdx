@@ -22,10 +22,12 @@ This gives you a quick snapshot of overall test health before diving into indivi
 
 The main view lists all reports in reverse chronological order. Each entry shows the prompt that was run, the device it ran on, when it completed, and the final result. Suite runs carry a **SUITE** badge.
 
-Every report has one of three outcomes:
+The agent decides each run's verdict:
 
-* **Pass** — The task completed and all steps executed as expected.
-* **Failed** — The task did not complete successfully.
-* **Partial Success** — The task completed some steps but could not finish — usually because of something outside Quash's control, such as a CAPTCHA or a mandatory manual step.
+* **Pass** — The agent determined that the expected outcome was met.
+* **Fail** — The agent determined that the expected outcome was not met.
+* **Error** — The run hit an execution problem, such as a CAPTCHA or a mandatory manual step, rather than a failed product check.
+
+Some older reports show **Partial Success**, a legacy label. See [Reading an Execution Report](/execution-reports/reading-an-execution-report) for how to review a verdict.
 
 Use the filters at the top to switch between Tasks, Suites, or All, and to filter by result. The search bar finds specific runs by prompt text.

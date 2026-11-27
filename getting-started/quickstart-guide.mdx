@@ -5,6 +5,8 @@ description: "Hands-on walkthrough: install, connect a device, add an app, run a
 
 ## Before you start
 
+New to Quash? Access starts with a demo and a free guided trial. See [How Quash Pricing Works](/administration/how-quash-pricing-works).
+
 You need:
 
 - Quash installed on your computer ([Download here](https://quashbugs.com/download))
@@ -30,7 +32,7 @@ You need:
 3. If Windows SmartScreen appears, click **More info → Run anyway**.
 4. Click on **Only for me** while choosing installation option.
 
-![Windows installation option - Only for me](/images/Image%20from%20Quash%20Mail%20(1).png)
+![Windows installation option - Only for me](/images/windows-install-only-for-me.png)
 
 Note: Choosing the **All Users** option in this step can lead to permission issues or denied access while running the app.
 
@@ -82,7 +84,7 @@ Quash automatically installs the Mahoraga agent on the emulator with accessibili
 2. Select **Devices** from the left navigation panel.
 3. Under **Quash Cloud Device Available**, click **Connect**. A device is assigned to you automatically.
 
-Quash cloud devices come with Mahoraga pre-installed. Cloud access and capacity depend on your plan. If all devices are in use, you will be placed in a queue and notified when one becomes available.
+Quash cloud Android devices come with Mahoraga pre-installed. Quash cloud devices include Android and iOS. Your subscription sets cloud device allocation and parallel capacity. If all devices are in use, you will be placed in a queue and notified when one becomes available.
 
 → See [\[Cloud Devices\]](/devices/cloud-device) for full details including screen mirroring and parallel testing.
 
@@ -149,7 +151,7 @@ The report shows:
 - **Detailed breakdown** — every step the agent took, with screenshots
 - **Device recording** — a full screen recording of the run you can replay and scrub through
 
-If the run returned **Partial Success**, open Observations first. This almost always means Mahoraga hit something it could not handle — a CAPTCHA, a permission dialog it was not instructed to dismiss, or a loading screen that timed out.
+The agent returns **Pass** or **Fail**. If the run hit an execution problem — for example, a CAPTCHA, a permission dialog it was not instructed to dismiss, or a loading screen that timed out — it can show **Error** instead. Open Observations first to see where it stopped. Some older reports show **Partial Success**, a legacy label.
 
 ## What's next
 

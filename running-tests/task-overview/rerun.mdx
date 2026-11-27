@@ -10,7 +10,7 @@ From the second run onwards, Mahoraga follows that stored path directly. For eac
 
 ## **How Mahoraga handles UI changes**
 
-Mahoraga does not fail when it encounters something unexpected during a rerun. Instead, it switches back into reasoning mode for that specific step:
+When Mahoraga encounters something unexpected during a rerun, it switches back into reasoning mode for that specific step. It adapts the step while preserving the test's intended objective:
 
 * A button has been renamed — Mahoraga identifies it by role and context, not just its label.
 * A permission dialog appears mid-flow — Mahoraga handles it and returns to the main flow.
@@ -18,5 +18,7 @@ Mahoraga does not fail when it encounters something unexpected during a rerun. I
 * The layout has shifted on a different device — Mahoraga finds the correct element and continues.
 
 Once it resolves the change, Mahoraga updates the stored path. The next rerun already knows what to expect.
+
+Adapting a step is not a guarantee. A rerun can still fail or end in Error, especially after a larger change to the app. If a result looks wrong, review the steps, screenshots and reasoning in the report, refine the context, criteria or test, and rerun.
 
 > ⚠️ **Note:** Rerun speed gains apply after the first _successful_ run. If the first run did not complete, no path is stored and the next run starts fresh.
